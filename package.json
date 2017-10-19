@@ -1,7 +1,7 @@
 {
   "name": "lsx-videos",
   "version": "1.0.0",
-  "description": "LSX Videos for LSX Theme",
+  "description": "LSX Videos for LSX Theme.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
