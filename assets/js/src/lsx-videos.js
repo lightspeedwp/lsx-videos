@@ -62,6 +62,11 @@
 
 			$modal.find( '.modal-title' ).html( $invoker.data( 'title' ) );
 			$modal.find( '.modal-body' ).html( '<div class="alert alert-info">Loading...</div>' );
+		} );
+
+		$( '#lsx-videos-modal' ).on( 'shown.bs.modal', function( event ) {
+			var $modal = $( this ),
+				$invoker = $( event.relatedTarget );
 
 			$.ajax( {
 				url: lsx_videos_params.ajax_url,
