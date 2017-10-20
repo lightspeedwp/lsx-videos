@@ -15,3 +15,240 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: classes/class-lsx-videos-admin.php:46
+msgctxt "post type general name"
+msgid "Videos"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:47
+msgctxt "post type singular name"
+msgid "Video"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:48
+msgctxt "post type general name"
+msgid "Add New"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:49
+msgid "Add New Video"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:50
+msgid "Edit Video"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:51
+msgid "New Video"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:52
+msgid "All Videos"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:53
+msgid "View Video"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:54
+msgid "Search Videos"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:55
+msgid "No videos found"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:56
+msgid "No videos found in Trash"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:58
+msgctxt "admin menu"
+msgid "Videos"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:92
+msgctxt "taxonomy general name"
+msgid "Video Categories"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:93
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:94
+msgid "Search Categories"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:95
+msgid "All Categories"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:96
+msgid "Parent Category"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:97
+msgid "Parent Category:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:98
+msgid "Edit Category"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:99
+msgid "Update Category"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:100
+msgid "Add New Category"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:101
+msgid "New Category Name"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:102
+msgid "Categories"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:127
+msgid "Featured:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:145
+msgid "Video:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:163
+msgid "Video Details"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:170
+msgid "First Name:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:175
+msgid "Last Name:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:180
+msgid "Email Address:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:185
+msgid "Phone Number:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:190
+msgid "Country of Residence"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:197
+msgid "Video Uploader Details"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:263
+msgid "Display"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:275
+msgid "API"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:304
+msgid "Disable Excerpt"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:308
+msgid "Disable Excerpt."
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:321
+msgid "Placeholder"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:329
+msgid "Choose Image"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:330
+msgid "Delete"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:341
+msgid "Select featured image"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:354
+msgid "Enter video title"
+msgstr ""
+
+#: classes/class-lsx-videos-frontend.php:153, includes/settings/display.php:44
+msgid "Videos"
+msgstr ""
+
+#: classes/class-lsx-videos-frontend.php:158
+msgid "Videos Category"
+msgstr ""
+
+#: templates/archive-videos.php:41
+msgid "All"
+msgstr ""
+
+#: templates/content-archive-videos.php:48
+msgid "View video"
+msgstr ""
+
+#: includes/settings/api.php:3
+msgid "Settings"
+msgstr ""
+
+#: includes/settings/api.php:4
+msgid "License Keys"
+msgstr ""
+
+#: includes/settings/api.php:25
+msgid "Enter the license keys for your add-ons in the boxes below."
+msgstr ""
+
+#: includes/settings/api.php:30
+msgid "You have not installed any add-ons yet. View our list of add-ons"
+msgstr ""
+
+#: includes/settings/api.php:30
+msgid "here"
+msgstr ""
+
+#: includes/settings/display.php:4
+msgid "Placeholders"
+msgstr ""
+
+#: includes/settings/display.php:9
+msgid "Currencies"
+msgstr ""
+
+#: includes/settings/display.php:14
+msgid "Team"
+msgstr ""
+
+#: includes/settings/display.php:19
+msgid "Testimonials"
+msgstr ""
+
+#: includes/settings/display.php:24
+msgid "Projects"
+msgstr ""
+
+#: includes/settings/display.php:29
+msgid "Services"
+msgstr ""
+
+#: includes/settings/display.php:34
+msgid "Blog Customizer (posts widget)"
+msgstr ""
+
+#: includes/settings/display.php:39
+msgid "Sharing"
+msgstr ""

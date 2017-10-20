@@ -72,7 +72,7 @@ gulp.task('styles-rtl', function () {
 gulp.task('compile-css', ['styles', 'styles-rtl']);
 
 gulp.task('js', function() {
-	return gulp.src('assets/js/src/**/*.js')
+	return gulp.src('assets/js/src/lsx-videos.js')
 		.pipe(plumber({
 			errorHandler: function(err) {
 				console.log(err);
@@ -80,14 +80,43 @@ gulp.task('js', function() {
 			}
 		}))
 		.pipe(jshint())
+		//.pipe(errorreporter)
+		.pipe(concat('lsx-videos.min.js'))
 		.pipe(uglify())
-		.pipe(rename({
-			suffix: '.min'
-		}))
 		.pipe(gulp.dest('assets/js'))
 });
 
-gulp.task('compile-js', (['js']));
+gulp.task('admin-js', function() {
+	return gulp.src('assets/js/src/lsx-videos-admin.js')
+		.pipe(plumber({
+			errorHandler: function(err) {
+				console.log(err);
+				this.emit('end');
+			}
+		}))
+		.pipe(jshint())
+		//.pipe(errorreporter)
+		.pipe(concat('lsx-videos-admin.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('assets/js'))
+});
+
+gulp.task('scporder-js', function() {
+	return gulp.src('assets/js/src/scporder.js')
+		.pipe(plumber({
+			errorHandler: function(err) {
+				console.log(err);
+				this.emit('end');
+			}
+		}))
+		.pipe(jshint())
+		//.pipe(errorreporter)
+		.pipe(concat('scporder.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('assets/js'))
+});
+
+gulp.task('compile-js', ['js', 'admin-js', 'scporder-js']);
 
 gulp.task('watch-css', function () {
 	return gulp.watch('assets/css/**/*.scss', ['compile-css']);
