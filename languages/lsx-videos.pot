@@ -149,39 +149,47 @@ msgstr ""
 msgid "Video Uploader Details"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:263
+#: classes/class-lsx-videos-admin.php:256, classes/class-lsx-videos-admin.php:257
+msgid "Theme Options"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:261
+msgid "Save Changes"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:282
 msgid "Display"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:275
+#: classes/class-lsx-videos-admin.php:294
 msgid "API"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:304
+#: classes/class-lsx-videos-admin.php:323
 msgid "Disable Excerpt"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:308
+#: classes/class-lsx-videos-admin.php:327
 msgid "Disable Excerpt."
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:321
+#: classes/class-lsx-videos-admin.php:340
 msgid "Placeholder"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:329
+#: classes/class-lsx-videos-admin.php:348
 msgid "Choose Image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:330
+#: classes/class-lsx-videos-admin.php:349
 msgid "Delete"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:341
+#: classes/class-lsx-videos-admin.php:360
 msgid "Select featured image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:354
+#: classes/class-lsx-videos-admin.php:373
 msgid "Enter video title"
 msgstr ""
 

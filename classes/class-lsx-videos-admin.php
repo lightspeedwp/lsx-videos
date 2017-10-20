@@ -246,6 +246,25 @@ class LSX_Videos_Admin {
 	}
 
 	/**
+	 * Returns the array of settings to the UIX Class.
+	 */
+	public function settings_page_array() {
+		$tabs = apply_filters( 'lsx_framework_settings_tabs', array() );
+
+		return array(
+			'settings'  => array(
+				'page_title'  => esc_html__( 'Theme Options', 'lsx-videos' ),
+				'menu_title'  => esc_html__( 'Theme Options', 'lsx-videos' ),
+				'capability'  => 'manage_options',
+				'icon'        => 'dashicons-book-alt',
+				'parent'      => 'themes.php',
+				'save_button' => esc_html__( 'Save Changes', 'lsx-videos' ),
+				'tabs'        => $tabs,
+			),
+		);
+	}
+
+	/**
 	 * Register tabs.
 	 */
 	public function register_tabs( $tabs ) {
