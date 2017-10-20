@@ -36,6 +36,9 @@ class LSX_Videos_Admin {
 		add_filter( 'enter_title_here', array( $this, 'change_title_text' ) );
 
 		add_filter( 'cf_custom_fields_pre_save_meta_key_to_post_type', array( $this, 'save_video_to_cmb' ), 10, 5 );
+
+		add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
+		add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 	}
 
 	/**
@@ -392,6 +395,32 @@ class LSX_Videos_Admin {
 
 		return $value;
 	}
+
+	/**
+	 * Add new column - Download video.
+	 */
+	public function columns_head( $defaults ) {
+		$defaults['video'] = 'Video';
+		return $defaults;
+	}
+
+	/**
+	 * Show the new column - Download video.
+	 */
+	public function columns_content( $column_name, $post_id ) {
+		if ( 'video' === $column_name ) {
+			$video_id = get_post_meta( $post_id, 'lsx_video_video', true );
+
+			if ( ! empty( $video_id ) ) {
+				$video_url = wp_get_attachment_url( $video_id );
+
+				if ( ! empty( $video_url ) ) {
+					echo '<a href="' . esc_url( $video_url ) . '" target="_blank" class="button-secondary">' . esc_html__( 'Download', 'lsx-videos' ) . '</a>';
+				}
+			}
+		}
+	}
+
 }
 
 global $lsx_videos_admin;
