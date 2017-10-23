@@ -121,95 +121,103 @@ msgstr ""
 msgid "Video source:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:164
+#: classes/class-lsx-videos-admin.php:151
+msgid "Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg)."
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:165
 msgid "Youtube source:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:171
+#: classes/class-lsx-videos-admin.php:168
+msgid "It will replace the original video source on front-end."
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:173
 msgid "Video Details"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:178
+#: classes/class-lsx-videos-admin.php:180
 msgid "First Name:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:183
+#: classes/class-lsx-videos-admin.php:185
 msgid "Last Name:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:188
+#: classes/class-lsx-videos-admin.php:190
 msgid "Email Address:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:193
+#: classes/class-lsx-videos-admin.php:195
 msgid "Phone Number:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:198
+#: classes/class-lsx-videos-admin.php:200
 msgid "Country of Residence"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:205
+#: classes/class-lsx-videos-admin.php:207
 msgid "Video Uploader Details"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:264, classes/class-lsx-videos-admin.php:265
+#: classes/class-lsx-videos-admin.php:256, classes/class-lsx-videos-admin.php:257
 msgid "Theme Options"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:269
+#: classes/class-lsx-videos-admin.php:261
 msgid "Save Changes"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:290
+#: classes/class-lsx-videos-admin.php:282
 msgid "Display"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:302
+#: classes/class-lsx-videos-admin.php:294
 msgid "API"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:331
+#: classes/class-lsx-videos-admin.php:323
 msgid "Disable Excerpt"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:335
+#: classes/class-lsx-videos-admin.php:327
 msgid "Disable Excerpt."
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:348
+#: classes/class-lsx-videos-admin.php:340
 msgid "Placeholder"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:356
+#: classes/class-lsx-videos-admin.php:348
 msgid "Choose Image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:357
+#: classes/class-lsx-videos-admin.php:349
 msgid "Delete"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:368
+#: classes/class-lsx-videos-admin.php:360
 msgid "Select featured image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:381
+#: classes/class-lsx-videos-admin.php:373
 msgid "Enter video title"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:408
+#: classes/class-lsx-videos-admin.php:400
 msgid "Video Source"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:409
+#: classes/class-lsx-videos-admin.php:401
 msgid "Youtube Source"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:424
+#: classes/class-lsx-videos-admin.php:416
 msgid "Download"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:435
+#: classes/class-lsx-videos-admin.php:427
 msgid "View"
 msgstr ""
 

@@ -148,6 +148,7 @@ class LSX_Videos_Admin {
 				'name' => esc_html__( 'Video source:', 'lsx-videos' ),
 				'id'   => $prefix . 'video',
 				'type' => 'file',
+				'desc' => esc_html__( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg).', 'lsx-videos' ),
 			),
 			// * Will save those as hidden meta
 			// array(
@@ -164,6 +165,7 @@ class LSX_Videos_Admin {
 				'name' => esc_html__( 'Youtube source:', 'lsx-videos' ),
 				'id'   => $prefix . 'youtube',
 				'type' => 'text_url',
+				'desc' => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
 			),
 		);
 
@@ -214,17 +216,7 @@ class LSX_Videos_Admin {
 	 * Enqueue JS and CSS.
 	 */
 	public function assets( $hook ) {
-		if ( 'post-new.php' !== $hook && 'post.php' !== $hook ) {
-			return;
-		}
-
-		global $post_type;
-
-		if ( 'video' !== $post_type ) {
-			return;
-		}
-
-		//wp_enqueue_media();
+		// wp_enqueue_media();
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
