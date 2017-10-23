@@ -17,21 +17,35 @@
 
 .lsx-videos-shortcode { margin-top: -4rem; }
 
-.lsx-videos-slot { background-color: #FFF; margin: 4rem auto 0; overflow: hidden; text-align: center; }
+.lsx-videos-slot, .lsx-videos-slot-single { margin: 4rem auto 0; overflow: hidden; }
 
-.lsx-videos-slot .lsx-videos-avatar > img { width: 100%; }
+.lsx-videos-slot .lsx-videos-avatar > img, .lsx-videos-slot-single .lsx-videos-avatar > img { width: 100%; }
+
+.lsx-videos-slot .lsx-videos-title, .lsx-videos-slot-single .lsx-videos-title { margin: 0 0 1rem; }
+
+.lsx-videos-slot .lsx-videos-categories, .lsx-videos-slot-single .lsx-videos-categories { font-size: 13px; }
+
+.lsx-videos-slot .lsx-videos-categories, #home-widgets .lsx-videos-slot .lsx-videos-categories, .lsx-videos-slot-single .lsx-videos-categories, #home-widgets .lsx-videos-slot-single .lsx-videos-categories { margin-bottom: 1.2rem; }
+
+.lsx-videos-slot .lsx-videos-meta, .lsx-videos-slot-single .lsx-videos-meta { font-size: 13px; }
+
+#home-widgets .lsx-videos-slot .lsx-videos-meta, #home-widgets .lsx-videos-slot-single .lsx-videos-meta { margin-top: 0; }
+
+.lsx-videos-slot .lsx-videos-content, .lsx-videos-slot-single .lsx-videos-content { margin-top: 2rem; }
+
+.lsx-videos-slot .lsx-videos-content p, .lsx-videos-slot-single .lsx-videos-content p { margin-bottom: 0; }
+
+.lsx-videos-slot .lsx-videos-content p + p, .lsx-videos-slot-single .lsx-videos-content p + p { margin-top: 2.4rem; }
+
+.lsx-videos-slot { background-color: #FFF; text-align: center; }
 
 .lsx-videos-slot .lsx-videos-title { margin: 2.4rem 0 1rem; padding: 0 2rem; }
 
-.lsx-videos-slot .lsx-videos-categories { font-size: 13px; margin-bottom: 1.2rem; padding: 0 2rem; }
+.lsx-videos-slot .lsx-videos-categories { padding: 0 2rem; }
 
-.lsx-videos-slot .lsx-videos-meta { font-size: 13px; padding: 0 2rem; }
+.lsx-videos-slot .lsx-videos-meta { padding: 0 2rem; }
 
-.lsx-videos-slot .lsx-videos-content { margin-top: 2rem; padding: 0 2rem; }
-
-.lsx-videos-slot .lsx-videos-content p { margin-bottom: 0; }
-
-.lsx-videos-slot .lsx-videos-content p + p { margin-top: 2.4rem; }
+.lsx-videos-slot .lsx-videos-content { padding: 0 2rem; }
 
 .lsx-videos-slot .lsx-videos-content .moretag { display: block; margin: 0 -2rem; padding: 1rem 0; text-align: center; transition: background 300ms ease; }
 

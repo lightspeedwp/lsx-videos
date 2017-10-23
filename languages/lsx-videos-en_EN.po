@@ -229,21 +229,81 @@ msgstr ""
 msgid "Videos Category"
 msgstr ""
 
-#: templates/archive-videos.php:41
-msgid "All"
+#: classes/class-lsx-videos-widget-most-recent.php:14
+msgid "LSX Videos - Most Recent"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:117
+msgid "Title:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:121
+msgid "Page Link:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:123
+msgid "Link the widget to a page"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:126
+msgid "Tagline:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:128
+msgid "Tagline to display below the widget title"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:131
+msgid "Button \"view all\" text:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:133
+msgid "Leave empty to not display the button"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:136
+msgid "Specify Video by ID:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:140
+msgid "Display:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:144
+msgid "Excerpt"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:145
+msgid "Full Content"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:155
+msgid "Image size:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:160
+msgid "Featured posts"
 msgstr ""
 
 #. translators: 1: video views
-#: templates/content-archive-videos.php:42
+#: classes/class-lsx-videos.php:155, templates/content-archive-videos.php:42
 msgid "%1$s views"
 msgstr ""
 
-#: templates/content-archive-videos.php:44
+#: classes/class-lsx-videos.php:157, templates/content-archive-videos.php:44
 msgid "1 view"
 msgstr ""
 
-#: templates/content-archive-videos.php:53
+#: classes/class-lsx-videos.php:166, templates/content-archive-videos.php:53
 msgid "%1$s ago"
+msgstr ""
+
+#: classes/class-lsx-videos.php:179
+msgid "View more"
+msgstr ""
+
+#: templates/archive-videos.php:41
+msgid "All"
 msgstr ""
 
 #: templates/content-archive-videos.php:75

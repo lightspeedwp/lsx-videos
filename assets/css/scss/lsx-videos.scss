@@ -51,41 +51,54 @@
 
 .lsx-videos-shortcode { margin-top: -4rem; }
 
-.lsx-videos-slot {
-	background-color: #FFF;
+.lsx-videos-slot,
+.lsx-videos-slot-single {
 	margin: 4rem auto 0;
 	overflow: hidden;
-	text-align: center;
 
 	.lsx-videos-avatar {
 		& > img { width: 100%; }
 	}
 
-	.lsx-videos-title {
-		margin: 2.4rem 0 1rem;
-		padding: 0 2rem;
-	}
+	.lsx-videos-title { margin: 0 0 1rem; }
 
 	.lsx-videos-categories {
 		font-size: 13px;
-		margin-bottom: 1.2rem;
-		padding: 0 2rem;
+
+		&, #home-widgets & { margin-bottom: 1.2rem; }
 	}
 
 	.lsx-videos-meta {
 		font-size: 13px;
-		padding: 0 2rem;
+
+		#home-widgets & { margin-top: 0; }
 	}
 
 	.lsx-videos-content {
 		margin-top: 2rem;
-		padding: 0 2rem;
 
 		& p {
 			margin-bottom: 0;
 
 			& + p { margin-top: 2.4rem; }
 		}
+	}
+}
+
+.lsx-videos-slot {
+	background-color: #FFF;
+	text-align: center;
+
+	.lsx-videos-title {
+		margin: 2.4rem 0 1rem;
+		padding: 0 2rem;
+	}
+
+	.lsx-videos-categories { padding: 0 2rem; }
+	.lsx-videos-meta { padding: 0 2rem; }
+
+	.lsx-videos-content {
+		padding: 0 2rem;
 
 		& .moretag {
 			display: block;

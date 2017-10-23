@@ -130,7 +130,7 @@ class LSX_Videos_Frontend {
 		$allowedtags['div']['data-slick'] = true;
 		$allowedtags['a']['data-toggle'] = true;
 		$allowedtags['a']['data-video'] = true;
-		$allowedtags['a']['data-post'] = true;
+		$allowedtags['a']['data-post-id'] = true;
 		$allowedtags['a']['data-title'] = true;
 		return $allowedtags;
 	}
