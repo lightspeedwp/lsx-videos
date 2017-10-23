@@ -38,7 +38,7 @@ get_header(); ?>
 					}
 				?>
 
-				<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo get_post_type_archive_link( 'video' ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-videos' ); ?></a></li>
+				<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_post_type_archive_link( 'video' ) ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-videos' ); ?></a></li>
 
 				<?php foreach ( $categories as $category ) : ?>
 					<?php
@@ -49,7 +49,7 @@ get_header(); ?>
 						}
 					?>
 
-					<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo get_term_link( $category ); ?>" data-filter=".filter-<?php echo esc_attr( $category->slug ); ?>"><?php echo esc_attr( $category->name ); ?></a></li>
+					<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_term_link( $category ) ); ?>" data-filter=".filter-<?php echo esc_attr( $category->slug ); ?>"><?php echo esc_attr( $category->name ); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 
