@@ -67,6 +67,7 @@ class LSX_Videos_Admin {
 			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
+			'show_in_nav_menus'  => true,
 			'menu_icon'          => 'dashicons-video-alt',
 			'query_var'          => true,
 			'rewrite'            => array(
@@ -111,6 +112,7 @@ class LSX_Videos_Admin {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
+			'show_in_nav_menus' => true,
 			'rewrite'           => array(
 				'slug' => 'videos-category',
 			),
