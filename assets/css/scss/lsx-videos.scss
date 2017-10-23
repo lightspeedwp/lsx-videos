@@ -15,7 +15,6 @@
 		}
 
 		.modal-title { text-align: center; }
-		.wp-video { margin: 0 auto; }
 	}
 }
 
@@ -68,6 +67,12 @@
 	}
 
 	.lsx-videos-categories {
+		font-size: 13px;
+		margin-bottom: 1.2rem;
+		padding: 0 2rem;
+	}
+
+	.lsx-videos-meta {
 		font-size: 13px;
 		padding: 0 2rem;
 	}

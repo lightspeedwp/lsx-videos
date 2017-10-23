@@ -86,15 +86,40 @@ class LSX_Videos_Frontend {
 	 * Get video embed (ajax).
 	 */
 	public function get_video_embed() {
-		if ( isset( $_GET['video'] ) ) {
+		if ( ! empty( $_GET['video'] ) && ! empty( $_GET['post_id'] ) ) {
 			$video = sanitize_text_field( wp_unslash( $_GET['video'] ) );
+			$post_id = sanitize_text_field( wp_unslash( $_GET['post_id'] ) );
 
-			if ( ! empty( $video ) ) {
-				echo do_shortcode( '[video width="992" height="558" src="' . $video . '"]' );
+			if ( ! empty( $video ) && ! empty( $post_id ) ) {
+				$this->increase_views_counter( $post_id );
+				$video_parts = parse_url( $video );
+
+				echo '<div class="embed-responsive embed-responsive-16by9">';
+
+				if ( in_array( $video_parts['host'], array( 'www.youtube.com', 'youtube.com', 'youtu.be' ) ) ) {
+					// @codingStandardsIgnoreLine
+					echo wp_oembed_get( $video, array(
+						'height' => 558,
+						'width' => 992,
+					) );
+				} else {
+					echo do_shortcode( '[video width="992" height="558" src="' . $video . '"]' );
+				}
+
+				echo '</div>';
 			}
 		}
 
 		wp_die();
+	}
+
+	/**
+	 * Increase video views counter.
+	 */
+	public function increase_views_counter( $post_id ) {
+		$count = (int) get_post_meta( $post_id, '_views', true );
+		$count++;
+		update_post_meta( $post_id, '_views', $count );
 	}
 
 	/**
@@ -105,6 +130,7 @@ class LSX_Videos_Frontend {
 		$allowedtags['div']['data-slick'] = true;
 		$allowedtags['a']['data-toggle'] = true;
 		$allowedtags['a']['data-video'] = true;
+		$allowedtags['a']['data-post'] = true;
 		$allowedtags['a']['data-title'] = true;
 		return $allowedtags;
 	}
@@ -168,7 +194,16 @@ class LSX_Videos_Frontend {
 		global $post;
 
 		if ( 'video' === $post->post_type ) {
-			$excerpt_more = '<p><a href="#lsx-videos-modal" data-toggle="modal" data-video="' . esc_url( $video_url ) . '" data-title="' . the_title( '', '', false ) . '" class="moretag">' . esc_html__( 'View video', 'lsx' ) . '</a></p>';
+			$youtube_url = get_post_meta( $post->ID, 'lsx_video_youtube', true );
+			$video_id = get_post_meta( $post->ID, 'lsx_video_video', true );
+
+			if ( ! empty( $youtube_url ) ) {
+				$video_url = $youtube_url;
+			} elseif ( ! empty( $video_id ) ) {
+				$video_url = wp_get_attachment_url( $video_id );
+			}
+
+			$excerpt_more = '<p><a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . the_title( '', '', false ) . '" class="moretag">' . esc_html__( 'View video', 'lsx' ) . '</a></p>';
 		}
 
 		return $excerpt_more;

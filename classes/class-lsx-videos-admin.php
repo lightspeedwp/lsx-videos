@@ -145,7 +145,7 @@ class LSX_Videos_Admin {
 			// 	'rows' => 5,
 			// ),
 			array(
-				'name' => esc_html__( 'Video:', 'lsx-videos' ),
+				'name' => esc_html__( 'Video source:', 'lsx-videos' ),
 				'id'   => $prefix . 'video',
 				'type' => 'file',
 			),
@@ -160,6 +160,11 @@ class LSX_Videos_Admin {
 			// 	'id'   => $prefix . 'views',
 			// 	'type' => 'text',
 			// ),
+			array(
+				'name' => esc_html__( 'Youtube source:', 'lsx-videos' ),
+				'id'   => $prefix . 'youtube',
+				'type' => 'text_url',
+			),
 		);
 
 		$meta_boxes[] = array(
@@ -400,7 +405,8 @@ class LSX_Videos_Admin {
 	 * Add new column - Download video.
 	 */
 	public function columns_head( $defaults ) {
-		$defaults['video'] = 'Video';
+		$defaults['video_source'] = esc_html__( 'Video Source', 'lsx-videos' );
+		$defaults['video_youtube_source'] = esc_html__( 'Youtube Source', 'lsx-videos' );
 		return $defaults;
 	}
 
@@ -408,7 +414,7 @@ class LSX_Videos_Admin {
 	 * Show the new column - Download video.
 	 */
 	public function columns_content( $column_name, $post_id ) {
-		if ( 'video' === $column_name ) {
+		if ( 'video_source' === $column_name ) {
 			$video_id = get_post_meta( $post_id, 'lsx_video_video', true );
 
 			if ( ! empty( $video_id ) ) {
@@ -416,7 +422,19 @@ class LSX_Videos_Admin {
 
 				if ( ! empty( $video_url ) ) {
 					echo '<a href="' . esc_url( $video_url ) . '" target="_blank" class="button-secondary">' . esc_html__( 'Download', 'lsx-videos' ) . '</a>';
+				} else {
+					echo '-';
 				}
+			} else {
+				echo '-';
+			}
+		} elseif ( 'video_youtube_source' === $column_name ) {
+			$youtube_url = get_post_meta( $post_id, 'lsx_video_youtube', true );
+
+			if ( ! empty( $youtube_url ) ) {
+				echo '<a href="' . esc_url( $youtube_url ) . '" target="_blank" class="button-secondary">' . esc_html__( 'View', 'lsx-videos' ) . '</a>';
+			} else {
+				echo '-';
 			}
 		}
 	}

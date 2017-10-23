@@ -73,7 +73,8 @@
 
 				data: {
 					action: 'get_video_embed',
-					video: $invoker.data( 'video' )
+					video: $invoker.data( 'video' ),
+					post_id: $invoker.data( 'post-id' )
 				},
 
 				success: function( data, textStatus, jqXHR ) {
