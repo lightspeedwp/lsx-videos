@@ -113,15 +113,15 @@
 
 .widget.lsx-videos .lsx-videos-archive-link:before, .widget.lsx-videos .lsx-videos-archive-link:after { background-color: #DADDDF; }
 
-.lsx-videos-slot .lsx-videos-categories > a:not(.btn), .lsx-videos-slot .lsx-videos-categories > a:not(.btn):active, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):visited { color: #919191; }
+.lsx-videos-slot .lsx-videos-categories > a:not(.btn), .lsx-videos-slot .lsx-videos-categories > a:not(.btn):active, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):visited, .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn), .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn):active, .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn):visited { color: #919191; }
 
-.lsx-videos-slot .lsx-videos-categories > a:not(.btn):hover, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):hover:active, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):focus { color: #F7AE00; }
+.lsx-videos-slot .lsx-videos-categories > a:not(.btn):hover, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):hover:active, .lsx-videos-slot .lsx-videos-categories > a:not(.btn):focus, .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn):hover, .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn):hover:active, .lsx-videos-slot-single .lsx-videos-categories > a:not(.btn):focus { color: #F7AE00; }
 
-.lsx-videos-slot .lsx-videos-meta { color: #919191; }
+.lsx-videos-slot .lsx-videos-meta, .lsx-videos-slot-single .lsx-videos-meta { color: #919191; }
 
-.lsx-videos-slot .lsx-videos-title > a:not(.btn), .lsx-videos-slot .lsx-videos-title > a:not(.btn):active, .lsx-videos-slot .lsx-videos-title > a:not(.btn):visited { color: #4A4A4A; }
+.lsx-videos-slot .lsx-videos-title > a:not(.btn), .lsx-videos-slot .lsx-videos-title > a:not(.btn):active, .lsx-videos-slot .lsx-videos-title > a:not(.btn):visited, .lsx-videos-slot-single .lsx-videos-title > a:not(.btn), .lsx-videos-slot-single .lsx-videos-title > a:not(.btn):active, .lsx-videos-slot-single .lsx-videos-title > a:not(.btn):visited { color: #4A4A4A; }
 
-.lsx-videos-slot .lsx-videos-title > a:not(.btn):hover, .lsx-videos-slot .lsx-videos-title > a:not(.btn):hover:active, .lsx-videos-slot .lsx-videos-title > a:not(.btn):focus { color: #F7AE00; }
+.lsx-videos-slot .lsx-videos-title > a:not(.btn):hover, .lsx-videos-slot .lsx-videos-title > a:not(.btn):hover:active, .lsx-videos-slot .lsx-videos-title > a:not(.btn):focus, .lsx-videos-slot-single .lsx-videos-title > a:not(.btn):hover, .lsx-videos-slot-single .lsx-videos-title > a:not(.btn):hover:active, .lsx-videos-slot-single .lsx-videos-title > a:not(.btn):focus { color: #F7AE00; }
 
 .lsx-videos-slot .lsx-videos-content a:not(.btn).moretag { background-color: #418AD0; color: #FFF; }
 
