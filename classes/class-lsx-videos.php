@@ -99,8 +99,9 @@ class LSX_Videos {
 
 				$youtube_url = get_post_meta( $post->ID, 'lsx_video_youtube', true );
 				$video_id = get_post_meta( $post->ID, 'lsx_video_video', true );
-				$video_meta = get_post_meta( $post->ID , '_wp_attachment_metadata', true );
 				$views = (int) get_post_meta( $post->ID, '_views', true );
+
+				$video_meta = get_post_meta( $video_id , '_wp_attachment_metadata', true );
 
 				if ( ! empty( $youtube_url ) ) {
 					$video_url = $youtube_url;

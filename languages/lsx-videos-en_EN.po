@@ -277,29 +277,33 @@ msgstr ""
 msgid "Full Content"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:155
+#: classes/class-lsx-videos-widget-most-recent.php:146
+msgid "None"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:156
 msgid "Image size:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:160
+#: classes/class-lsx-videos-widget-most-recent.php:161
 msgid "Featured posts"
 msgstr ""
 
+#: classes/class-lsx-videos.php:118
+msgid "View more"
+msgstr ""
+
 #. translators: 1: video views
-#: classes/class-lsx-videos.php:155, templates/content-archive-videos.php:42
+#: classes/class-lsx-videos.php:158, templates/content-archive-videos.php:42
 msgid "%1$s views"
 msgstr ""
 
-#: classes/class-lsx-videos.php:157, templates/content-archive-videos.php:44
+#: classes/class-lsx-videos.php:160, templates/content-archive-videos.php:44
 msgid "1 view"
 msgstr ""
 
-#: classes/class-lsx-videos.php:166, templates/content-archive-videos.php:53
+#: classes/class-lsx-videos.php:169, templates/content-archive-videos.php:53
 msgid "%1$s ago"
-msgstr ""
-
-#: classes/class-lsx-videos.php:179
-msgid "View more"
 msgstr ""
 
 #: templates/archive-videos.php:41
