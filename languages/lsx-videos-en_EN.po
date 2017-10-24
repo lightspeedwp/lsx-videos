@@ -229,81 +229,153 @@ msgstr ""
 msgid "Videos Category"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:14
-msgid "LSX Videos - Most Recent"
+#: classes/class-lsx-videos-widget-list.php:14
+msgid "LSX Videos - List/Grid"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:117
+#: classes/class-lsx-videos-widget-list.php:156, classes/class-lsx-videos-widget-most-recent.php:117
 msgid "Title:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:121
+#: classes/class-lsx-videos-widget-list.php:160, classes/class-lsx-videos-widget-most-recent.php:121
 msgid "Page Link:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:123
+#: classes/class-lsx-videos-widget-list.php:162, classes/class-lsx-videos-widget-most-recent.php:123
 msgid "Link the widget to a page"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:126
+#: classes/class-lsx-videos-widget-list.php:165, classes/class-lsx-videos-widget-most-recent.php:126
 msgid "Tagline:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:128
+#: classes/class-lsx-videos-widget-list.php:167, classes/class-lsx-videos-widget-most-recent.php:128
 msgid "Tagline to display below the widget title"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:131
+#: classes/class-lsx-videos-widget-list.php:170, classes/class-lsx-videos-widget-most-recent.php:131
 msgid "Button \"view all\" text:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:133
+#: classes/class-lsx-videos-widget-list.php:172, classes/class-lsx-videos-widget-most-recent.php:133
 msgid "Leave empty to not display the button"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:175
+msgid "Columns:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:187
+msgid "Order By:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:191, classes/class-lsx-videos-widget-list.php:238, classes/class-lsx-videos-widget-most-recent.php:146
+msgid "None"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:192
+msgid "ID"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:193
+msgid "Name"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:194
+msgid "Date"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:195
+msgid "Modified Date"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:196
+msgid "Random"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:197
+msgid "Menu (WP dashboard order)"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:207
+msgid "Order:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:211
+msgid "Ascending"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:212
+msgid "Descending"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:222
+msgid "Maximum amount:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:224
+msgid "Leave empty to display all"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:227
+msgid "Specify Videos by ID:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:229
+msgid "Comma separated list, overrides limit and order settings"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:232, classes/class-lsx-videos-widget-most-recent.php:140
+msgid "Display:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:236, classes/class-lsx-videos-widget-most-recent.php:144
+msgid "Excerpt"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:237, classes/class-lsx-videos-widget-most-recent.php:145
+msgid "Full Content"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:248, classes/class-lsx-videos-widget-most-recent.php:156
+msgid "Image size:"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:253
+msgid "Carousel"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-list.php:257, classes/class-lsx-videos-widget-most-recent.php:161
+msgid "Featured posts"
+msgstr ""
+
+#: classes/class-lsx-videos-widget-most-recent.php:14
+msgid "LSX Videos - Most Recent"
 msgstr ""
 
 #: classes/class-lsx-videos-widget-most-recent.php:136
 msgid "Specify Video by ID:"
 msgstr ""
 
-#: classes/class-lsx-videos-widget-most-recent.php:140
-msgid "Display:"
-msgstr ""
-
-#: classes/class-lsx-videos-widget-most-recent.php:144
-msgid "Excerpt"
-msgstr ""
-
-#: classes/class-lsx-videos-widget-most-recent.php:145
-msgid "Full Content"
-msgstr ""
-
-#: classes/class-lsx-videos-widget-most-recent.php:146
-msgid "None"
-msgstr ""
-
-#: classes/class-lsx-videos-widget-most-recent.php:156
-msgid "Image size:"
-msgstr ""
-
-#: classes/class-lsx-videos-widget-most-recent.php:161
-msgid "Featured posts"
-msgstr ""
-
-#: classes/class-lsx-videos.php:118
+#: classes/class-lsx-videos.php:130, classes/class-lsx-videos.php:297
 msgid "View more"
 msgstr ""
 
 #. translators: 1: video views
-#: classes/class-lsx-videos.php:158, templates/content-archive-videos.php:42
+#: classes/class-lsx-videos.php:172, classes/class-lsx-videos.php:337, templates/content-archive-videos.php:42
 msgid "%1$s views"
 msgstr ""
 
-#: classes/class-lsx-videos.php:160, templates/content-archive-videos.php:44
+#: classes/class-lsx-videos.php:174, classes/class-lsx-videos.php:339, templates/content-archive-videos.php:44
 msgid "1 view"
 msgstr ""
 
-#: classes/class-lsx-videos.php:169, templates/content-archive-videos.php:53
+#: classes/class-lsx-videos.php:183, classes/class-lsx-videos.php:348, templates/content-archive-videos.php:53
 msgid "%1$s ago"
+msgstr ""
+
+#: classes/class-lsx-videos.php:216
+msgid "Invalid number of columns set. LSX Videos supports 1 to 4 columns."
 msgstr ""
 
 #: templates/archive-videos.php:41

@@ -1,17 +1,17 @@
 <?php
 /**
- * LSX Videos Widget (Most Recent) Class.
+ * LSX Videos Widget (List/Grid) Class.
  *
  * @package lsx-videos
  */
-class LSX_Videos_Widget_Most_Recent extends WP_Widget {
+class LSX_Videos_Widget_List extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'lsx-videos lsx-videos-most-recent',
+			'classname' => 'lsx-videos lsx-videos-list',
 		);
 
-		parent::__construct( 'LSX_Videos_Widget_Most_Recent', esc_html__( 'LSX Videos - Most Recent', 'lsx-videos' ), $widget_ops );
+		parent::__construct( 'LSX_Videos_Widget_List', esc_html__( 'LSX Videos - List/Grid', 'lsx-videos' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -22,10 +22,29 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		$title_link = $instance['title_link'];
 		$tagline = $instance['tagline'];
 		$button_text = $instance['button_text'];
+		$columns = $instance['columns'];
+		$orderby = $instance['orderby'];
+		$order = $instance['order'];
+		$limit = $instance['limit'];
 		$include = $instance['include'];
 		$display = $instance['display'];
 		$size = $instance['size'];
+		$carousel = $instance['carousel'];
 		$featured = $instance['featured'];
+
+		if ( empty( $limit ) ) {
+			$limit = '99';
+		}
+
+		if ( ! empty( $include ) ) {
+			$limit = '99';
+		}
+
+		if ( '1' == $carousel ) {
+			$carousel = 'true';
+		} else {
+			$carousel = 'false';
+		}
 
 		if ( '1' == $featured ) {
 			$featured = 'true';
@@ -60,10 +79,15 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		}
 
 		if ( class_exists( 'LSX_Videos' ) ) {
-			lsx_videos_most_recent( array(
+			lsx_videos( array(
+				'columns' => $columns,
+				'orderby' => $orderby,
+				'order' => $order,
+				'limit' => $limit,
 				'include' => $include,
 				'display' => $display,
 				'size' => $size,
+				'carousel' => $carousel,
 				'featured' => $featured,
 			) );
 		};
@@ -82,9 +106,14 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		$instance['title_link'] = strip_tags( $new_instance['title_link'] );
 		$instance['tagline'] = wp_kses_post( force_balance_tags( $new_instance['tagline'] ) );
 		$instance['button_text'] = strip_tags( $new_instance['button_text'] );
+		$instance['columns'] = strip_tags( $new_instance['columns'] );
+		$instance['orderby'] = strip_tags( $new_instance['orderby'] );
+		$instance['order'] = strip_tags( $new_instance['order'] );
+		$instance['limit'] = strip_tags( $new_instance['limit'] );
 		$instance['include'] = strip_tags( $new_instance['include'] );
 		$instance['display'] = strip_tags( $new_instance['display'] );
 		$instance['size'] = strip_tags( $new_instance['size'] );
+		$instance['carousel'] = strip_tags( $new_instance['carousel'] );
 		$instance['featured'] = strip_tags( $new_instance['featured'] );
 
 		return $instance;
@@ -92,13 +121,18 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 
 	function form( $instance ) {
 		$defaults = array(
-			'title' => 'Most Recent Video',
+			'title' => 'Videos',
 			'title_link' => '',
 			'tagline' => '',
 			'button_text' => '',
+			'columns' => '3',
+			'orderby' => 'name',
+			'order' => 'ASC',
+			'limit' => '',
 			'include' => '',
 			'display' => 'excerpt',
 			'size' => 'lsx-thumbnail-single',
+			'carousel' => 1,
 			'featured' => 0,
 		);
 
@@ -108,9 +142,14 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		$title_link     = esc_attr( $instance['title_link'] );
 		$tagline        = esc_attr( $instance['tagline'] );
 		$button_text    = esc_attr( $instance['button_text'] );
+		$columns        = esc_attr( $instance['columns'] );
+		$orderby        = esc_attr( $instance['orderby'] );
+		$order          = esc_attr( $instance['order'] );
+		$limit          = esc_attr( $instance['limit'] );
 		$include        = esc_attr( $instance['include'] );
 		$display        = esc_attr( $instance['display'] );
 		$size           = esc_attr( $instance['size'] );
+		$carousel       = esc_attr( $instance['carousel'] );
 		$featured       = esc_attr( $instance['featured'] );
 		?>
 		<p>
@@ -133,8 +172,61 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 			<small><?php esc_html_e( 'Leave empty to not display the button', 'lsx-videos' ); ?></small>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>"><?php esc_html_e( 'Specify Video by ID:', 'lsx-videos' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'columns' ) ); ?>"><?php esc_html_e( 'Columns:', 'lsx-videos' ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'columns' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'columns' ) ); ?>" class="widefat">
+			<?php
+				$options = array( '1', '2', '3', '4' );
+
+				foreach ( $options as $option ) {
+					echo '<option value="' . esc_attr( lcfirst( $option ) ) . '" id="' . esc_attr( $option ) . '"', lcfirst( $option ) == $columns ? ' selected="selected"' : '', '>', esc_html( $option ), '</option>';
+				}
+			?>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_html_e( 'Order By:', 'lsx-videos' ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" class="widefat">
+			<?php
+				$options = array(
+					esc_html__( 'None', 'lsx-videos' ) => 'none',
+					esc_html__( 'ID', 'lsx-videos' ) => 'ID',
+					esc_html__( 'Name', 'lsx-videos' ) => 'name',
+					esc_html__( 'Date', 'lsx-videos' ) => 'date',
+					esc_html__( 'Modified Date', 'lsx-videos' ) => 'modified',
+					esc_html__( 'Random', 'lsx-videos' ) => 'rand',
+					esc_html__( 'Menu (WP dashboard order)', 'lsx-videos' ) => 'menu_order',
+				);
+
+				foreach ( $options as $name => $value ) {
+					echo '<option value="' . esc_attr( $value ) . '" id="' . esc_attr( $value ) . '"', $orderby == $value ? ' selected="selected"' : '', '>', esc_html( $name ), '</option>';
+				}
+			?>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Order:', 'lsx-videos' ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" class="widefat">
+			<?php
+				$options = array(
+					esc_html__( 'Ascending', 'lsx-videos' ) => 'ASC',
+					esc_html__( 'Descending', 'lsx-videos' ) => 'DESC',
+				);
+
+				foreach ( $options as $name => $value ) {
+					echo '<option value="' . esc_attr( $value ) . '" id="' . esc_attr( $value ) . '"', $order == $value ? ' selected="selected"' : '', '>', esc_html( $name ), '</option>';
+				}
+			?>
+			</select>
+		</p>
+		<p class="limit">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Maximum amount:', 'lsx-videos' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="text" value="<?php echo esc_attr( $limit ); ?>" />
+			<small><?php esc_html_e( 'Leave empty to display all', 'lsx-videos' ); ?></small>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>"><?php esc_html_e( 'Specify Videos by ID:', 'lsx-videos' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'include' ) ); ?>" type="text" value="<?php echo esc_attr( $include ); ?>" />
+			<small><?php esc_html_e( 'Comma separated list, overrides limit and order settings', 'lsx-videos' ); ?></small>
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'display' ) ); ?>"><?php esc_html_e( 'Display:', 'lsx-videos' ); ?></label>
@@ -157,6 +249,10 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'size' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'size' ) ); ?>" type="text" value="<?php echo esc_attr( $size ); ?>" />
 		</p>
 		<p>
+			<input id="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'carousel' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $carousel ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>"><?php esc_html_e( 'Carousel', 'lsx-videos' ); ?></label>
+		</p>
+		<p>
 			<input id="<?php echo esc_attr( $this->get_field_id( 'featured' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'featured' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $featured ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'featured' ) ); ?>"><?php esc_html_e( 'Featured posts', 'lsx-videos' ); ?></label>
 		</p>
@@ -165,4 +261,4 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget( "LSX_Videos_Widget_Most_Recent" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "LSX_Videos_Widget_List" );' ) );
