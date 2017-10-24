@@ -57,6 +57,7 @@ class LSX_Videos {
 			'order' => 'ASC',
 			'limit' => '-1',
 			'include' => '',
+			'category' => '',
 			'display' => 'excerpt',
 			'size' => 'lsx-thumbnail-single',
 			'carousel' => 'true',
@@ -86,6 +87,16 @@ class LSX_Videos {
 			if ( 'true' === $featured || true === $featured ) {
 				$args['meta_key'] = 'lsx_video_featured';
 				$args['meta_value'] = 1;
+			}
+
+			if ( ! empty( $category ) ) {
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => 'video-category',
+						'field' => 'slug',
+						'terms' => array( $category ),
+					),
+				);
 			}
 		}
 

@@ -27,6 +27,7 @@ class LSX_Videos_Widget_List extends WP_Widget {
 		$order = $instance['order'];
 		$limit = $instance['limit'];
 		$include = $instance['include'];
+		$category = $instance['category'];
 		$display = $instance['display'];
 		$size = $instance['size'];
 		$carousel = $instance['carousel'];
@@ -85,6 +86,7 @@ class LSX_Videos_Widget_List extends WP_Widget {
 				'order' => $order,
 				'limit' => $limit,
 				'include' => $include,
+				'category' => $category,
 				'display' => $display,
 				'size' => $size,
 				'carousel' => $carousel,
@@ -111,6 +113,7 @@ class LSX_Videos_Widget_List extends WP_Widget {
 		$instance['order'] = strip_tags( $new_instance['order'] );
 		$instance['limit'] = strip_tags( $new_instance['limit'] );
 		$instance['include'] = strip_tags( $new_instance['include'] );
+		$instance['category'] = strip_tags( $new_instance['category'] );
 		$instance['display'] = strip_tags( $new_instance['display'] );
 		$instance['size'] = strip_tags( $new_instance['size'] );
 		$instance['carousel'] = strip_tags( $new_instance['carousel'] );
@@ -130,6 +133,7 @@ class LSX_Videos_Widget_List extends WP_Widget {
 			'order' => 'ASC',
 			'limit' => '',
 			'include' => '',
+			'category' => '',
 			'display' => 'excerpt',
 			'size' => 'lsx-thumbnail-single',
 			'carousel' => 1,
@@ -147,6 +151,7 @@ class LSX_Videos_Widget_List extends WP_Widget {
 		$order          = esc_attr( $instance['order'] );
 		$limit          = esc_attr( $instance['limit'] );
 		$include        = esc_attr( $instance['include'] );
+		$category       = esc_attr( $instance['category'] );
 		$display        = esc_attr( $instance['display'] );
 		$size           = esc_attr( $instance['size'] );
 		$carousel       = esc_attr( $instance['carousel'] );
@@ -227,6 +232,25 @@ class LSX_Videos_Widget_List extends WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>"><?php esc_html_e( 'Specify Videos by ID:', 'lsx-videos' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'include' ) ); ?>" type="text" value="<?php echo esc_attr( $include ); ?>" />
 			<small><?php esc_html_e( 'Comma separated list, overrides limit and order settings', 'lsx-videos' ); ?></small>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Category:', 'lsx-videos' ); ?></label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" class="widefat">
+			<?php
+				$args = array(
+					'taxonomy'   => 'video-category',
+					'hide_empty' => false,
+				);
+
+				$options = get_terms( $args );
+
+				echo '<option value="" id=""', empty( $category ) ? ' selected="selected"' : '', '>', esc_html__( 'None', 'lsx-videos' ), '</option>';
+
+				foreach ( $options as $name => $value ) {
+					echo '<option value="' . esc_attr( $value->slug ) . '" id="' . esc_attr( $value->slug ) . '"', $category == $value->slug ? ' selected="selected"' : '', '>', esc_html( $value->name ), '</option>';
+				}
+			?>
+			</select>
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'display' ) ); ?>"><?php esc_html_e( 'Display:', 'lsx-videos' ); ?></label>
