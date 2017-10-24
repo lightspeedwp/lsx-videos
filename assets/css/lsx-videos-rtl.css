@@ -21,6 +21,8 @@
 
 .lsx-videos-slot .lsx-videos-avatar > img, .lsx-videos-slot-single .lsx-videos-avatar > img { width: 100%; }
 
+.lsx-videos-slot .lsx-videos-avatar > img.lazyload, .lsx-videos-slot .lsx-videos-avatar > img.lazyloading, .lsx-videos-slot-single .lsx-videos-avatar > img.lazyload, .lsx-videos-slot-single .lsx-videos-avatar > img.lazyloading { width: auto; }
+
 .lsx-videos-slot .lsx-videos-title, .lsx-videos-slot-single .lsx-videos-title { margin: 0 0 1rem; }
 
 .lsx-videos-slot .lsx-videos-categories, .lsx-videos-slot-single .lsx-videos-categories { font-size: 13px; }
