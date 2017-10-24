@@ -4,7 +4,7 @@
  *
  * @package lsx-videos
  */
-class LSX_Videos_Widget_Most_Recent extends WP_Widget {
+class LSX_Videos_Widget_Most_Recent extends \WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
@@ -14,7 +14,7 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		parent::__construct( 'LSX_Videos_Widget_Most_Recent', esc_html__( 'LSX Videos - Most Recent', 'lsx-videos' ), $widget_ops );
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		// @codingStandardsIgnoreLine
 		extract( $args );
 
@@ -59,14 +59,12 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 			echo wp_kses_post( $link_close . $after_title );
 		}
 
-		if ( class_exists( 'LSX_Videos' ) ) {
-			lsx_videos_most_recent( array(
-				'include' => $include,
-				'display' => $display,
-				'size' => $size,
-				'featured' => $featured,
-			) );
-		};
+		lsx_videos_most_recent( array(
+			'include' => $include,
+			'display' => $display,
+			'size' => $size,
+			'featured' => $featured,
+		) );
 
 		if ( $button_text && $title_link ) {
 			echo wp_kses_post( '<p class="text-center lsx-videos-archive-link-wrap"><span class="lsx-videos-archive-link">' . $link_btn_open . $button_text . ' <i class="fa fa-angle-right"></i>' . $link_btn_close . '</span></p>' );
@@ -75,7 +73,7 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		echo wp_kses_post( $after_widget );
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		$instance['title'] = wp_kses_post( force_balance_tags( $new_instance['title'] ) );
@@ -90,9 +88,9 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array(
-			'title' => 'Most Recent Video',
+			'title' => esc_html__( 'Most Recent Video', 'lsx-videos' ),
 			'title_link' => '',
 			'tagline' => '',
 			'button_text' => '',
@@ -104,14 +102,14 @@ class LSX_Videos_Widget_Most_Recent extends WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
-		$title          = esc_attr( $instance['title'] );
-		$title_link     = esc_attr( $instance['title_link'] );
-		$tagline        = esc_attr( $instance['tagline'] );
-		$button_text    = esc_attr( $instance['button_text'] );
-		$include        = esc_attr( $instance['include'] );
-		$display        = esc_attr( $instance['display'] );
-		$size           = esc_attr( $instance['size'] );
-		$featured       = esc_attr( $instance['featured'] );
+		$title = esc_attr( $instance['title'] );
+		$title_link = esc_attr( $instance['title_link'] );
+		$tagline = esc_attr( $instance['tagline'] );
+		$button_text = esc_attr( $instance['button_text'] );
+		$include = esc_attr( $instance['include'] );
+		$display = esc_attr( $instance['display'] );
+		$size = esc_attr( $instance['size'] );
+		$featured = esc_attr( $instance['featured'] );
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'lsx-videos' ); ?></label>

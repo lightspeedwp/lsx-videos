@@ -1,17 +1,17 @@
 <?php
 /**
- * LSX Videos Widget (List/Grid) Class.
+ * LSX Videos Widget (Categories) Class.
  *
  * @package lsx-videos
  */
-class LSX_Videos_Widget_List extends \WP_Widget {
+class LSX_Videos_Widget_Categories extends \WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'lsx-videos lsx-videos-list',
+			'classname' => 'lsx-videos lsx-videos-categories',
 		);
 
-		parent::__construct( 'LSX_Videos_Widget_List', esc_html__( 'LSX Videos - List/Grid', 'lsx-videos' ), $widget_ops );
+		parent::__construct( 'LSX_Videos_Widget_Categories', esc_html__( 'LSX Videos - Categories', 'lsx-videos' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -27,11 +27,9 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 		$order = $instance['order'];
 		$limit = $instance['limit'];
 		$include = $instance['include'];
-		$category = $instance['category'];
 		$display = $instance['display'];
 		$size = $instance['size'];
 		$carousel = $instance['carousel'];
-		$featured = $instance['featured'];
 
 		if ( empty( $limit ) ) {
 			$limit = '99';
@@ -45,12 +43,6 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			$carousel = 'true';
 		} else {
 			$carousel = 'false';
-		}
-
-		if ( '1' == $featured ) {
-			$featured = 'true';
-		} else {
-			$featured = 'false';
 		}
 
 		if ( $title_link ) {
@@ -79,17 +71,15 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			echo wp_kses_post( $link_close . $after_title );
 		}
 
-		lsx_videos( array(
+		lsx_videos_categories( array(
 			'columns' => $columns,
 			'orderby' => $orderby,
 			'order' => $order,
 			'limit' => $limit,
 			'include' => $include,
-			'category' => $category,
 			'display' => $display,
 			'size' => $size,
 			'carousel' => $carousel,
-			'featured' => $featured,
 		) );
 
 		if ( $button_text && $title_link ) {
@@ -99,7 +89,7 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 		echo wp_kses_post( $after_widget );
 	}
 
-	public function update( $new_instance, $old_instance ) {
+	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		$instance['title'] = wp_kses_post( force_balance_tags( $new_instance['title'] ) );
@@ -111,18 +101,16 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 		$instance['order'] = strip_tags( $new_instance['order'] );
 		$instance['limit'] = strip_tags( $new_instance['limit'] );
 		$instance['include'] = strip_tags( $new_instance['include'] );
-		$instance['category'] = strip_tags( $new_instance['category'] );
 		$instance['display'] = strip_tags( $new_instance['display'] );
 		$instance['size'] = strip_tags( $new_instance['size'] );
 		$instance['carousel'] = strip_tags( $new_instance['carousel'] );
-		$instance['featured'] = strip_tags( $new_instance['featured'] );
 
 		return $instance;
 	}
 
-	public function form( $instance ) {
+	function form( $instance ) {
 		$defaults = array(
-			'title' => esc_html__( 'Videos', 'lsx-videos' ),
+			'title' => esc_html__( 'Video Categories', 'lsx-videos' ),
 			'title_link' => '',
 			'tagline' => '',
 			'button_text' => '',
@@ -131,11 +119,9 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			'order' => 'ASC',
 			'limit' => '',
 			'include' => '',
-			'category' => '',
 			'display' => 'excerpt',
 			'size' => 'lsx-thumbnail-single',
 			'carousel' => 1,
-			'featured' => 0,
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -149,11 +135,9 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 		$order = esc_attr( $instance['order'] );
 		$limit = esc_attr( $instance['limit'] );
 		$include = esc_attr( $instance['include'] );
-		$category = esc_attr( $instance['category'] );
 		$display = esc_attr( $instance['display'] );
 		$size = esc_attr( $instance['size'] );
 		$carousel = esc_attr( $instance['carousel'] );
-		$featured = esc_attr( $instance['featured'] );
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'lsx-videos' ); ?></label>
@@ -191,13 +175,11 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			<select name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" class="widefat">
 			<?php
 				$options = array(
-					esc_html__( 'None', 'lsx-videos' ) => 'none',
-					esc_html__( 'ID', 'lsx-videos' ) => 'ID',
+					esc_html__( 'Admin (custom order)', 'lsx-videos' ) => 'none',
+					esc_html__( 'ID', 'lsx-videos' ) => 'term_id',
 					esc_html__( 'Name', 'lsx-videos' ) => 'name',
-					esc_html__( 'Date', 'lsx-videos' ) => 'date',
-					esc_html__( 'Modified Date', 'lsx-videos' ) => 'modified',
-					esc_html__( 'Random', 'lsx-videos' ) => 'rand',
-					esc_html__( 'Menu (WP dashboard order)', 'lsx-videos' ) => 'menu_order',
+					esc_html__( 'Slug', 'lsx-videos' ) => 'slug',
+					esc_html__( 'Count', 'lsx-videos' ) => 'count',
 				);
 
 				foreach ( $options as $name => $value ) {
@@ -227,36 +209,16 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			<small><?php esc_html_e( 'Leave empty to display all', 'lsx-videos' ); ?></small>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>"><?php esc_html_e( 'Specify Videos by ID:', 'lsx-videos' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>"><?php esc_html_e( 'Specify Video Categories by ID:', 'lsx-videos' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'include' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'include' ) ); ?>" type="text" value="<?php echo esc_attr( $include ); ?>" />
 			<small><?php esc_html_e( 'Comma separated list, overrides limit and order settings', 'lsx-videos' ); ?></small>
-		</p>
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>"><?php esc_html_e( 'Category:', 'lsx-videos' ); ?></label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'category' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'category' ) ); ?>" class="widefat">
-			<?php
-				$args = array(
-					'taxonomy'   => 'video-category',
-					'hide_empty' => false,
-				);
-
-				$options = get_terms( $args );
-
-				echo '<option value="" id=""', empty( $category ) ? ' selected="selected"' : '', '>', esc_html__( 'None', 'lsx-videos' ), '</option>';
-
-				foreach ( $options as $name => $value ) {
-					echo '<option value="' . esc_attr( $value->slug ) . '" id="' . esc_attr( $value->slug ) . '"', $category == $value->slug ? ' selected="selected"' : '', '>', esc_html( $value->name ), '</option>';
-				}
-			?>
-			</select>
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'display' ) ); ?>"><?php esc_html_e( 'Display:', 'lsx-videos' ); ?></label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'display' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'display' ) ); ?>" class="widefat">
 			<?php
 				$options = array(
-					esc_html__( 'Excerpt', 'lsx-videos' ) => 'excerpt',
-					esc_html__( 'Full Content', 'lsx-videos' ) => 'full',
+					esc_html__( 'Description', 'lsx-videos' ) => 'description',
 					esc_html__( 'None', 'lsx-videos' ) => 'none',
 				);
 
@@ -274,13 +236,9 @@ class LSX_Videos_Widget_List extends \WP_Widget {
 			<input id="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'carousel' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $carousel ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'carousel' ) ); ?>"><?php esc_html_e( 'Carousel', 'lsx-videos' ); ?></label>
 		</p>
-		<p>
-			<input id="<?php echo esc_attr( $this->get_field_id( 'featured' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'featured' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $featured ); ?> />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'featured' ) ); ?>"><?php esc_html_e( 'Featured posts', 'lsx-videos' ); ?></label>
-		</p>
 		<?php
 	}
 
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget( "LSX_Videos_Widget_List" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "LSX_Videos_Widget_Categories" );' ) );

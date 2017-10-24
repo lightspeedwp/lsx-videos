@@ -138,7 +138,7 @@ class LSX_Videos {
 				} elseif ( 'excerpt' === $display ) {
 					$content = apply_filters( 'the_excerpt', get_the_excerpt() );
 				} elseif ( 'none' === $display ) {
-					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View more', 'lsx-videos' ) . '</a>';
+					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
 				}
 
 				if ( is_numeric( $size ) ) {
@@ -157,7 +157,7 @@ class LSX_Videos {
 
 				if ( empty( $image ) ) {
 					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
-						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" width="' . $size . '" alt="placeholder">';
+						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					} else {
 						$image = '';
 					}
@@ -305,7 +305,7 @@ class LSX_Videos {
 				} elseif ( 'excerpt' === $display ) {
 					$content = apply_filters( 'the_excerpt', get_the_excerpt() );
 				} elseif ( 'none' === $display ) {
-					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View more', 'lsx-videos' ) . '</a>';
+					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
 				}
 
 				if ( is_numeric( $size ) ) {
@@ -324,7 +324,7 @@ class LSX_Videos {
 
 				if ( empty( $image ) ) {
 					if ( ! empty( $this->options['display'] ) && ! empty( $this->options['display']['videos_placeholder'] ) ) {
-						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" width="' . $size . '" alt="placeholder">';
+						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					}
 				}
 
@@ -377,6 +377,137 @@ class LSX_Videos {
 			}
 
 			$output .= '</div></div>';
+
+			return $output;
+		}
+	}
+
+	/**
+	 * Returns the shortcode output markup.
+	 */
+	public function output_categories( $atts ) {
+		// @codingStandardsIgnoreLine
+		extract( shortcode_atts( array(
+			'columns' => 3,
+			'orderby' => 'name',
+			'order' => 'ASC',
+			'limit' => '-1',
+			'include' => '',
+			'display' => 'excerpt',
+			'size' => 'lsx-thumbnail-single',
+			'carousel' => 'true',
+		), $atts ) );
+
+		$output = '';
+
+		if ( ! empty( $include ) ) {
+			$include = explode( ',', $include );
+
+			$args = array(
+				'taxonomy' => 'video-category',
+				'number' => (int) $limit,
+				'include' => $include,
+				'orderby' => 'include',
+				'order' => $order,
+				'hide_empty' => 0,
+			);
+		} else {
+			$args = array(
+				'taxonomy' => 'video-category',
+				'number' => (int) $limit,
+				'orderby' => $orderby,
+				'order' => $order,
+				'hide_empty' => 0,
+			);
+		}
+
+		if ( 'none' !== $orderby ) {
+			$args['suppress_filters']           = true;
+			$args['disabled_custom_post_order'] = true;
+		}
+
+		$video_categories = get_terms( $args );
+
+		if ( ! empty( $video_categories ) && ! is_wp_error( $video_categories ) ) {
+			global $post;
+
+			$count = 0;
+			$count_global = 0;
+
+			if ( 'true' === $carousel || true === $carousel ) {
+				$output .= '<div class="lsx-videos-shortcode lsx-videos-slider" data-slick=\'{"slidesToShow": ' . $columns . ', "slidesToScroll": ' . $columns . '}\'>';
+			} else {
+				$output .= '<div class="lsx-videos-shortcode"><div class="row">';
+			}
+
+			foreach ( $video_categories as $term ) {
+				$count++;
+				$count_global++;
+
+				$content = '<p><a href="' . get_term_link( $term, 'video-category' ) . '" class="moretag">' . esc_html__( 'View more', 'lsx-videos' ) . '</a></p>';
+
+				if ( 'none' !== $display ) {
+					$content = apply_filters( 'term_description', $term->description ) . $content;
+				}
+
+				if ( is_numeric( $size ) ) {
+					$thumb_size = array( $size, $size );
+				} else {
+					$thumb_size = $size;
+				}
+
+				$term_image_id = get_term_meta( $term->term_id, 'thumbnail', true );
+				$image = wp_get_attachment_image_src( $term_image_id, $thumb_size );
+
+				if ( ! empty( $image ) ) {
+					$image = '<img class="img-responsive" src="' . $image[0] . '" alt="' . $term->name . '">';
+				} else {
+					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
+					} else {
+						$image = '';
+					}
+				}
+
+				if ( 'true' === $carousel || true === $carousel ) {
+					$output .= '
+						<div class="lsx-videos-slot">
+							' . ( ! empty( $image ) ? '<a href="' . get_term_link( $term, 'video-category' ) . '"><figure class="lsx-videos-avatar">' . $image . '</figure></a>' : '' ) . '
+							<h5 class="lsx-videos-title"><a href="' . get_term_link( $term, 'video-category' ) . '">' . apply_filters( 'the_title', $term->name ) . '</a></h5>
+							<div class="lsx-videos-content">' . $content . '</div>
+						</div>';
+				} elseif ( $columns >= 1 && $columns <= 4 ) {
+					$md_col_width = 12 / $columns;
+
+					$output .= '
+						<div class="col-xs-12 col-md-' . $md_col_width . '">
+							<div class="lsx-videos-slot">
+								' . ( ! empty( $image ) ? '<a href="' . get_term_link( $term, 'video-category' ) . '"><figure class="lsx-videos-avatar">' . $image . '</figure></a>' : '' ) . '
+								<h5 class="lsx-videos-title"><a href="' . get_term_link( $term, 'video-category' ) . '">' . apply_filters( 'the_title', $term->name ) . '</a></h5>
+								<div class="lsx-videos-content">' . $content . '</div>
+							</div>
+						</div>';
+
+					if ( $count == $columns && $videos->post_count > $count_global ) {
+						$output .= '</div>';
+						$output .= '<div class="row">';
+						$count = 0;
+					}
+				} else {
+					$output .= '
+						<div class="alert alert-danger">
+							' . esc_html__( 'Invalid number of columns set. LSX Videos supports 1 to 4 columns.', 'lsx-videos' ) . '
+						</div>';
+				}
+
+				wp_reset_postdata();
+			}
+
+			if ( 'true' !== $carousel && true !== $carousel ) {
+				$output .= '</div>';
+			}
+
+			$output .= '</div>';
 
 			return $output;
 		}

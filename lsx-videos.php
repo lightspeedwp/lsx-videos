@@ -104,5 +104,6 @@ require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-admin.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-frontend.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-most-recent.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-list.php' );
+require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-categories.php' );
 require_once( LSX_VIDEOS_PATH . '/includes/functions.php' );
 require_once( LSX_VIDEOS_PATH . '/includes/post-order.php' );
