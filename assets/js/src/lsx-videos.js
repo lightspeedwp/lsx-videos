@@ -1,14 +1,28 @@
 /**
  * LSX Videos scripts.
  *
- * @package lsx-videos
+ * @package    lsx-videos
+ * @subpackage scripts
  */
+
+var lsx_videos = Object.create( null );
 
 ;( function( $, window, document, undefined ) {
 
 	'use strict';
 
-	var initSlider = function() {
+	lsx_videos.document = $( document );
+	lsx_videos.window = $( window );
+	lsx_videos.window_height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	lsx_videos.window_width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+	/**
+	 * Init videos widget/shotcode slider.
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.init_slider = function() {
 		$( '.lsx-videos-slider' ).each( function( index, el ) {
 			var $video_slider = $( this );
 
@@ -53,9 +67,15 @@
 				}]
 			} );
 		} );
-	},
+	};
 
-	initModal = function() {
+	/**
+	 * Adds modal effect to open single videos.
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.init_modal = function() {
 		$( '#lsx-videos-modal' ).on( 'show.bs.modal', function( event ) {
 			var $modal = $( this ),
 				$invoker = $( event.relatedTarget );
@@ -95,7 +115,15 @@
 		} );
 	};
 
-	initSlider();
-	initModal();
+	/**
+	 * On document ready.
+	 *
+	 * @package lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.document.ready( function() {
+		lsx_videos.init_slider();
+		lsx_videos.init_modal();
+	} );
 
 } )( jQuery, window, document );

@@ -6,6 +6,8 @@
  */
 class LSX_Videos_Admin {
 
+	public $options = false;
+
 	/**
 	 * Construct method.
 	 */
@@ -28,6 +30,10 @@ class LSX_Videos_Admin {
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
+
+		if ( is_admin() ) {
+			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
+		}
 
 		add_action( 'init', array( $this, 'create_settings_page' ), 100 );
 		add_filter( 'lsx_framework_settings_tabs', array( $this, 'register_tabs' ), 100, 1 );
@@ -226,6 +232,29 @@ class LSX_Videos_Admin {
 	}
 
 	/**
+	 * Handle body colours that might be change by LSX Customiser.
+	 */
+	public function customizer_body_colours_handler( $css, $colors ) {
+		$css .= '
+			@import "' . LSX_VIDEOS_PATH . '/assets/css/scss/customizer-videos-body-colours";
+
+			/**
+			 * LSX Customizer - Body (LSX Videos)
+			 */
+			@include customizer-videos-body-colours (
+				$bg: 		' . $colors['background_color'] . ',
+				$breaker: 	' . $colors['body_line_color'] . ',
+				$color:    	' . $colors['body_text_color'] . ',
+				$link:    	' . $colors['body_link_color'] . ',
+				$hover:    	' . $colors['body_link_hover_color'] . ',
+				$small:    	' . $colors['body_text_small_color'] . '
+			);
+		';
+
+		return $css;
+	}
+
+	/**
 	 * Returns the array of settings to the UIX Class.
 	 */
 	public function create_settings_page() {
@@ -306,7 +335,7 @@ class LSX_Videos_Admin {
 	/**
 	 * Outputs the display tabs settings.
 	 */
-	public function display_settings( $tab = 'general' ) {
+	public function display_settings( $tab = 'display' ) {
 		if ( 'videos' === $tab ) {
 			$this->disable_excerpt();
 			$this->placeholder_field();

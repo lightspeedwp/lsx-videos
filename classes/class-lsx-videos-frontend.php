@@ -6,6 +6,8 @@
  */
 class LSX_Videos_Frontend {
 
+	public $options = false;
+
 	/**
 	 * Construct method.
 	 */
@@ -29,15 +31,13 @@ class LSX_Videos_Frontend {
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 
-		if ( is_admin() ) {
-			add_filter( 'lsx_videos_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
-		}
-
 		add_filter( 'lsx_banner_title', array( $this, 'lsx_banner_archive_title' ), 15 );
 
 		add_filter( 'excerpt_more_p', array( $this, 'change_excerpt_more' ) );
 		add_filter( 'excerpt_length', array( $this, 'change_excerpt_length' ) );
 		add_filter( 'excerpt_strip_tags', array( $this, 'change_excerpt_strip_tags' ) );
+
+		add_action( 'lsx_content_top', array( $this, 'categories_tabs' ), 15 );
 	}
 
 	/**
@@ -149,29 +149,6 @@ class LSX_Videos_Frontend {
 	}
 
 	/**
-	 * Handle body colours that might be change by LSX Customiser.
-	 */
-	public function customizer_body_colours_handler( $css, $colors ) {
-		$css .= '
-			@import "' . LSX_VIDEOS_PATH . '/assets/css/scss/customizer-videos-body-colours";
-
-			/**
-			 * LSX Customizer - Body (LSX Videos)
-			 */
-			@include customizer-videos-body-colours (
-				$bg: 		' . $colors['background_color'] . ',
-				$breaker: 	' . $colors['body_line_color'] . ',
-				$color:    	' . $colors['body_text_color'] . ',
-				$link:    	' . $colors['body_link_color'] . ',
-				$hover:    	' . $colors['body_link_hover_color'] . ',
-				$small:    	' . $colors['body_text_small_color'] . '
-			);
-		';
-
-		return $css;
-	}
-
-	/**
 	 * Change the LSX Banners title for videos archive.
 	 */
 	public function lsx_banner_archive_title( $title ) {
@@ -241,6 +218,49 @@ class LSX_Videos_Frontend {
 		}
 
 		return $allowed_tags;
+	}
+
+	/**
+	 * Display categories tabs.
+	 */
+	public function categories_tabs() {
+		$args = array(
+			'taxonomy'   => 'video-category',
+			'hide_empty' => false,
+		);
+
+		$categories = get_terms( $args );
+		$category_selected = get_query_var( 'video-category' );
+
+		if ( count( $categories ) > 0 ) :
+		?>
+
+		<ul class="nav nav-tabs lsx-videos-filter">
+			<?php
+				$category_selected_class = '';
+
+				if ( empty( $category_selected ) ) {
+					$category_selected_class = ' class="active"';
+				}
+			?>
+
+			<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_post_type_archive_link( 'video' ) ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-videos' ); ?></a></li>
+
+			<?php foreach ( $categories as $category ) : ?>
+				<?php
+					$category_selected_class = '';
+
+					if ( (string) $category_selected === (string) $category->slug ) {
+						$category_selected_class = ' class="active"';
+					}
+				?>
+
+				<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_term_link( $category ) ); ?>" data-filter=".filter-<?php echo esc_attr( $category->slug ); ?>"><?php echo esc_attr( $category->name ); ?></a></li>
+			<?php endforeach; ?>
+		</ul>
+
+		<?php
+		endif;
 	}
 
 }

@@ -6,6 +6,8 @@
  */
 class LSX_Videos {
 
+	public $options = false;
+
 	/**
 	 * Construct method.
 	 */

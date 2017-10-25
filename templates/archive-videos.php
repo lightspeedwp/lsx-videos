@@ -17,46 +17,6 @@ get_header(); ?>
 
 		<?php lsx_content_top(); ?>
 
-		<?php
-			$args = array(
-				'taxonomy'   => 'video-category',
-				'hide_empty' => false,
-			);
-
-			$categories = get_terms( $args );
-			$category_selected = get_query_var( 'video-category' );
-
-			if ( count( $categories ) > 0 ) :
-			?>
-
-			<ul class="nav nav-tabs lsx-videos-filter">
-				<?php
-					$category_selected_class = '';
-
-					if ( empty( $category_selected ) ) {
-						$category_selected_class = ' class="active"';
-					}
-				?>
-
-				<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_post_type_archive_link( 'video' ) ); ?>" data-filter="*"><?php esc_html_e( 'All', 'lsx-videos' ); ?></a></li>
-
-				<?php foreach ( $categories as $category ) : ?>
-					<?php
-						$category_selected_class = '';
-
-						if ( (string) $category_selected === (string) $category->slug ) {
-							$category_selected_class = ' class="active"';
-						}
-					?>
-
-					<li<?php echo wp_kses_post( $category_selected_class ); ?>><a href="<?php echo esc_url( get_term_link( $category ) ); ?>" data-filter=".filter-<?php echo esc_attr( $category->slug ); ?>"><?php echo esc_attr( $category->name ); ?></a></li>
-				<?php endforeach; ?>
-			</ul>
-
-			<?php
-			endif;
-		?>
-
 		<?php if ( have_posts() ) : ?>
 
 			<div class="lsx-videos-container">
