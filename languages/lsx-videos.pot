@@ -229,7 +229,7 @@ msgstr ""
 msgid "Videos Category"
 msgstr ""
 
-#: classes/class-lsx-videos-frontend.php:247
+#: classes/class-lsx-videos-frontend.php:248
 msgid "All"
 msgstr ""
 
