@@ -85,7 +85,7 @@
 
 .lsx-videos-slider .slick-arrow.slick-next:before { content: '\f105'; right: 1.5rem; }
 
-.archive.post-type-archive-video .lsx-videos-container, .archive.tax-video-category .lsx-videos-container { margin-top: -4rem; }
+.archive.post-type-archive-video .lsx-videos-filter + .lsx-videos-container, .archive.tax-video-category .lsx-videos-filter + .lsx-videos-container { margin-top: -4rem; }
 
 .archive.post-type-archive-video .site-main, .archive.tax-video-category .site-main { margin: 0; width: auto; }
 

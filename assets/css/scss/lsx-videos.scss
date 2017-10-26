@@ -236,7 +236,7 @@
 
 .archive.post-type-archive-video,
 .archive.tax-video-category {
-	.lsx-videos-container { margin-top: -4rem; }
+	.lsx-videos-filter + .lsx-videos-container { margin-top: -4rem; }
 
 	.site-main {
 		margin: 0;
