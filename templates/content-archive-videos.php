@@ -26,6 +26,7 @@
 
 	$youtube_url = get_post_meta( get_the_ID(), 'lsx_video_youtube', true );
 	$video_id = get_post_meta( get_the_ID(), 'lsx_video_video', true );
+	$giphy_iframe = get_post_meta( get_the_ID(), 'lsx_video_giphy', true );
 	$views = (int) get_post_meta( get_the_ID(), '_views', true );
 
 	if ( ! empty( $video_id ) ) {
@@ -55,6 +56,7 @@
 
 <div class="<?php echo esc_attr( apply_filters( 'lsx_slot_class', 'col-xs-12 col-sm-4 col-md-3' ) ); ?> lsx-videos-column <?php echo esc_attr( $categories_class ); ?>">
 	<article class="lsx-videos-slot">
+
 		<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>">
 			<figure class="lsx-videos-avatar"><?php lsx_thumbnail( 'lsx-videos-cover' ); ?></figure>
 		</a>

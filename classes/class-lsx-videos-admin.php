@@ -29,6 +29,7 @@ class LSX_Videos_Admin {
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
 		if ( is_admin() ) {
@@ -172,6 +173,12 @@ class LSX_Videos_Admin {
 				'id'   => $prefix . 'youtube',
 				'type' => 'text_url',
 				'desc' => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
+			),
+			array(
+				'name' => esc_html__( 'Giphy source:', 'lsx-videos' ),
+				'id'   => $prefix . 'giphy',
+				'type' => 'text',
+				'desc' => esc_html__( 'The HTML will be stripped leaving only the URL.', 'lsx-videos' ),
 			),
 		);
 
@@ -459,7 +466,6 @@ class LSX_Videos_Admin {
 			}
 		}
 	}
-
 }
 
 global $lsx_videos_admin;

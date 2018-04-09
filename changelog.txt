@@ -1,4 +1,7 @@
 ## Change log
 
+### 1.0.1
+* Dev - Added in a Giphy iframe field.
+
 ### 1.0.0
 * First Version
