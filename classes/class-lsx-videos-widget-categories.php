@@ -241,4 +241,10 @@ class LSX_Videos_Widget_Categories extends \WP_Widget {
 
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget( "LSX_Videos_Widget_Categories" );' ) );
+/**
+ * Registers the Widget
+ */
+function lsx_videos_widget_categories() {
+	register_widget( "LSX_Videos_Widget_Categories" );
+}
+add_action( 'widgets_init', 'lsx_videos_widget_categories' );
