@@ -143,6 +143,8 @@ class LSX_Videos {
 					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
 				}
 
+				$content = apply_filters( 'lsx_videos_widget_content', $content, $post->ID  );
+
 				if ( is_numeric( $size ) ) {
 					$thumb_size = array( $size, $size );
 				} else {
