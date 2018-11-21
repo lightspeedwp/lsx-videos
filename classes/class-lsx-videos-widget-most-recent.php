@@ -167,6 +167,6 @@ class LSX_Videos_Widget_Most_Recent extends \WP_Widget {
  * Registers the Widget
  */
 function lsx_videos_widget_most_recent() {
-	register_widget( "LSX_Videos_Widget_Most_Recent" );
+	register_widget( 'LSX_Videos_Widget_Most_Recent' );
 }
 add_action( 'widgets_init', 'lsx_videos_widget_most_recent' );

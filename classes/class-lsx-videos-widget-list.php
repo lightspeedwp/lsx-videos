@@ -287,6 +287,6 @@ class LSX_Videos_Widget_List extends \WP_Widget {
  * Registers the Widget
  */
 function lsx_videos_widget_list() {
-	register_widget( "LSX_Videos_Widget_List" );
+	register_widget( 'LSX_Videos_Widget_List' );
 }
 add_action( 'widgets_init', 'lsx_videos_widget_list' );
