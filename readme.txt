@@ -31,6 +31,8 @@ After you have downloaded the LSX Videos Plugion from Github:
 - Upload the .zip file you downloaded and click install now
 - When the installation is complete, Activate your plugin.
 
+== Frequently Asked Questions ==
+
 = Where can I get support or talk to other users =
 If you get stuck, you can ask for help in the [LSX Videos plugin forum](https://wordpress.org/support/plugin/lsx-videos).
 
@@ -45,6 +47,10 @@ Bugs can be reported either in our support forum or preferably on the [LSX Team 
 = The LSX Videos plugin is awesome! Can I contribute? =
 Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddevelopment/lsx-videos) :)
 
+== Screenshots ==
+1. Metabox Options
+2 Front-End View
+
 == Changelog ==
 
 ### 1.0.2
@@ -56,3 +62,7 @@ Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddev
 
 ### 1.0.0
 * First Version
+
+ == Upgrade Notice ==
+
+Tested for Wordpress 4.9.8
