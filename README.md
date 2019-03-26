@@ -53,6 +53,6 @@ Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddev
 ### 1.0.0
 * First Version
 
- == Upgrade Notice ==
+## Upgrade Notice
 
 Tested for Wordpress 4.9.8
