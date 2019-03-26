@@ -1,3 +1,5 @@
+# LSX Videos
+
 ## Description
 
 Use the LSX Videos Extension to display all of your videos beautifully and effortlessly on your [LSX Theme](https://lsx.lsdev.biz/) run website.
