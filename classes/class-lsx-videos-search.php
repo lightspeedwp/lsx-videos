@@ -104,6 +104,9 @@ class LSX_Videos_Search {
 		if ( is_tax( 'video-category' ) ) {
 			$enabled = true;
 		}
+		if ( is_post_type_archive( 'video' ) ) {
+			$enabled = true;
+		}
 		return $enabled;
 	}
 }
