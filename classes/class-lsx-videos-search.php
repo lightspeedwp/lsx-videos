@@ -79,7 +79,7 @@ class LSX_Videos_Search {
 	 * @return array
 	 */
 	public function enable_categories( $categories = array() ) {
-		return array_merge( $categories, get_category_slugs() );
+		return array_merge( $categories, array( 'video-category' ) );
 	}
 
 	/**
