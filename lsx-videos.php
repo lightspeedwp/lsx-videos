@@ -3,7 +3,7 @@
  * Plugin Name:	LSX Videos
  * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-videos
  * Description:	LSX Videos for LSX Theme.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      LightSpeed
  * Author URI:  https://www.lsdev.biz/
  * License:     GPL3
@@ -30,5 +30,6 @@ require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-frontend.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-most-recent.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-list.php' );
 require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-categories.php' );
+require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php' );
 require_once( LSX_VIDEOS_PATH . '/includes/functions.php' );
 require_once( LSX_VIDEOS_PATH . '/includes/post-order.php' );

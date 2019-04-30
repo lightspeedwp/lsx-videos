@@ -45,6 +45,9 @@ Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddev
 
 ## Changelog
 
+### 1.0.3
+* Dev - Added Search Class
+
 ### 1.0.2
 * Dev - Updated the UI to include the Metabox scripts
 
