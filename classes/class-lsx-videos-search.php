@@ -68,8 +68,7 @@ class LSX_Videos_Search {
 	 * @return array
 	 */
 	public function post_type_plural( $post_types = array() ) {
-		$post_types['video'] = 'video';
-		$post_types['video-category'] = 'video-category';
+		$post_types['video'] = 'videos';
 		return $post_types;
 	}
 
