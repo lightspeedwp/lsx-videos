@@ -102,7 +102,7 @@ class LSX_Videos_Search {
 	 * @return string
 	 */
 	public function enable_categories_search( $enabled ) {
-		if ( is_cat( 'video-category' ) ) {
+		if ( is_tax( 'video-category' ) ) {
 			$enabled = true;
 		}
 		return $enabled;
