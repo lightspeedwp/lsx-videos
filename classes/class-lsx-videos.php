@@ -9,6 +9,13 @@ class LSX_Videos {
 	public $options = false;
 
 	/**
+	 * LSX_Videos_Search
+	 *
+	 * @var object LSX_Videos_Search()
+	 */
+	public $search = false;
+
+	/**
 	 * Construct method.
 	 */
 	public function __construct() {
@@ -20,6 +27,9 @@ class LSX_Videos {
 				$this->options = get_option( '_lsx_lsx-settings', false );
 			}
 		}
+
+		require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php' );
+		$this->search = LSX_Videos_Search::get_instance();
 
 		add_filter( 'lsx_banner_allowed_post_types', array( $this, 'lsx_banner_allowed_post_types' ) );
 		add_filter( 'lsx_banner_allowed_taxonomies', array( $this, 'lsx_banner_allowed_taxonomies' ) );

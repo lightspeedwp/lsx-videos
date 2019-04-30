@@ -1,5 +1,4 @@
 <?php
-namespace lsx\member_directory\classes;
 /**
  * @package   lsx-videos
  * @author    LightSpeed
@@ -12,7 +11,7 @@ namespace lsx\member_directory\classes;
  * Class Core
  * @package lsx-videos
  */
-class Search {
+class LSX_Videos_Search {
 
 	/**
 	 * Holds class instance
@@ -33,7 +32,7 @@ class Search {
 	private function __construct() {
 		add_filter( 'lsx_search_post_types', array( $this, 'enable_post_type' ), 100, 1 );
 		add_filter( 'lsx_search_post_types_plural', array( $this, 'post_type_plural' ), 100, 1 );
-		add_filter( 'lsx_search_categories', array( $this, 'enable_tcategories' ), 100, 1 );
+		add_filter( 'lsx_search_categories', array( $this, 'enable_categories' ), 100, 1 );
 		add_filter( 'lsx_search_enabled', array( $this, 'enable_category_search' ), 100, 1 );
 		add_filter( 'lsx_search_prefix', array( $this, 'set_search_prefix' ), 100, 1 );
 	}
@@ -59,7 +58,7 @@ class Search {
 	 * @return array
 	 */
 	public function enable_post_type( $post_types = array() ) {
-		$post_types[] = 'lsx-video';
+		$post_types[] = 'video';
 		return $post_types;
 	}
 
@@ -69,9 +68,8 @@ class Search {
 	 * @return array
 	 */
 	public function post_type_plural( $post_types = array() ) {
-		$post_types['lsx-video'] = 'lsx-video';
-		$post_types['post'] = 'post';
-		$post_types['lsx-video-type'] = 'lsx-video-type';
+		$post_types['video'] = 'video';
+		$post_types['video-category'] = 'video-category';
 		return $post_types;
 	}
 
@@ -91,8 +89,8 @@ class Search {
 	 * @return string
 	 */
 	public function set_search_prefix( $prefix ) {
-		if ( is_cat( 'lsx-video-type' ) ) {
-			$prefix = 'lsx-video_archive';
+		if ( is_tax( 'video-category' ) ) {
+			$prefix = 'video_archive';
 		}
 		return $prefix;
 	}
@@ -104,7 +102,7 @@ class Search {
 	 * @return string
 	 */
 	public function enable_categories_search( $enabled ) {
-		if ( is_cat( 'lsx-video-type' ) ) {
+		if ( is_cat( 'video-category' ) ) {
 			$enabled = true;
 		}
 		return $enabled;
