@@ -27,7 +27,7 @@ get_header(); ?>
 
 						while ( have_posts() ) {
 							the_post();
-							include( LSX_VIDEOS_PATH . '/templates/content-archive-videos.php' );
+							include( LSX_VIDEOS_PATH . '/templates/content-archive-video.php' );
 						}
 					?>
 

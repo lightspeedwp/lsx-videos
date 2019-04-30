@@ -30,6 +30,7 @@ class LSX_Videos_Frontend {
 
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
+		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );		
 
 		add_filter( 'lsx_banner_title', array( $this, 'lsx_banner_archive_title' ), 15 );
 
@@ -140,13 +141,24 @@ class LSX_Videos_Frontend {
 	 */
 	public function archive_template_include( $template ) {
 		if ( is_main_query() && ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) ) {
-			if ( empty( locate_template( array( 'archive-videos.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/archive-videos.php' ) ) {
-				$template = LSX_VIDEOS_PATH . 'templates/archive-videos.php';
+			if ( empty( locate_template( array( 'archive-video.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/archive-video.php' ) ) {
+				$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
 			}
 		}
-
 		return $template;
 	}
+
+	/**
+	 * Single template.
+	 */
+	public function single_template_include( $template ) {
+		if ( is_main_query() && is_singular( 'video' ) ) {
+			if ( empty( locate_template( array( 'single-video.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/single-video.php' ) ) {
+				$template = LSX_VIDEOS_PATH . 'templates/single-video.php';
+			}
+		}
+		return $template;
+	}	
 
 	/**
 	 * Change the LSX Banners title for videos archive.
