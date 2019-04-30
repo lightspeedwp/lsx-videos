@@ -53,19 +53,19 @@ class LSX_Videos_Admin {
 	 */
 	public function post_type_setup() {
 		$labels = array(
-			'name'               => esc_html_x( 'Videos', 'post type general name', 'lsx-videos' ),
-			'singular_name'      => esc_html_x( 'Video', 'post type singular name', 'lsx-videos' ),
+			'name'               => LSX_VIDEOS_PLURAL_NAME,
+			'singular_name'      => LSX_VIDEOS_SINGULAR_NAME ,
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-videos' ),
-			'add_new_item'       => esc_html__( 'Add New Video', 'lsx-videos' ),
-			'edit_item'          => esc_html__( 'Edit Video', 'lsx-videos' ),
-			'new_item'           => esc_html__( 'New Video', 'lsx-videos' ),
-			'all_items'          => esc_html__( 'All Videos', 'lsx-videos' ),
-			'view_item'          => esc_html__( 'View Video', 'lsx-videos' ),
-			'search_items'       => esc_html__( 'Search Videos', 'lsx-videos' ),
-			'not_found'          => esc_html__( 'No videos found', 'lsx-videos' ),
-			'not_found_in_trash' => esc_html__( 'No videos found in Trash', 'lsx-videos' ),
+			'add_new_item'       => esc_html__( 'Add New', 'lsx-videos' ),
+			'edit_item'          => esc_html__( 'Edit', 'lsx-videos' ),
+			'new_item'           => esc_html__( 'New', 'lsx-videos' ),
+			'all_items'          => esc_html__( 'All', 'lsx-videos' ),
+			'view_item'          => esc_html__( 'View', 'lsx-videos' ),
+			'search_items'       => esc_html__( 'Search', 'lsx-videos' ),
+			'not_found'          => esc_html__( 'None found', 'lsx-videos' ),
+			'not_found_in_trash' => esc_html__( 'None found in Trash', 'lsx-videos' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => esc_html_x( 'Videos', 'admin menu', 'lsx-videos' ),
+			'menu_name'          => LSX_VIDEOS_PLURAL_NAME,
 		);
 
 		$args = array(
@@ -77,10 +77,10 @@ class LSX_Videos_Admin {
 			'menu_icon'          => 'dashicons-video-alt',
 			'query_var'          => true,
 			'rewrite'            => array(
-				'slug' => 'videos',
+				'slug' => LSX_VIDEOS_SINGLE_SLUG,
 			),
 			'capability_type'    => 'post',
-			'has_archive'        => 'videos',
+			'has_archive'        => LSX_VIDEOS_ARCHIVE_SLUG,
 			'hierarchical'       => false,
 			'menu_position'      => null,
 			'supports'           => array(

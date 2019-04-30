@@ -1,5 +1,10 @@
 ## Change log
 
+## 1.0.9
+* Dev - Added in defined labels allowing you to customize the post type values.
+
+## 1.0.8
+
 ### 1.0.3
 * Dev - Added Search Class
 
