@@ -138,7 +138,6 @@ var lsx_videos = Object.create( null );
 	lsx_videos.watchPlayVideoButton = function() {
 		jQuery( '.lsx-video-play-btn' ).on( 'click', function() {
 			jQuery( '.lsx-video-play-btn.paused' ).removeClass( 'paused' );
-
 			var url = jQuery( this ).attr( 'data-video' );
 			if ( ! jQuery( this ).hasClass( 'main-btn' ) ) {
 				jQuery( '.lsx-video-play-btn' ).addClass( 'paused' );
@@ -154,7 +153,8 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */
 	lsx_videos.playVideo = function( url ) {
-		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url ) ).addClass( 'playing' );
+		var height = jQuery( '.lsx-video-play-btn' ).height;
+		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url, height ) ).addClass( 'playing' );
 	}
 
 	/**
@@ -163,8 +163,8 @@ var lsx_videos = Object.create( null );
 	 * @package    lsx-videos
 	 * @subpackage scripts
 	 */	
-	lsx_videos.videoIframe = function( url ) {
-		return '<iframe width="100%" height="100%" src="' + url + '" />';
+	lsx_videos.videoIframe = function( url, height ) {
+		return '<iframe width="100%" height="'+ height + 'px" src="' + url + '" />';
 	}
 
 	/**
