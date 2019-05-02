@@ -116,6 +116,58 @@ var lsx_videos = Object.create( null );
 	};
 
 	/**
+	 * Adds modal effect to open single videos.
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.featured_video_player = function() {
+		var featuredDiv = jQuery( '.featured-video-section' ).length;
+		if ( 0 < featuredDiv.length ) {	
+			//watch the featured play button
+			lsx_videos.watchPlayVideoButton();
+		}
+	}	
+
+	/**
+	 * Loads the video clicked into the player
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.watchPlayVideoButton = function() {
+		jQuery( '.lsx-video-play-btn' ).on( 'click', function() {
+			jQuery( '.lsx-video-play-btn.paused' ).removeClass( 'paused' );
+
+			var url = jQuery( this ).attr( 'data-video' );
+			if ( ! jQuery( this ).hasClass( 'main-btn' ) ) {
+				jQuery( '.lsx-video-play-btn' ).addClass( 'paused' );
+			}
+			lsx_videos.playVideo( url );
+		});
+	}	
+
+	/**
+	 * Loads the video clicked into the player
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */
+	lsx_videos.playVideo = function( url ) {
+		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url ) );
+	}	
+
+	/**
+	 * Returns the iframe html
+	 *
+	 * @package    lsx-videos
+	 * @subpackage scripts
+	 */	
+	lsx_videos.videoIframe = function( url ) {
+		return '<iframe width="100%" height="100%" src="' + url + '" />';
+	}
+
+	/**
 	 * On document ready.
 	 *
 	 * @package lsx-videos
@@ -124,6 +176,8 @@ var lsx_videos = Object.create( null );
 	lsx_videos.document.ready( function() {
 		lsx_videos.init_slider();
 		lsx_videos.init_modal();
+
+		lsx_videos.featured_video_player();
 	} );
 
 } )( jQuery, window, document );
