@@ -153,7 +153,7 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */
 	lsx_videos.playVideo = function( url ) {
-		var height = jQuery( '.lsx-video-play-btn' ).height;
+		var height = jQuery( '.lsx-video-play-btn' ).height();
 		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url, height ) ).addClass( 'playing' );
 	}
 
