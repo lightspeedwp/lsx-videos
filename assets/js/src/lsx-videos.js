@@ -122,7 +122,7 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */
 	lsx_videos.featured_video_player = function() {
-		var featuredDiv = jQuery( '.featured-video-section' ).length;
+		var featuredDiv = jQuery( '.featured-video-section' );
 		if ( 0 < featuredDiv.length ) {	
 			//watch the featured play button
 			lsx_videos.watchPlayVideoButton();
@@ -154,8 +154,8 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */
 	lsx_videos.playVideo = function( url ) {
-		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url ) );
-	}	
+		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url ) ).addClass( 'playing' );
+	}
 
 	/**
 	 * Returns the iframe html
