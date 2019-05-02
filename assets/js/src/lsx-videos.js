@@ -125,6 +125,7 @@ var lsx_videos = Object.create( null );
 		var featuredDiv = jQuery( '.featured-video-section' );
 		if ( 0 < featuredDiv.length ) {	
 			//watch the featured play button
+			lsx_videos.videoHeight = jQuery( '.lsx-video-play-btn' ).height();
 			lsx_videos.watchPlayVideoButton();
 		}
 	}	
@@ -153,8 +154,7 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */
 	lsx_videos.playVideo = function( url ) {
-		var height = jQuery( '.lsx-video-play-btn' ).height();
-		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url, height ) ).addClass( 'playing' );
+		jQuery( '.featured-video-section .video-player' ).html( lsx_videos.videoIframe( url ) ).addClass( 'playing' );
 	}
 
 	/**
@@ -163,8 +163,8 @@ var lsx_videos = Object.create( null );
 	 * @package    lsx-videos
 	 * @subpackage scripts
 	 */	
-	lsx_videos.videoIframe = function( url, height ) {
-		return '<iframe width="100%" height="'+ height + 'px" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />';
+	lsx_videos.videoIframe = function( url ) {
+		return '<iframe width="100%" height="'+ lsx_videos.videoHeight + 'px" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; autoplay="1" encrypted-media; gyroscope; picture-in-picture" allowfullscreen />';
 	}
 
 	/**
