@@ -164,7 +164,7 @@ var lsx_videos = Object.create( null );
 	 * @subpackage scripts
 	 */	
 	lsx_videos.videoIframe = function( url, height ) {
-		return '<iframe width="100%" height="'+ height + 'px" src="' + url + '?autoplay=1" />';
+		return '<iframe width="100%" height="'+ height + 'px" src="' + url + '" autoplay />';
 	}
 
 	/**
