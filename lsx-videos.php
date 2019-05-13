@@ -23,16 +23,16 @@ define( 'LSX_VIDEOS_URL',  plugin_dir_url( __FILE__ ) );
 define( 'LSX_VIDEOS_VER',  '1.0.8' );
 
 if ( ! defined( 'LSX_VIDEOS_ARCHIVE_SLUG' ) ) {
-	define('LSX_VIDEOS_ARCHIVE_SLUG',  'videos' );
+	define( 'LSX_VIDEOS_ARCHIVE_SLUG',  'videos' );
 }
 if ( ! defined( 'LSX_VIDEOS_SINGLE_SLUG' ) ) {
-	define('LSX_VIDEOS_SINGLE_SLUG',  'video' );
+	define( 'LSX_VIDEOS_SINGLE_SLUG',  'video' );
 }
 if ( ! defined( 'LSX_VIDEOS_SINGULAR_NAME' ) ) {
-	define('LSX_VIDEOS_SINGULAR_NAME',  esc_html_x( 'Video', 'post type singular name', 'lsx-videos' ) );
+	define( 'LSX_VIDEOS_SINGULAR_NAME',  esc_html_x( 'Video', 'post type singular name', 'lsx-videos' ) );
 }
 if ( ! defined( 'LSX_VIDEOS_PLURAL_NAME' ) ) {
-	define('LSX_VIDEOS_PLURAL_NAME',  __('Videos', 'lsx-member-directory') );
+	define( 'LSX_VIDEOS_PLURAL_NAME',  __( 'Videos', 'lsx-member-directory' ) );
 }
 
 /* ======================= Below is the Plugin Class init ========================= */

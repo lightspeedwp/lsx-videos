@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LSX Videos Frontend Class.
  *
@@ -30,7 +31,7 @@ class LSX_Videos_Frontend {
 
 		add_filter( 'wp_kses_allowed_html', array( $this, 'wp_kses_allowed_html' ), 10, 2 );
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
-		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );		
+		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 
 		add_filter( 'lsx_banner_title', array( $this, 'lsx_banner_archive_title' ), 15 );
 
@@ -158,7 +159,7 @@ class LSX_Videos_Frontend {
 			}
 		}
 		return $template;
-	}	
+	}
 
 	/**
 	 * Change the LSX Banners title for videos archive.

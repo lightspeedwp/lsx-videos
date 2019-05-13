@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package   lsx-videos
  * @author    LightSpeed

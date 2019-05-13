@@ -54,7 +54,7 @@ class LSX_Videos_Admin {
 	public function post_type_setup() {
 		$labels = array(
 			'name'               => LSX_VIDEOS_PLURAL_NAME,
-			'singular_name'      => LSX_VIDEOS_SINGULAR_NAME ,
+			'singular_name'      => LSX_VIDEOS_SINGULAR_NAME,
 			'add_new'            => esc_html_x( 'Add New', 'post type general name', 'lsx-videos' ),
 			'add_new_item'       => esc_html__( 'Add New', 'lsx-videos' ),
 			'edit_item'          => esc_html__( 'Edit', 'lsx-videos' ),
