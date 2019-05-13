@@ -1,13 +1,4 @@
 <?php
-
-/**
- * @package   lsx-videos
- * @author    LightSpeed
- * @license   GPL-2.0+
- * @link
- * @copyright 2019 LightSpeed
- */
-
 /**
  * Class Core
  * @package lsx-videos
