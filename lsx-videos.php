@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name:	LSX Videos
- * Plugin URI:	https://github.com/lightspeeddevelopment/lsx-videos
+ * Plugin URI:	https://lsx.lsdev.biz/extensions/videos/
  * Description:	LSX Videos for LSX Theme.
- * Version:     1.0.8
+ * Version:     1.1.0
  * Author:      LightSpeed
  * Author URI:  https://www.lsdev.biz/
  * License:     GPL3

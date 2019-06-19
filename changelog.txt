@@ -1,5 +1,18 @@
 ## Change log
 
+## 1.1.0 19th June 2019
+* Dev - Fixing the tax changes.
+* Dev - Fixing the is_cat.
+* Dev - Removing the irrelevant flags.
+* Fix - Fixing the search items.
+* Dev - Added in js for a featured video player.
+* Dev - Added a playing class to the player window.
+* Fix - Making sure the height stays for the video iframe.
+* Dev - Adding in the autoplay.
+* Dev -Removing the custom JS code
+* Fix - Travis Fixes
+* Fix - Fixing the end of line sequence
+
 ## 1.0.9
 * Dev - Added in defined labels allowing you to customize the post type values.
 * Dev - Allowing integration with LSX Search

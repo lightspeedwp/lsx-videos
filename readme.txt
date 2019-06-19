@@ -1,71 +1,42 @@
 === LSX Videos ===
 Contributors: feedmymedia
-Donate link: https://www.lsdev.biz/
-Tags: lsx-extensions, video, post-type, youtube, embed videos
-Requires at least: 4.3
-Tested up to: 5.0
+Donate link: https://donate.lsdev.biz/
+Tags: LSX Theme, Gutenberg, Blog Customizer, WordPress Blocks, WordPress Blog
+Requires at least: 4.7
+Tested up to: 5.2.2
 Requires PHP: 7.0
-Stable tag: 1.0.8
+Stable tag: 1.1.0
 License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
-LSX Videos is a post type plugin for the LSX Theme
+Use the [LSX Videos Extension](https://lsx.lsdev.biz/extensions/videos/) to display all of your videos beautifully and effortlessly on your LSX Theme run website.
 
-== Description ==
+Organise them into categories, set featured videos and display them throughout your site with one of the various widget options!
 
-LSX Videos is a post type plugin for the LSX Theme
+== Works with the LSX Theme ==
+Our modern and lightweight [theme](https://lsx.lsdev.biz/) works perfectly with the Blog Customizer, improving internal linking, website SEO and user experience! 
 
-= Works with the LSX Theme =
-Our [theme](https://www.lsdev.biz/product/lsx-wordpress-theme/) works perfectly with the LSX Videos, improving search capabilties.
+== Gutenberg Compatible Plugin ==
+Have you updated to the new WordPress Gutenberg editor? We've got you covered! The LSX Videos Extension Plugin has been optimised for the Gutenberg update. Check out our [release post](https://lsx.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
 
-= It's free, and always will be. =
-We’re firm believers in open source - that’s why we’re releasing the LSX Videos plugin for free, forever. We offer free support on the [LSX Search support forums](https://wordpress.org/support/plugin/lsx-search).
+== It's free, and always will be. ==
+We’re firm believers in open source - that’s why the [LSX Videos Extension](https://lsx.lsdev.biz/extensions/videos/) is free, and that won't change. We are constantly maintaining and updating our extension so you have the latest and greatest abilities on your LSX Theme powered site. 
 
-= Support =
-We offer premium support for this plugin. Premium support that can be purchased via [lsdev.biz](https://www.lsdev.biz/).
+== LSX Videos Extension Documentation ==
 
-== Installation ==
-After you have downloaded the LSX Videos Plugion from Github:
+We have created extensive documentation on all of the LSX Videos Extension Plugin functionality. This means a hassle free installation and setup with no code requirements. Go to the [LSX Videos Extension Documentation](https://lsx.lsdev.biz/documentation/lsx-videos/).
 
-- Log in to your WordPress website (www.yourwebsiteurl.com/wp-admin)
-- Navigate to "Plugins", and select "Add New"
-- Upload the .zip file you downloaded and click install now
-- When the installation is complete, Activate your plugin.
+== LSX Videos Extension Help & Support ==
 
-== Frequently Asked Questions ==
+We offer premium support for this plugin. Premium support that can be purchased [via our website](https://www.lsdev.biz/services/support/).
 
-= Where can I get support or talk to other users =
-If you get stuck, you can ask for help in the [LSX Videos plugin forum](https://wordpress.org/support/plugin/lsx-videos).
+If you are experiencing issues with the LSX Videos Extension Plugin & have experience with Github, please log any bug issues you are having on the [LSX Videos Extension Github Issues](https://github.com/lightspeeddevelopment/lsx-videos/issues/) page.
 
-For help with premium add-ons from LightSpeed, use [our contact page](https://www.lsdev.biz/contact-us/)
+== Contributing to the LSX Videos Extension Plugin ==
 
-= Will the LSX Videos plugin work with my theme?
-No; The LSX Videos plugin will only work our LSX Theme with FacetWP Installed.
-
-= Where can I report bugs or contribute to the project? =
-Bugs can be reported either in our support forum or preferably on the [LSX Team GitHub repository](https://github.com/lightspeeddevelopment/lsx/issues).
-
-= The LSX Videos plugin is awesome! Can I contribute? =
-Yes you can! Join in on our [GitHub repository](https://github.com/lightspeeddevelopment/lsx-videos) :)
+If you're a developer who's spotted a bug issue and have a fix, or simply have functionality you think would extend our core theme, we are always happy to accept your contribution! Visit the [LSX Videos Extension Plugin on Github](https://github.com/lightspeeddevelopment/lsx-videos/) and submit a Pull Request with your updates.
 
 == Screenshots ==
+
 1. Metabox Options
 2. Front-End View
-
-== Changelog ==
-
-### 1.0.3
-* Dev - Added Search Class
-
-### 1.0.2
-* Dev - Updated the UI to include the Metabox scripts
-
-### 1.0.1
-* Dev - Added in a Giphy iframe field.
-* Dev - Removing the deprecated "create_function"
-
-### 1.0.0
-* First Version
-
- == Upgrade Notice ==
-
-Tested for Wordpress 4.9.8
