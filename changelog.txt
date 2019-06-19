@@ -9,7 +9,7 @@
 * Dev - Added a playing class to the player window.
 * Fix - Making sure the height stays for the video iframe.
 * Dev - Adding in the autoplay.
-* Dev -Removing the custom JS code
+* Dev - Removing the custom JS code
 * Fix - Travis Fixes
 * Fix - Fixing the end of line sequence
 
