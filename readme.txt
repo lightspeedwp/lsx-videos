@@ -1,7 +1,7 @@
 === LSX Videos ===
 Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
-Tags: LSX Theme, Gutenberg, Blog Customizer, WordPress Blocks, WordPress Blog
+Tags: LSX Theme, Gutenberg, Page Videos, WordPress Blocks, Video Player
 Requires at least: 4.7
 Tested up to: 5.2.2
 Requires PHP: 7.0
