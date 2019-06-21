@@ -14,7 +14,7 @@ Use the [LSX Videos Extension](https://lsx.lsdev.biz/extensions/videos/) to disp
 Organise them into categories, set featured videos and display them throughout your site with one of the various widget options!
 
 == Works with the LSX Theme ==
-Our modern and lightweight [theme](https://lsx.lsdev.biz/) works perfectly with the Blog Customizer, improving internal linking, website SEO and user experience! 
+Our modern and lightweight [theme](https://lsx.lsdev.biz/) works perfectly with the LSX Videos extension, improving internal linking, website SEO and user experience! 
 
 == Gutenberg Compatible Plugin ==
 Have you updated to the new WordPress Gutenberg editor? We've got you covered! The LSX Videos Extension Plugin has been optimised for the Gutenberg update. Check out our [release post](https://lsx.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
