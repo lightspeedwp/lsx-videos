@@ -2,7 +2,7 @@
 Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
 Tags: lsx, Gutenberg, Page Videos, WordPress Blocks, Video Player
-Requires at least: 4.7
+Requires at least: 4.9
 Tested up to: 5.2.2
 Requires PHP: 7.0
 Stable tag: 1.1.0
