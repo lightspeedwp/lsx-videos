@@ -23,7 +23,7 @@ class LSX_Videos_Frontend {
 			}
 		}
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 999 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_action( 'wp_footer', array( $this, 'add_video_modal' ) );
 
 		add_action( 'wp_ajax_get_video_embed', array( $this, 'get_video_embed' ) );
