@@ -1,4 +1,4 @@
-# Copyright (C) 2017 lsx-videos
+# Copyright (C) 2019 lsx-videos
 # This file is distributed under the same license as the lsx-videos package.
 msgid ""
 msgstr ""
@@ -15,222 +15,212 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: classes/class-lsx-videos-admin.php:55
-msgctxt "post type general name"
-msgid "Videos"
-msgstr ""
-
-#: classes/class-lsx-videos-admin.php:56
+#: lsx-videos.php:32
 msgctxt "post type singular name"
 msgid "Video"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:57
+#: classes/class-lsx-videos-admin.php:58
 msgctxt "post type general name"
 msgid "Add New"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:58
-msgid "Add New Video"
-msgstr ""
-
 #: classes/class-lsx-videos-admin.php:59
-msgid "Edit Video"
+msgid "Add New"
 msgstr ""
 
 #: classes/class-lsx-videos-admin.php:60
-msgid "New Video"
+msgid "Edit"
 msgstr ""
 
 #: classes/class-lsx-videos-admin.php:61
-msgid "All Videos"
+msgid "New"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:62
-msgid "View Video"
+#: classes/class-lsx-videos-admin.php:62, classes/class-lsx-videos-frontend.php:261
+msgid "All"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:63
-msgid "Search Videos"
+#: classes/class-lsx-videos-admin.php:63, classes/class-lsx-videos-admin.php:463
+msgid "View"
 msgstr ""
 
 #: classes/class-lsx-videos-admin.php:64
-msgid "No videos found"
+msgid "Search"
 msgstr ""
 
 #: classes/class-lsx-videos-admin.php:65
-msgid "No videos found in Trash"
+msgid "None found"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:67
-msgctxt "admin menu"
-msgid "Videos"
+#: classes/class-lsx-videos-admin.php:66
+msgid "None found in Trash"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:101
+#: classes/class-lsx-videos-admin.php:102
 msgctxt "taxonomy general name"
 msgid "Video Categories"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:102
+#: classes/class-lsx-videos-admin.php:103
 msgctxt "taxonomy singular name"
 msgid "Category"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:103
+#: classes/class-lsx-videos-admin.php:104
 msgid "Search Categories"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:104
+#: classes/class-lsx-videos-admin.php:105
 msgid "All Categories"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:105
+#: classes/class-lsx-videos-admin.php:106
 msgid "Parent Category"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:106
+#: classes/class-lsx-videos-admin.php:107
 msgid "Parent Category:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:107
+#: classes/class-lsx-videos-admin.php:108
 msgid "Edit Category"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:108
+#: classes/class-lsx-videos-admin.php:109
 msgid "Update Category"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:109
+#: classes/class-lsx-videos-admin.php:110
 msgid "Add New Category"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:110
+#: classes/class-lsx-videos-admin.php:111
 msgid "New Category Name"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:111
+#: classes/class-lsx-videos-admin.php:112
 msgid "Categories"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:136
+#: classes/class-lsx-videos-admin.php:137
 msgid "Featured:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:154
+#: classes/class-lsx-videos-admin.php:155
 msgid "Video source:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:157
+#: classes/class-lsx-videos-admin.php:158
 msgid "Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg)."
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:171
+#: classes/class-lsx-videos-admin.php:172
 msgid "Youtube source:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:174
+#: classes/class-lsx-videos-admin.php:175
 msgid "It will replace the original video source on front-end."
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:179
-msgid "Video Details"
+#: classes/class-lsx-videos-admin.php:178
+msgid "Giphy source:"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:181
+msgid "The HTML will be stripped leaving only the URL."
 msgstr ""
 
 #: classes/class-lsx-videos-admin.php:186
+msgid "Video Details"
+msgstr ""
+
+#: classes/class-lsx-videos-admin.php:193
 msgid "First Name:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:191
+#: classes/class-lsx-videos-admin.php:198
 msgid "Last Name:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:196
+#: classes/class-lsx-videos-admin.php:203
 msgid "Email Address:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:201
+#: classes/class-lsx-videos-admin.php:208
 msgid "Phone Number:"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:206
+#: classes/class-lsx-videos-admin.php:213
 msgid "Country of Residence"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:213
+#: classes/class-lsx-videos-admin.php:220
 msgid "Video Uploader Details"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:285, classes/class-lsx-videos-admin.php:286
+#: classes/class-lsx-videos-admin.php:292, classes/class-lsx-videos-admin.php:293
 msgid "Theme Options"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:290
+#: classes/class-lsx-videos-admin.php:297
 msgid "Save Changes"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:311
+#: classes/class-lsx-videos-admin.php:318
 msgid "Display"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:323
+#: classes/class-lsx-videos-admin.php:330
 msgid "API"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:352
+#: classes/class-lsx-videos-admin.php:359
 msgid "Disable Excerpt"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:356
+#: classes/class-lsx-videos-admin.php:363
 msgid "Disable Excerpt."
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:369
+#: classes/class-lsx-videos-admin.php:376
 msgid "Placeholder"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:377
+#: classes/class-lsx-videos-admin.php:384
 msgid "Choose Image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:378
+#: classes/class-lsx-videos-admin.php:385
 msgid "Delete"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:389
+#: classes/class-lsx-videos-admin.php:396
 msgid "Select featured image"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:402
+#: classes/class-lsx-videos-admin.php:409
 msgid "Enter video title"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:429
+#: classes/class-lsx-videos-admin.php:436
 msgid "Video Source"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:430
+#: classes/class-lsx-videos-admin.php:437
 msgid "Youtube Source"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:445
+#: classes/class-lsx-videos-admin.php:452
 msgid "Download"
 msgstr ""
 
-#: classes/class-lsx-videos-admin.php:456
-msgid "View"
-msgstr ""
-
-#: classes/class-lsx-videos-frontend.php:156, classes/class-lsx-videos-widget-list.php:125, includes/settings/display.php:44
+#: classes/class-lsx-videos-frontend.php:169, classes/class-lsx-videos-widget-list.php:125, includes/settings/display.php:44
 msgid "Videos"
 msgstr ""
 
-#: classes/class-lsx-videos-frontend.php:161
+#: classes/class-lsx-videos-frontend.php:174
 msgid "Videos Category"
-msgstr ""
-
-#: classes/class-lsx-videos-frontend.php:248
-msgid "All"
 msgstr ""
 
 #: classes/class-lsx-videos-widget-categories.php:14
@@ -397,28 +387,33 @@ msgstr ""
 msgid "Specify Video by ID:"
 msgstr ""
 
-#: classes/class-lsx-videos.php:143, classes/class-lsx-videos.php:310, templates/content-archive-videos.php:75
+#: classes/class-lsx-videos.php:153, classes/class-lsx-videos.php:322, templates/content-archive-video.php:77
 msgid "View video"
 msgstr ""
 
 #. translators: 1: video views
-#: classes/class-lsx-videos.php:185, classes/class-lsx-videos.php:350, templates/content-archive-videos.php:42
+#. translators: 1: video views
+#. translators: 1: video views
+#: classes/class-lsx-videos.php:197, classes/class-lsx-videos.php:362, templates/content-archive-video.php:43
 msgid "%1$s views"
 msgstr ""
 
-#: classes/class-lsx-videos.php:187, classes/class-lsx-videos.php:352, templates/content-archive-videos.php:44
+#: classes/class-lsx-videos.php:199, classes/class-lsx-videos.php:364, templates/content-archive-video.php:45
 msgid "1 view"
 msgstr ""
 
-#: classes/class-lsx-videos.php:196, classes/class-lsx-videos.php:361, templates/content-archive-videos.php:53
+#. translators: 1: time ago (video published date)
+#. translators: 1: time ago (video published date)
+#. translators: 1: time ago (video published date)
+#: classes/class-lsx-videos.php:208, classes/class-lsx-videos.php:373, templates/content-archive-video.php:54
 msgid "%1$s ago"
 msgstr ""
 
-#: classes/class-lsx-videos.php:229, classes/class-lsx-videos.php:501
+#: classes/class-lsx-videos.php:241, classes/class-lsx-videos.php:513
 msgid "Invalid number of columns set. LSX Videos supports 1 to 4 columns."
 msgstr ""
 
-#: classes/class-lsx-videos.php:449
+#: classes/class-lsx-videos.php:461
 msgid "View more"
 msgstr ""
 
