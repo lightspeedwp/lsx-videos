@@ -1,5 +1,8 @@
 ## Change log
 
+## 1.1.2 - In Development
+* Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
+
 ## 1.1.0 19th June 2019
 * Dev - Fixing the tax changes.
 * Dev - Fixing the is_cat.
