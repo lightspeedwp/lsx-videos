@@ -2,7 +2,7 @@
 /*
  * Plugin Name:	LSX Videos
  * Plugin URI:	https://lsx.lsdev.biz/extensions/videos/
- * Description:	LSX Videos for LSX Theme.
+ * Description:	The LSX Videos extension adds videos for LSX Theme.
  * Version:     1.1.1
  * Author:      LightSpeed
  * Author URI:  https://www.lsdev.biz/
@@ -19,20 +19,20 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'LSX_VIDEOS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_VIDEOS_CORE', __FILE__ );
-define( 'LSX_VIDEOS_URL',  plugin_dir_url( __FILE__ ) );
-define( 'LSX_VIDEOS_VER',  '1.1.1' );
+define( 'LSX_VIDEOS_URL', plugin_dir_url( __FILE__ ) );
+define( 'LSX_VIDEOS_VER', '1.1.1' );
 
 if ( ! defined( 'LSX_VIDEOS_ARCHIVE_SLUG' ) ) {
-	define( 'LSX_VIDEOS_ARCHIVE_SLUG',  'videos' );
+	define( 'LSX_VIDEOS_ARCHIVE_SLUG', 'videos' );
 }
 if ( ! defined( 'LSX_VIDEOS_SINGLE_SLUG' ) ) {
-	define( 'LSX_VIDEOS_SINGLE_SLUG',  'video' );
+	define( 'LSX_VIDEOS_SINGLE_SLUG', 'video' );
 }
 if ( ! defined( 'LSX_VIDEOS_SINGULAR_NAME' ) ) {
-	define( 'LSX_VIDEOS_SINGULAR_NAME',  esc_html_x( 'Video', 'post type singular name', 'lsx-videos' ) );
+	define( 'LSX_VIDEOS_SINGULAR_NAME', esc_html_x( 'Video', 'post type singular name', 'lsx-videos' ) );
 }
 if ( ! defined( 'LSX_VIDEOS_PLURAL_NAME' ) ) {
-	define( 'LSX_VIDEOS_PLURAL_NAME',  __( 'Videos', 'lsx-member-directory' ) );
+	define( 'LSX_VIDEOS_PLURAL_NAME', __( 'Videos', 'lsx-member-directory' ) );
 }
 
 /* ======================= Below is the Plugin Class init ========================= */
