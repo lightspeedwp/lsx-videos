@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LSX Videos Admin Class.
  *
@@ -229,17 +230,17 @@ class LSX_Videos_Admin {
 	 * Enqueue JS and CSS.
 	 */
 	public function assets( $hook ) {
-		// wp_enqueue_media();
+		//wp_enqueue_media();
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
 
-		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), LSX_VIDEOS_VER, true );
-		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), LSX_VIDEOS_VER );
+		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), null, true );
+		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), null );
 	}
 
 	/**
-	 * Handle body colours that might be change by LSX Customiser.
+	 * Handle body colours that might be change by LSX Customizer.
 	 */
 	public function customizer_body_colours_handler( $css, $colors ) {
 		$css .= '

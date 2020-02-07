@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.1.2
+* Fix - Removing cached enqueues for main css and js files.
+
 ## 1.1.1 - September 27 2019
 * Fix - Removing gulp-minify-css and updating to gulp 4+
 * Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
