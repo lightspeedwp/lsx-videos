@@ -3,7 +3,7 @@
  * Plugin Name:	LSX Videos
  * Plugin URI:	https://lsx.lsdev.biz/extensions/videos/
  * Description:	The LSX Videos extension adds videos for LSX Theme.
- * Version:     1.1.1
+ * Version:     1.1.2
  * Author:      LightSpeed
  * Author URI:  https://www.lsdev.biz/
  * License:     GPL3
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_VIDEOS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_VIDEOS_CORE', __FILE__ );
 define( 'LSX_VIDEOS_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_VIDEOS_VER', '1.1.1' );
+define( 'LSX_VIDEOS_VER', '1.1.2' );
 
 if ( ! defined( 'LSX_VIDEOS_ARCHIVE_SLUG' ) ) {
 	define( 'LSX_VIDEOS_ARCHIVE_SLUG', 'videos' );
@@ -37,12 +37,12 @@ if ( ! defined( 'LSX_VIDEOS_PLURAL_NAME' ) ) {
 
 /* ======================= Below is the Plugin Class init ========================= */
 
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-admin.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-frontend.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-most-recent.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-list.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-categories.php' );
-require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php' );
-require_once( LSX_VIDEOS_PATH . '/includes/functions.php' );
-require_once( LSX_VIDEOS_PATH . '/includes/post-order.php' );
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-admin.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-frontend.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-most-recent.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-list.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-widget-categories.php';
+require_once LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php';
+require_once LSX_VIDEOS_PATH . '/includes/functions.php';
+require_once LSX_VIDEOS_PATH . '/includes/post-order.php';

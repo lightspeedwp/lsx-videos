@@ -3,9 +3,9 @@ Contributors: feedmymedia
 Donate link: https://donate.lsdev.biz/
 Tags: lsx, Gutenberg, Page Videos, WordPress Blocks, Video Player
 Requires at least: 4.9
-Tested up to: 5.2.2
+Tested up to: 5.4
 Requires PHP: 7.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -17,7 +17,7 @@ Organise them into categories, set featured videos and display them throughout y
 Our modern and lightweight [theme](https://lsx.lsdev.biz/) works perfectly with the LSX Videos extension, improving internal linking, website SEO and user experience! 
 
 == Gutenberg Compatible Plugin ==
-Have you updated to the new WordPress Gutenberg editor? We've got you covered! The LSX Videos Extension Plugin has been optimised for the Gutenberg update. Check out our [release post](https://lsx.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
+Have you updated to the new WordPress Gutenberg editor? We've got you covered! The LSX Videos Extension Plugin has been optimized for the Gutenberg update. Check out our [release post](https://lsx.lsdev.biz/lsx-blocks-available-on-wordpress-org/) on the update for more information.
 
 == It's free, and always will be. ==
 We’re firm believers in open source - that’s why the [LSX Videos Extension](https://lsx.lsdev.biz/extensions/videos/) is free, and that won't change. We are constantly maintaining and updating our extension so you have the latest and greatest abilities on your LSX Theme powered site. 

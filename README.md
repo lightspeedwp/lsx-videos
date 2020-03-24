@@ -3,6 +3,7 @@
 <h1 align="center">LSX Videos Extension</h1>
 
 <p align="center">
+    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://poser.pugx.org/woocommerce/woocommerce/license" alt="license"></a>
     <a href="http://gulpjs.com/"><img src="https://img.shields.io/badge/built%20with-gulp.js-green.svg" alt="Built with gulp.js"></a> 
     <a href="https://travis-ci.org/lightspeeddevelopment/lsx-videos"><img src="https://travis-ci.org/lightspeeddevelopment/lsx-videos.svg?branch=master" alt="Build Status"></a>
     <a href="https://lsx.lsdev.biz/"><img src="https://lsx.lsdev.biz/wp-content/uploads/2019/06/Designed-for-LSX-Theme-blue.png" alt="Made for LSX"></a>
@@ -34,3 +35,6 @@ If you are experiencing issues with the LSX Videos Extension Plugin & have exper
 ## Contributing to the LSX Videos Extension Plugin
 
 If you're a developer who's spotted a bug issue and have a fix, or simply have functionality you think would extend our core theme, we are always happy to accept your contribution! Visit the [LSX Videos Extension Plugin on Github](https://github.com/lightspeeddevelopment/lsx-videos/) and submit a Pull Request with your updates.
+
+## Like what you see?
+<a href="https://www.lsdev.biz/contact/"><img src="https://www.lsdev.biz/wp-content/uploads/2020/02/work-with-lightspeed.png" width="850" alt="Work with us at LightSpeed"></a>

@@ -1,41 +1,72 @@
-## Change log
+# Change log
 
-### 1.1.2
+
+## [Unreleased] - Minor version 1.1.2
+
+### Fixed
 * Fix - Removing cached enqueues for main css and js files.
 * Fix - Fixed issue `PHP Deprecated: dbx_post_advanced is deprecated since version 3.7.0! Use add_meta_boxes instead`.
 
-## 1.1.1 - September 27 2019
-* Fix - Removing gulp-minify-css and updating to gulp 4+
-* Dev - Adding the .gitattributes file to remove unnecessary files from the WordPress version.
+### Security
+- Updating dependencies to prevent vulnerabilities.
+- General testing to ensure compatibility with latest WordPress version (5.4).
+- General testing to ensure compatibility with latest LSX Theme version (2.7).
 
-## 1.1.0 19th June 2019
-* Dev - Fixing the tax changes.
-* Dev - Fixing the is_cat.
-* Dev - Removing the irrelevant flags.
-* Fix - Fixing the search items.
-* Dev - Added in js for a featured video player.
-* Dev - Added a playing class to the player window.
-* Fix - Making sure the height stays for the video iframe.
-* Dev - Adding in the autoplay.
-* Dev - Removing the custom JS code
-* Fix - Travis Fixes
-* Fix - Fixing the end of line sequence
 
-## 1.0.9
-* Dev - Added in defined labels allowing you to customize the post type values.
-* Dev - Allowing integration with LSX Search
+## [[1.1.1]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/1.1.1) - 2019-09-27
 
-## 1.0.8
+### Added
+- Adding the .gitattributes file to remove unnecessary files from the WordPress version.
 
-### 1.0.3
-* Dev - Added Search Class
+### Fixed
+- Removing gulp-minify-css and updating to gulp 4+
 
-### 1.0.2
-* Dev - Updated the UI to include the Metabox scripts
 
-### 1.0.1
-* Dev - Added in a Giphy iframe field.
-* Dev - Removing the deprecated "create_function"
+## [[1.1.0]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/v1.1.0) - 2019-06-19
 
-### 1.0.0
-* First Version
+### Added
+- Fixing the tax changes.
+- Fixing the is_cat.
+- Removing the irrelevant flags.
+- Added in js for a featured video player.
+- Added a playing class to the player window.
+- Adding in the autoplay.
+- Removing the custom JS code.
+
+### Fixed
+- Fixing the search items.
+- Making sure the height stays for the video iframe.
+- Travis Fixes.
+- Fixing the end of line sequence.
+
+
+## [[1.0.9]]()
+
+### Added
+- Added in defined labels allowing you to customize the post type values.
+- Allowing integration with LSX Search.
+
+
+## [[1.0.3]]()
+
+### Added
+- Added Search Class.
+
+
+## [[1.0.2]]()
+
+### Added
+- Updated the UI to include the Metabox scripts.
+
+
+## [[1.0.1]]()
+
+### Added
+- Added in a Giphy iframe field.
+- Removing the deprecated "create_function"
+
+
+## [[1.0.0]]()
+
+### Added
+- First Version
