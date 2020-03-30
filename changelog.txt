@@ -1,7 +1,7 @@
 # Change log
 
 
-## [Unreleased] - Minor version 1.1.2
+## [[1.1.2]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/1.1.2) - 2020-03-30
 
 ### Fixed
 * Fix - Removing cached enqueues for main css and js files.
