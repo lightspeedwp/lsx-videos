@@ -152,7 +152,7 @@ class LSX_Videos {
 				} elseif ( 'none' === $display ) {
 					$content = '<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
 				}
-
+				$text_content = $content;
 				$content = apply_filters( 'lsx_videos_widget_content', $content, $post->ID );
 
 				if ( is_numeric( $size ) ) {
@@ -214,7 +214,7 @@ class LSX_Videos {
 							<h5 class="lsx-videos-title"><a href="#lsx-videos-modal" data-toggle="modal" data-post-id="' . esc_attr( $post->ID ) . '" data-video="' . esc_url( $video_url ) . '" data-title="' . apply_filters( 'the_title', $post->post_title ) . '">' . apply_filters( 'the_title', $post->post_title ) . '</a></h5>
 							' . $video_categories . '
 							<p class="lsx-videos-meta">' . wp_kses_post( $meta ) . '</p>
-							<div class="lsx-videos-content">' . $content . '</div>
+							<div class="lsx-videos-content">' . $content . $text_content . '</div>
 						</div>';
 				} elseif ( $columns >= 1 && $columns <= 4 ) {
 					$md_col_width = 12 / $columns;

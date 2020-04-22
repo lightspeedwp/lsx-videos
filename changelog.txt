@@ -1,11 +1,16 @@
 # Change log
 
+## [[1.1.3]] - In Development
+
+### Added
+- Added the excerpt on the videos shortcode.
+
 
 ## [[1.1.2]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/1.1.2) - 2020-03-30
 
 ### Fixed
-* Fix - Removing cached enqueues for main css and js files.
-* Fix - Fixed issue `PHP Deprecated: dbx_post_advanced is deprecated since version 3.7.0! Use add_meta_boxes instead`.
+- Removing cached enqueues for main css and js files.
+- Fixed issue `PHP Deprecated: dbx_post_advanced is deprecated since version 3.7.0! Use add_meta_boxes instead`.
 
 ### Security
 - Updating dependencies to prevent vulnerabilities.
