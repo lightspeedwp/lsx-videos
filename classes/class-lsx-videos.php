@@ -127,6 +127,7 @@ class LSX_Videos {
 			}
 
 			while ( $videos->have_posts() ) {
+				$video_url = '';
 				$videos->the_post();
 
 				$count++;
