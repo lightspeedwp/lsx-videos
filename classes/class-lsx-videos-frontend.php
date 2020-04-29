@@ -46,20 +46,20 @@ class LSX_Videos_Frontend {
 	 * Enqueue JS and CSS.
 	 */
 	public function assets() {
-		$has_slick = wp_script_is( 'slick', 'queue' );
+		$has_slick = wp_script_is( 'slick.min.js', 'queue' );
 
 		if ( ! $has_slick ) {
 			wp_enqueue_style( 'slick', LSX_VIDEOS_URL . 'assets/css/vendor/slick.css', array(), LSX_VIDEOS_URL, null );
-			wp_enqueue_script( 'slick', LSX_VIDEOS_URL . 'assets/js/vendor/slick.min.js', array( 'jquery' ), null, LSX_VIDEOS_URL, true );
+			wp_enqueue_script( 'slick', LSX_VIDEOS_URL . 'assets/js/vendor/slick.min.js', array( 'jquery' ), null );
 		}
 
-		wp_enqueue_script( 'lsx-videos', LSX_VIDEOS_URL . 'assets/js/lsx-videos.min.js', array( 'jquery', 'slick' ), null, true );
+		wp_enqueue_script( 'lsx-videos-js', LSX_VIDEOS_URL . 'assets/js/lsx-videos.min.js', array( 'jquery', 'slick' ), null );
 
 		$params = apply_filters( 'lsx_videos_js_params', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		));
 
-		wp_localize_script( 'lsx-videos', 'lsx_videos_params', $params );
+		wp_localize_script( 'lsx-videos-js', 'lsx_videos_params', $params );
 
 		wp_enqueue_style( 'lsx-videos', LSX_VIDEOS_URL . 'assets/css/lsx-videos.css', array(), null );
 		wp_style_add_data( 'lsx-videos', 'rtl', 'replace' );
