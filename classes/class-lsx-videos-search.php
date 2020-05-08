@@ -94,9 +94,9 @@ class LSX_Videos_Search {
 	 */
 	public function enable_categories_search( $enabled ) {
 		if ( is_tax( 'video-category' ) ) {
-			$enabled = true;
+			$enabled = false;
 		}
-		if ( is_post_type_archive( 'video' ) ) {
+		if ( isset( $this->options['display'][ $this->video_archive_enable_search ] ) && ( ! empty( $this->options ) ) && 'on' === $this->options['display'][ $this->video_archive_enable_search ] ) {
 			$enabled = true;
 		}
 		return $enabled;
