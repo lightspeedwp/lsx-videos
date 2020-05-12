@@ -40,6 +40,9 @@ class LSX_Videos_Frontend {
 		add_filter( 'excerpt_strip_tags', array( $this, 'change_excerpt_strip_tags' ) );
 
 		add_action( 'lsx_content_top', array( $this, 'categories_tabs' ), 15 );
+
+		add_filter( 'lsx_global_header_title', array( $this, 'lsx_videos_archives_header_title' ), 200, 1 );
+		add_filter( 'lsx_banner_container_top', array( $this, 'lsx_videos_archives_header_title' ) );
 	}
 
 	/**
@@ -276,6 +279,18 @@ class LSX_Videos_Frontend {
 				<?php
 			endif;
 		endif;
+	}
+
+	/**
+	 * Titles For video archive pages
+	 *
+	 */
+	public function lsx_videos_archives_header_title( $title ) {
+		if ( is_archive() && is_post_type_archive( 'video' ) ) {
+
+			$title = ' All Videos ';
+		}
+		return $title;
 	}
 
 }

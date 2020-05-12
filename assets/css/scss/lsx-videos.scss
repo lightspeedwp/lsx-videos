@@ -51,40 +51,82 @@
 
 .lsx-videos-shortcode { margin-top: -4rem; }
 
-.lsx-videos-slot,
-.lsx-videos-slot-single {
-	margin: 4rem auto 0;
-	overflow: hidden;
+.lsx-videos-row {
+	display: flex;
+    flex-wrap: wrap;
+	.lsx-videos-column {
+		.lsx-videos-slot,
+		.lsx-videos-slot-single {
+			margin: 0rem auto 3rem;
+			overflow: hidden;
 
-	.lsx-videos-avatar {
-		& > img {
-			width: 100%;
+			.lsx-videos-avatar {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&:before {
+					content: '\f04b';
+					font-family: FontAwesome;
+					color: white;
+					position: absolute;
+					font-size: 17px;
+					background-color: rgba(0,0,0,0.75);
+					border-radius: 50%;
+					height: 37px;
+					width: 37px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding-left: 5px;
+				}
+				& > img {
+					width: 100%;
 
-			&.lazyload, &.lazyloading { width: auto; }
-		}
-	}
+					&.lazyload, &.lazyloading { width: auto; }
+				}
+			}
 
-	.lsx-videos-title { margin: 0 0 1rem; }
+			.lsx-videos-title {
+				 margin: 2rem 0 1rem;
+				 font-size: 22px;
+				}
 
-	.lsx-videos-categories {
-		font-size: 13px;
+			.lsx-videos-categories {
+				font-size: 18px;
 
-		&, #home-widgets & { margin-bottom: 1.2rem; }
-	}
+				&, #home-widgets & { margin-bottom: 1.2rem; }
+			}
 
-	.lsx-videos-meta {
-		font-size: 13px;
+			.lsx-videos-meta {
+				font-size: 10px;
+				.meta-views {
+					&:before {
+						content: '\f06e';
+						font-family: fontawesome;
+						margin-right: 5px;
+					}
+				}
+				.meta-date {
+					&:before {
+						content: '\f073';
+						font-family: fontawesome;
+						margin-right: 5px;
+					}
+				}
 
-		#home-widgets & { margin-top: 0; }
-	}
+				#home-widgets & { margin-top: 0; }
+			}
 
-	.lsx-videos-content {
-		margin-top: 2rem;
+			.lsx-videos-content {
+				margin-top: 2rem;
 
-		& p {
-			margin-bottom: 0;
+				& p {
+					margin-bottom: 0;
 
-			& + p { margin-top: 2.4rem; }
+					& + p { margin-top: 2.4rem; }
+				}
+			}
 		}
 	}
 }
@@ -313,6 +355,17 @@
 
 						@include media('>=tablet') { border-width: 0 9px 9px 9px; }
 					}
+				}
+			}
+		}
+	}
+	#primary {
+		margin-bottom: 4.25rem;
+		#main {
+			#facetwp-bottom {
+				.row {
+					margin-top: 1.4rem;
+					min-height: 40px;
 				}
 			}
 		}

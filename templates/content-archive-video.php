@@ -40,9 +40,9 @@
 
 	if ( 1 !== $views ) {
 		/* Translators: 1: video views */
-		$meta = sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views );
+		$meta = '<span class="meta-views">' . sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views ) . '</span>';
 	} else {
-		$meta = esc_html__( '1 view', 'lsx-videos' );
+		$meta = '<span class="meta-views">' . esc_html__( '1 view', 'lsx-videos' ) . '</span>';
 	}
 
 	if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
@@ -51,7 +51,7 @@
 	}
 
 	/* Translators: 1: time ago (video published date) */
-	$meta .= ' | ' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+	$meta .= ' | <span class="meta-date">' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ) . '</span>';
 ?>
 
 <div class="<?php echo esc_attr( apply_filters( 'lsx_slot_class', 'col-xs-12 col-sm-4 col-md-3' ) ); ?> lsx-videos-column <?php echo esc_attr( $categories_class ); ?>">
