@@ -29,6 +29,7 @@ class LSX_Videos_Admin {
 
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'tag_taxonomy_setup' ) );
 		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
@@ -125,6 +126,38 @@ class LSX_Videos_Admin {
 		);
 
 		register_taxonomy( 'video-category', array( 'video' ), $args );
+	}
+
+	/**
+	 * Register the Video Tags taxonomy.
+	 */
+	public function tag_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Video Tags', 'taxonomy general name', 'lsx-videos' ),
+			'singular_name'     => esc_html_x( 'Tag', 'taxonomy singular name', 'lsx-videos' ),
+			'search_items'      => esc_html__( 'Search Tags', 'lsx-videos' ),
+			'all_items'         => esc_html__( 'All Tags', 'lsx-videos' ),
+			'parent_item'       => esc_html__( 'Parent Tag', 'lsx-videos' ),
+			'parent_item_colon' => esc_html__( 'Parent Tag:', 'lsx-videos' ),
+			'edit_item'         => esc_html__( 'Edit Tag', 'lsx-videos' ),
+			'update_item'       => esc_html__( 'Update Tag', 'lsx-videos' ),
+			'add_new_item'      => esc_html__( 'Add New Tag', 'lsx-videos' ),
+			'new_item_name'     => esc_html__( 'New Tag Name', 'lsx-videos' ),
+			'menu_name'         => esc_html__( 'Tags', 'lsx-videos' ),
+		);
+
+		$args = array(
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'videos-tag',
+			),
+		);
+
+		register_taxonomy( 'video-tag', array( 'video' ), $args );
 	}
 
 	/**

@@ -7,31 +7,31 @@
 <?php
 	global $lsx_videos_frontend;
 
-	$categories = '';
+	$categories       = '';
 	$categories_class = '';
-	$terms = get_the_terms( get_the_ID(), 'video-category' );
+	$terms            = get_the_terms( get_the_ID(), 'video-category' );
 
 	if ( $terms && ! is_wp_error( $terms ) ) {
-		$categories = array();
+		$categories       = array();
 		$categories_class = array();
 
-		foreach ( $terms as $term ) {
-			$categories[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
-			$categories_class[] = 'filter-' . $term->slug;
-		}
+	foreach ( $terms as $term ) {
+		$categories[]       = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
+		$categories_class[] = 'filter-' . $term->slug;
+	}
 
-		$categories = join( ', ', $categories );
+		$categories       = join( ', ', $categories );
 		$categories_class = join( ' ', $categories_class );
 	}
 
-	$youtube_url = get_post_meta( get_the_ID(), 'lsx_video_youtube', true );
-	$video_id = get_post_meta( get_the_ID(), 'lsx_video_video', true );
+	$youtube_url  = get_post_meta( get_the_ID(), 'lsx_video_youtube', true );
+	$video_id     = get_post_meta( get_the_ID(), 'lsx_video_video', true );
 	$giphy_iframe = get_post_meta( get_the_ID(), 'lsx_video_giphy', true );
-	$views = (int) get_post_meta( get_the_ID(), '_views', true );
+	$views        = (int) get_post_meta( get_the_ID(), '_views', true );
 
 	if ( ! empty( $video_id ) ) {
-		$video_url = wp_get_attachment_url( $video_id );
-		$video_meta = get_post_meta( $video_id , '_wp_attachment_metadata', true );
+		$video_url  = wp_get_attachment_url( $video_id );
+		$video_meta = get_post_meta( $video_id, '_wp_attachment_metadata', true );
 	}
 
 	if ( ! empty( $youtube_url ) ) {
@@ -47,7 +47,7 @@
 
 	if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
 		$length = $video_meta['length_formatted'];
-		$meta = $length . ' | ' . $meta;
+		$meta   = $length . ' | ' . $meta;
 	}
 
 	/* Translators: 1: time ago (video published date) */
