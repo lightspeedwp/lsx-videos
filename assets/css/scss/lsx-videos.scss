@@ -278,7 +278,7 @@
 
 .archive.post-type-archive-video,
 .archive.tax-video-category {
-	.lsx-videos-filter + .lsx-videos-container { margin-top: -4rem; }
+	.lsx-videos-filter + .lsx-videos-container { margin-top: 0rem; }
 
 	.site-main {
 		margin: 0;
@@ -340,6 +340,7 @@
 			&.active > a {
 				border: 0 none;
 				position: relative;
+				font-weight: 600;
 
 				@include media('>=phone') {
 					&:after {
@@ -366,6 +367,12 @@
 				.row {
 					margin-top: 1.4rem;
 					min-height: 40px;
+				}
+			}
+			.lsx-pagination-wrapper {
+				margin-top: 14px;
+				.lsx-pagination {
+					float: right;
 				}
 			}
 		}

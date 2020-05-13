@@ -95,7 +95,7 @@
 
 .lsx-videos-slider .slick-arrow.slick-next:before { content: '\f105'; right: 1.5rem; }
 
-.archive.post-type-archive-video .lsx-videos-filter + .lsx-videos-container, .archive.tax-video-category .lsx-videos-filter + .lsx-videos-container { margin-top: -4rem; }
+.archive.post-type-archive-video .lsx-videos-filter + .lsx-videos-container, .archive.tax-video-category .lsx-videos-filter + .lsx-videos-container { margin-top: 0rem; }
 
 .archive.post-type-archive-video .site-main, .archive.tax-video-category .site-main { margin: 0; width: auto; }
 
@@ -117,7 +117,7 @@
 
 @media (min-width: 992px) { .archive.post-type-archive-video .nav-tabs > li > a, .archive.tax-video-category .nav-tabs > li > a { font-size: 22px; } }
 
-.archive.post-type-archive-video .nav-tabs > li.active > a, .archive.tax-video-category .nav-tabs > li.active > a { border: 0 none; position: relative; }
+.archive.post-type-archive-video .nav-tabs > li.active > a, .archive.tax-video-category .nav-tabs > li.active > a { border: 0 none; position: relative; font-weight: 600; }
 
 @media (min-width: 768px) { .archive.post-type-archive-video .nav-tabs > li.active > a:after, .archive.tax-video-category .nav-tabs > li.active > a:after { content: ''; border-style: solid; border-width: 0 6px 6px 6px; bottom: 0; height: 0; right: 50%; position: absolute; transform: translateX(50%); width: 0; } }
 
@@ -126,6 +126,10 @@
 .archive.post-type-archive-video #primary, .archive.tax-video-category #primary { margin-bottom: 4.25rem; }
 
 .archive.post-type-archive-video #primary #main #facetwp-bottom .row, .archive.tax-video-category #primary #main #facetwp-bottom .row { margin-top: 1.4rem; min-height: 40px; }
+
+.archive.post-type-archive-video #primary #main .lsx-pagination-wrapper, .archive.tax-video-category #primary #main .lsx-pagination-wrapper { margin-top: 14px; }
+
+.archive.post-type-archive-video #primary #main .lsx-pagination-wrapper .lsx-pagination, .archive.tax-video-category #primary #main .lsx-pagination-wrapper .lsx-pagination { float: left; }
 
 .widget.lsx-videos .lsx-videos-archive-link:before, .widget.lsx-videos .lsx-videos-archive-link:after { background-color: #DADDDF; }
 

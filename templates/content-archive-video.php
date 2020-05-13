@@ -61,7 +61,7 @@
 	endif;
 	?>
 
-<div class="<?php echo esc_attr( apply_filters( 'lsx_slot_class', 'col-xs-12 col-sm-4 col-md-3' ) ); ?> lsx-videos-column <?php echo esc_attr( $categories_class ); ?>">
+<div class="<?php echo esc_attr( apply_filters( 'lsx_slot_class', 'col-xs-12 col-sm-4 col-md-4' ) ); ?> lsx-videos-column <?php echo esc_attr( $categories_class ); ?>">
 	<article class="lsx-videos-slot">
 
 		<a href="<?php echo esc_url( $video_link ); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>">

@@ -240,7 +240,7 @@ class LSX_Videos_Frontend {
 	 * Display categories tabs.
 	 */
 	public function categories_tabs() {
-		if ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) :
+		if ( is_post_type_archive( 'video' ) ) :
 			$args = array(
 				'taxonomy'   => 'video-category',
 				'hide_empty' => false,
