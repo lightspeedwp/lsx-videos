@@ -379,6 +379,7 @@ class LSX_Videos_Admin {
 	public function display_settings( $tab = 'display' ) {
 		if ( 'videos' === $tab ) {
 			$this->disable_excerpt();
+			$this->disable_video_modal();
 			$this->placeholder_field();
 		}
 	}
@@ -395,6 +396,23 @@ class LSX_Videos_Admin {
 				<td>
 					<input type="checkbox" {{#if videos_disable_excerpt}} checked="checked" {{/if}} name="videos_disable_excerpt">
 					<small><?php esc_html_e( 'Disable Excerpt.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable video modal setting.
+	 */
+	public function disable_video_modal() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="videos_disable_modal"><?php esc_html_e( 'Disable Modal', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if videos_disable_modal}} checked="checked" {{/if}} name="videos_disable_modal">
+					<small><?php esc_html_e( 'Disable Modal.', 'lsx-videos' ); ?></small>
 				</td>
 			</tr>
 		<?php

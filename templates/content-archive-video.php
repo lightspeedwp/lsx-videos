@@ -54,15 +54,22 @@
 	$meta .= ' | <span class="meta-date">' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ) . '</span>';
 ?>
 
+<?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_modal'] ) ) :
+	$video_link = '#lsx-videos-modal';
+	else :
+		$video_link = get_permalink( get_the_ID() );
+	endif;
+	?>
+
 <div class="<?php echo esc_attr( apply_filters( 'lsx_slot_class', 'col-xs-12 col-sm-4 col-md-3' ) ); ?> lsx-videos-column <?php echo esc_attr( $categories_class ); ?>">
 	<article class="lsx-videos-slot">
 
-		<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>">
+		<a href="<?php echo esc_url( $video_link ); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>">
 			<figure class="lsx-videos-avatar"><?php lsx_thumbnail( 'lsx-videos-cover' ); ?></figure>
 		</a>
 
 		<h5 class="lsx-videos-title">
-			<a href="#lsx-videos-modal" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>"><?php the_title(); ?></a>
+			<a href="<?php echo esc_url( $video_link ); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>"><?php the_title(); ?></a>
 		</h5>
 
 		<?php if ( ! empty( $categories ) ) : ?>
@@ -74,7 +81,7 @@
 		<?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_excerpt'] ) ) : ?>
 			<div class="lsx-videos-content"><?php the_excerpt(); ?></div>
 		<?php else : ?>
-			<div class="lsx-videos-content"><a href="#lsx-videos-modal" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>" class="moretag"><?php esc_html_e( 'View video', 'lsx-videos' ); ?></a></div>
+			<div class="lsx-videos-content"><a href="<?php echo esc_url( $video_link ); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>" class="moretag"><?php esc_html_e( 'View video', 'lsx-videos' ); ?></a></div>
 		<?php endif; ?>
 	</article>
 </div>
