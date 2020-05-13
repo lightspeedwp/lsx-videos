@@ -1,5 +1,15 @@
 /** LSX Videos styles. @package lsx-videos */
-@media (min-width: 768px) { #lsx-videos-modal .modal-dialog { max-width: 992px; width: 100%; } }
+@media (min-width: 768px) { #lsx-videos-modal .modal-dialog { max-width: 587px; width: 100%; height: 679px; } }
+
+#lsx-videos-modal .modal-dialog .modal-content { display: -ms-flexbox; display: flex; -ms-flex-direction: column-reverse; flex-direction: column-reverse; border-width: 2px; background-color: #ffffff; border-color: #418AD0; }
+
+#lsx-videos-modal .modal-dialog .modal-content .close { background-color: #418AD0; border-color: #418AD0; box-shadow: 0 0 4px 0 #418AD0; position: absolute; left: -14px; top: -17px; font-size: 28px; }
+
+#lsx-videos-modal .modal-dialog .modal-content .modal-header { min-height: 73px; background-color: #F2F2F2; }
+
+#lsx-videos-modal .modal-dialog .modal-content .modal-header .modal-title { text-align: right; color: #4a4a4a; padding-right: 15px; margin-top: 5px; font-size: 24px; }
+
+@media (max-width: 768px) { #lsx-videos-modal .modal-dialog .modal-content .modal-header .modal-title { text-align: center; padding-right: 0px; font-size: 22px; } }
 
 #lsx-videos-modal .modal-dialog .modal-title { text-align: center; }
 
