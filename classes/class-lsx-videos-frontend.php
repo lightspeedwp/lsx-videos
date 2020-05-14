@@ -33,6 +33,11 @@ class LSX_Videos_Frontend {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 
+		// LSX.
+		add_filter( 'lsx_global_header_disable', array( $this, 'lsx_videos_disable_banner' ) );
+		// LSX Banners - Banner.
+		add_filter( 'lsx_banner_disable', array( $this, 'lsx_videos_disable_lsx_banner' ) );
+
 		add_filter( 'lsx_banner_title', array( $this, 'lsx_banner_archive_title' ), 15 );
 
 		add_filter( 'excerpt_more_p', array( $this, 'change_excerpt_more' ) );
@@ -150,6 +155,19 @@ class LSX_Videos_Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Disable LSX Banners in some Video pages.
+	 *
+	 * @package    lsx
+	 * @subpackage sensei
+	 */
+	public function lsx_videos_disable_lsx_banner( $disabled ) {
+		if ( is_singular( 'video' ) ) {
+			$disabled = true;
+		}
+		return $disabled;
 	}
 
 	/**

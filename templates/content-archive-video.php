@@ -29,7 +29,7 @@
 	$giphy_iframe = get_post_meta( get_the_ID(), 'lsx_video_giphy', true );
 	$views        = (int) get_post_meta( get_the_ID(), '_views', true );
 
-	if ( ! empty( $video_id ) ) {
+	if ( ( ! empty( $video_id ) ) || ( '' === $video_id ) ) {
 		$video_url  = wp_get_attachment_url( $video_id );
 		$video_meta = get_post_meta( $video_id, '_wp_attachment_metadata', true );
 	}
@@ -47,11 +47,11 @@
 
 	if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
 		$length = $video_meta['length_formatted'];
-		$meta   = $length . ' | ' . $meta;
+		$meta   = '<span class="meta-duration">' . $length . '</span> | ' . $meta;
 	}
 
 	/* Translators: 1: time ago (video published date) */
-	$meta .= ' | <span class="meta-date">' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ) . '</span>';
+	$meta .= ' | <span class="meta-date">' . sprintf( get_the_time( 'd M Y' ) ) . '</span>';
 ?>
 
 <?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_modal'] ) ) :
