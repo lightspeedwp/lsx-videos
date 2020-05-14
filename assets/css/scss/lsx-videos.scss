@@ -16,8 +16,6 @@
 		}
 
 		.modal-content {
-			display: flex;
-			flex-direction: column-reverse;
 			border-width: 2px;
 			background-color: #ffffff;
 			border-color: #418AD0;
@@ -305,6 +303,112 @@
 			&:before {
 				content: '\f105';
 				left: 1.5rem;
+			}
+		}
+	}
+}
+
+.single-video {
+	#primary {
+		#main {
+			article.video {
+				@include media('>=desktop') {
+					width: 760px;
+					margin: 0 auto;
+				}
+				.entry-content {
+					.lsx-videos-slot {
+						margin-bottom: 35px;
+						.lsx-videos-title {
+							font-size: 30px;
+							text-align: left;
+							margin: 0.8rem 0 0rem;
+							color: #4A4A4A;
+						}
+						.lsx-videos-meta {
+							text-align: left;
+							padding-bottom: 12px;
+							font-size: 16px;
+							color: #4E4E4E;
+							.meta-views {
+								&:before {
+									content: '\f06e';
+									font-family: fontawesome;
+									margin-right: 5px;
+								}
+							}
+							.meta-date {
+								&:before {
+									content: '\f073';
+									font-family: fontawesome;
+									margin-right: 5px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.navigation.post-navigation {
+			.nav-links {
+				.previous {
+					a {
+						width: 300px;
+						&:before {
+							content: '\f053';
+							font-family: fontawesome;
+							float: left;
+							color: #418AD0;
+							font-size: 30px;
+							padding-right: 30px;
+							&:hover {
+								color: #2a6496;
+							}
+						}
+						p.nav-links-description {
+							text-align: left;
+							margin-bottom: 1px;
+							text-align: left;
+							margin-bottom: 1px;
+							font-size: 13px;
+							color: #919191;
+						}
+						h3 {
+							font-size: 20px;
+							color: #4A4A4A;
+							text-align: left;
+						}
+					}
+				}
+				.next {
+					a {
+						width: 300px;
+						&:before {
+							content: '\f054';
+							font-family: fontawesome;
+							float: right;
+							color: #418AD0;
+							font-size: 30px;
+							padding-left: 30px;
+							&:hover {
+								color: #2a6496;
+							}
+						}
+						p.nav-links-description {
+							text-align: right !important;
+							margin-bottom: 1px;
+							text-align: left;
+							margin-bottom: 1px;
+							font-size: 13px;
+							color: #919191;
+						}
+						h3 {
+							font-size: 20px;
+							color: #4A4A4A;
+							text-align: right;
+						}
+					}
+				}
 			}
 		}
 	}

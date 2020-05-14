@@ -90,6 +90,7 @@ class LSX_Videos_Admin {
 				'editor',
 				'thumbnail',
 				'excerpt',
+				'comments',
 			),
 		);
 
