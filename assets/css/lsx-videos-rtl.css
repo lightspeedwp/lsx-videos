@@ -105,6 +105,8 @@
 
 .lsx-videos-slider .slick-arrow.slick-next:before { content: '\f105'; right: 1.5rem; }
 
+.single-video #primary { margin-bottom: 4.5rem; }
+
 @media (min-width: 1200px) { .single-video #primary #main article.video { width: 760px; margin: 0 auto; } }
 
 .single-video #primary #main article.video .entry-content .lsx-videos-slot { margin-bottom: 35px; }
@@ -136,6 +138,14 @@
 .single-video #primary .navigation.post-navigation .nav-links .next a p.nav-links-description { text-align: left !important; margin-bottom: 1px; text-align: right; margin-bottom: 1px; font-size: 13px; color: #919191; }
 
 .single-video #primary .navigation.post-navigation .nav-links .next a h3 { font-size: 20px; color: #4A4A4A; text-align: left; }
+
+.single-video #primary .comment-respond .comment-reply-title { color: #2B3840; font-size: 19px; }
+
+.single-video #primary .comment-respond .comment-form .logged-in-as { font-size: 15px; margin-bottom: 15px; }
+
+.single-video #primary .comment-respond .comment-form .form-submit .submit { background-color: #418AD0; box-shadow: -2px 2px 0 0 #27639D; color: #fff; }
+
+.single-video #primary .comment-respond .comment-form .form-submit .submit:hover { background-color: #27639D; }
 
 .archive.post-type-archive-video .lsx-videos-filter + .lsx-videos-container, .archive.tax-video-category .lsx-videos-filter + .lsx-videos-container { margin-top: 0rem; }
 

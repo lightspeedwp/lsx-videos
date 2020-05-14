@@ -310,6 +310,7 @@
 
 .single-video {
 	#primary {
+		margin-bottom: 4.5rem;
 		#main {
 			article.video {
 				@include media('>=desktop') {
@@ -406,6 +407,28 @@
 							font-size: 20px;
 							color: #4A4A4A;
 							text-align: right;
+						}
+					}
+				}
+			}
+		}
+		.comment-respond {
+			.comment-reply-title {
+				color: #2B3840;
+				font-size: 19px;
+			}
+			.comment-form {
+				.logged-in-as {
+					font-size: 15px;
+					margin-bottom: 15px;
+				}
+				.form-submit {
+					.submit {
+						background-color: #418AD0;
+						box-shadow: 2px 2px 0 0 #27639D;
+						color: #fff;
+						&:hover {
+							background-color: #27639D;
 						}
 					}
 				}
