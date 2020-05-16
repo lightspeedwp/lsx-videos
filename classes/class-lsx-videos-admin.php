@@ -122,7 +122,7 @@ class LSX_Videos_Admin {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'videos-category',
+				'slug' => 'video-category',
 			),
 		);
 
