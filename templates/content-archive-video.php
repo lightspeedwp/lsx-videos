@@ -38,12 +38,14 @@
 		$video_url = $youtube_url;
 	}
 
-	if ( 1 !== $views ) {
-		/* Translators: 1: video views */
-		$meta = '<span class="meta-views">' . sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views ) . '</span>';
-	} else {
-		$meta = '<span class="meta-views">' . esc_html__( '1 view', 'lsx-videos' ) . '</span>';
-	}
+	$meta = '';
+
+	// if ( 1 !== $views ) {
+	// 	/* Translators: 1: video views */
+	// 	$meta = '<span class="meta-views">' . sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views ) . '</span>';
+	// } else {
+	// 	$meta = '<span class="meta-views">' . esc_html__( '1 view', 'lsx-videos' ) . '</span>';
+	// }
 
 	if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
 		$length = $video_meta['length_formatted'];
@@ -51,7 +53,7 @@
 	}
 
 	/* Translators: 1: time ago (video published date) */
-	$meta .= ' | <span class="meta-date">' . sprintf( get_the_time( 'd M Y' ) ) . '</span>';
+	$meta .= '<span class="meta-date">' . sprintf( get_the_time( 'd M Y' ) ) . '</span>';
 ?>
 
 <?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_modal'] ) ) :

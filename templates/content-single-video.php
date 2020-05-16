@@ -27,12 +27,12 @@
 			/* Translators: 1: days */
 			$meta_date = '<span class="meta-date">' . get_the_time( 'd M Y' ) . '</span>';
 
-		if ( 1 !== $views ) {
-			/* Translators: 1: video views */
-			$meta_views = ' | <span class="meta-views">' . sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views ) . '</span>';
-		} else {
-			$meta_views = ' | <span class="meta-views">' . esc_html__( '1 view', 'lsx-videos' ) . '</span>';
-		}
+		// if ( 1 !== $views ) {
+		// 	/* Translators: 1: video views */
+		// 	$meta_views = ' | <span class="meta-views">' . sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views ) . '</span>';
+		// } else {
+		// 	$meta_views = ' | <span class="meta-views">' . esc_html__( '1 view', 'lsx-videos' ) . '</span>';
+		// }
 
 		?>
 
@@ -56,7 +56,7 @@
 			<div class="lsx-videos-title"><?php the_title(); ?></div>
 			<div class="lsx-videos-meta">
 				<?php echo wp_kses_post( $meta_date ); ?>
-				<?php echo wp_kses_post( $meta_views ); ?>
+				<?php //echo wp_kses_post( $meta_views ); ?>
 			</div>
 		</div>
 
