@@ -55,7 +55,7 @@ class LSX_Videos {
 	 * Enable custom image sizes.
 	 */
 	public function custom_image_sizes( $post_types ) {
-		add_image_size( 'lsx-videos-cover', 765, 420, true ); // 16:9
+		add_image_size( 'lsx-videos-cover', 750, 350, true ); // 16:9
 	}
 
 	/**

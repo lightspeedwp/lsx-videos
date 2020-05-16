@@ -540,9 +540,37 @@
 			}
 		}
 	}
+	.lsx-videos-container {
+		.lsx-videos-row {
+			.lsx-videos-column {
+				.lsx-videos-slot {
+					a {
+						.lsx-videos-avatar {
+							img {
+								max-height: 170px;
+								object-fit: cover;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	#primary {
 		margin-bottom: 4.25rem;
 		#main {
+			.facetwp-template {
+				.lsx-videos-slot {
+					a {
+						.lsx-videos-avatar {
+							img {
+								max-height: 125px;
+								object-fit: cover;
+							}
+						}
+					}
+				}
+			}
 			#facetwp-bottom {
 				.row {
 					margin-top: 1.4rem;
