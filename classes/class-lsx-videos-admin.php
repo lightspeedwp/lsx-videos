@@ -381,6 +381,8 @@ class LSX_Videos_Admin {
 		if ( 'videos' === $tab ) {
 			$this->disable_excerpt();
 			$this->disable_video_modal();
+			$this->disable_single_video_related();
+			$this->disable_single_video_post_nav();
 			$this->placeholder_field();
 		}
 	}
@@ -414,6 +416,40 @@ class LSX_Videos_Admin {
 				<td>
 					<input type="checkbox" {{#if videos_disable_modal}} checked="checked" {{/if}} name="videos_disable_modal">
 					<small><?php esc_html_e( 'Disable Modal.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable single video related setting.
+	 */
+	public function disable_single_video_related() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="single_video_disable_related"><?php esc_html_e( 'Disable Single Video Related', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if single_video_disable_related}} checked="checked" {{/if}} name="single_video_disable_related">
+					<small><?php esc_html_e( 'Disable Single Video Related.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable single video next and prev post options.
+	 */
+	public function disable_single_video_post_nav() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="single_video_disable_post_nav"><?php esc_html_e( 'Disable Single Video Post Nav', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if single_video_disable_post_nav}} checked="checked" {{/if}} name="single_video_disable_post_nav">
+					<small><?php esc_html_e( 'Disable Single Video Post Nav.', 'lsx-videos' ); ?></small>
 				</td>
 			</tr>
 		<?php
