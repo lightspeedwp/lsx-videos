@@ -38,5 +38,9 @@ If you're a developer who's spotted a bug issue and have a fix, or simply have f
 
 == Screenshots ==
 
-1. Metabox Options
-2. Front-End View
+1. Videos archive page with filters
+2. Videos archive page without filters
+3. Videos category page
+4. Video single page with related videos, navigation and comments
+5. Video single view page
+6. Video open modal 
