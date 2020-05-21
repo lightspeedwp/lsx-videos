@@ -21,6 +21,7 @@
 - Fixed the archive LSX Banners.
 - Fixed the grids distribution and spacing.
 - Fixed the banner title to show the videos category title.
+- Fixed code to match WordPress coding standards.
 
 
 ## [[1.1.2]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/1.1.2) - 2020-03-30

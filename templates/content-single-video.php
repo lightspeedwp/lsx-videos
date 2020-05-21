@@ -40,16 +40,16 @@
 
 			<?php if ( '' !== $youtube_iframe ) { ?>
 				<div class="media-youtube">
-					<?php echo $youtube_iframe; ?>
+					<?php echo $youtube_iframe; //phpcs:ignore ?>
 				</div>
 			<?php } elseif ( '' !== $giphy_iframe ) { ?>
 				<div class="media-gif">
-					<?php echo $giphy_iframe; ?>
+					<?php echo $giphy_iframe; //phpcs:ignore ?>
 				</div>
 			<?php } elseif ( '' !== $video_url ) { ?>
 				<div class="media-uploaded">
 					<video width="100%" height="auto" controls>
-						<source src="<?php echo $video_url; ?>" type="video/mp4">
+						<source src="<?php echo $video_url; //phpcs:ignore ?>" type="video/mp4">
 					</video>
 				</div>
 			<?php } ?>

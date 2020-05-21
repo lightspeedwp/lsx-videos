@@ -400,12 +400,12 @@ class LSX_Videos {
 	/**
 	 * Returns the related output markup.
 	 */
-	public function output_most_recent_related( $post_ID ) {
+	public function output_most_recent_related( $post_id ) {
 		$output = '';
-		$post_terms    = get_the_terms( $post_ID, 'video-category' );
+		$post_terms    = get_the_terms( $post_id, 'video-category' );
 		$post_category = array_pop( $post_terms );
 		$args = array(
-			'post__not_in'   => array( $post_ID ),
+			'post__not_in'   => array( $post_id ),
 			'post_type'      => 'video',
 			'posts_per_page' => 3,
 			'orderby'        => 'date',

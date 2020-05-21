@@ -40,9 +40,9 @@ function lsx_videos_categories( $args ) {
 /**
  * Wraps the output class in a function to be called in templates.
  */
-function lsx_videos_most_recent_related( $post_ID ) {
+function lsx_videos_most_recent_related( $post_id ) {
 	$lsx_videos = new LSX_Videos;
-	echo wp_kses_post( $lsx_videos->output_most_recent_related( $post_ID ) );
+	echo wp_kses_post( $lsx_videos->output_most_recent_related( $post_id ) );
 }
 
 /**
