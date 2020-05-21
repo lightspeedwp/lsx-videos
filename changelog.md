@@ -1,6 +1,6 @@
 # Change log
 
-## [[1.2.0]] - In Development
+## [[1.2.0]] - 2020-05-21
 
 ### Added
 - Added the excerpt on the videos shortcode.

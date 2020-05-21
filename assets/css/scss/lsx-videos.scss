@@ -16,8 +16,8 @@
 		}
 
 		.modal-content {
-			border-width: 2px;
-			background-color: #ffffff;
+			border-width: 4px;
+			background: #ffffff;
 			border-color: #418AD0;
 			.close {
 				background-color: #418AD0;
@@ -362,6 +362,33 @@
 									content: '\f073';
 									font-family: fontawesome;
 									margin-right: 5px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.lsx-videos-most-recent-related {
+			.row {
+				.lsx-title {
+					margin-top: 4.25rem;
+				}
+				.lsx-related-videos-row {
+					@include media('<=tablet') {
+						padding: 15px;
+						.lsx-related-videos-column {
+							margin-bottom: 25px;
+						}
+					}
+					.lsx-related-videos-column {
+						.lsx-videos-slot {
+							a {
+								.lsx-videos-avatar {
+									img {
+										max-height: 170px;
+										object-fit: cover;
+									}
 								}
 							}
 						}

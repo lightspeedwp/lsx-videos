@@ -1,7 +1,7 @@
 /** LSX Videos styles. @package lsx-videos */
 @media (min-width: 768px) { #lsx-videos-modal .modal-dialog { max-width: 587px; width: 100%; height: 679px; } }
 
-#lsx-videos-modal .modal-dialog .modal-content { border-width: 2px; background-color: #ffffff; border-color: #418AD0; }
+#lsx-videos-modal .modal-dialog .modal-content { border-width: 4px; background: #ffffff; border-color: #418AD0; }
 
 #lsx-videos-modal .modal-dialog .modal-content .close { background-color: #418AD0; border-color: #418AD0; box-shadow: 0 0 4px 0 #418AD0; position: absolute; left: -14px; top: -17px; font-size: 28px; }
 
@@ -124,6 +124,13 @@
 .single-video #primary #main article.video .entry-content .lsx-videos-slot .lsx-videos-meta .meta-views:before { content: '\f06e'; font-family: fontawesome; margin-left: 5px; }
 
 .single-video #primary #main article.video .entry-content .lsx-videos-slot .lsx-videos-meta .meta-date:before { content: '\f073'; font-family: fontawesome; margin-left: 5px; }
+
+.single-video #primary .lsx-videos-most-recent-related .row .lsx-title { margin-top: 4.25rem; }
+
+@media (max-width: 992px) { .single-video #primary .lsx-videos-most-recent-related .row .lsx-related-videos-row { padding: 15px; }
+  .single-video #primary .lsx-videos-most-recent-related .row .lsx-related-videos-row .lsx-related-videos-column { margin-bottom: 25px; } }
+
+.single-video #primary .lsx-videos-most-recent-related .row .lsx-related-videos-row .lsx-related-videos-column .lsx-videos-slot a .lsx-videos-avatar img { max-height: 170px; -o-object-fit: cover; object-fit: cover; }
 
 .single-video #primary .navigation.post-navigation .nav-links .previous a { width: 300px; }
 

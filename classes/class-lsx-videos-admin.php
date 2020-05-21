@@ -46,8 +46,8 @@ class LSX_Videos_Admin {
 
 		add_filter( 'cf_custom_fields_pre_save_meta_key_to_post_type', array( $this, 'save_video_to_cmb' ), 10, 5 );
 
-		add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
-		add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
+		// add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
+		// add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 	}
 
 	/**
