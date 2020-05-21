@@ -1,12 +1,27 @@
 # Change log
 
-## [[1.1.3]] - In Development
+## [[1.2.0]] - 2020-05-21
 
 ### Added
 - Added the excerpt on the videos shortcode.
+- Added layout for single video pages.
+- Added search and filter compatibility for the archive page.
+- Added the option to disable modals on archive and category pages.
+- Added the option to disable related videos on single pages.
+- Added the option to disable single video posts navs on single pages.
+- Added the tags taxonomy.
+- Added video length meta tag for uploaded videos.
+
+### Changed
+- General styling for the plugin has been improved.
 
 ### Fixed
 - Fixed the issue where sometimes the videos.js was not loaded on front.
+- Fixed the search options for Video Archives.
+- Fixed the archive LSX Banners.
+- Fixed the grids distribution and spacing.
+- Fixed the banner title to show the videos category title.
+- Fixed code to match WordPress coding standards.
 
 
 ## [[1.1.2]](https://github.com/lightspeeddevelopment/lsx-videos/releases/tag/1.1.2) - 2020-03-30

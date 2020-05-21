@@ -3,7 +3,7 @@
  * Plugin Name:	LSX Videos
  * Plugin URI:	https://lsx.lsdev.biz/extensions/videos/
  * Description:	The LSX Videos extension adds videos for LSX Theme.
- * Version:     1.1.2
+ * Version:     1.2.0
  * Author:      LightSpeed
  * Author URI:  https://www.lsdev.biz/
  * License:     GPL3
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'LSX_VIDEOS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'LSX_VIDEOS_CORE', __FILE__ );
 define( 'LSX_VIDEOS_URL', plugin_dir_url( __FILE__ ) );
-define( 'LSX_VIDEOS_VER', '1.1.2' );
+define( 'LSX_VIDEOS_VER', '1.2.0' );
 
 if ( ! defined( 'LSX_VIDEOS_ARCHIVE_SLUG' ) ) {
 	define( 'LSX_VIDEOS_ARCHIVE_SLUG', 'videos' );

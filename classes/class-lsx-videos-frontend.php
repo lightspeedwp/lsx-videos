@@ -33,6 +33,11 @@ class LSX_Videos_Frontend {
 		add_filter( 'template_include', array( $this, 'archive_template_include' ), 99 );
 		add_filter( 'template_include', array( $this, 'single_template_include' ), 99 );
 
+		// LSX.
+		add_filter( 'lsx_global_header_disable', array( $this, 'lsx_videos_disable_banner' ) );
+		// LSX Banners - Banner.
+		add_filter( 'lsx_banner_disable', array( $this, 'lsx_videos_disable_lsx_banner' ) );
+
 		add_filter( 'lsx_banner_title', array( $this, 'lsx_banner_archive_title' ), 15 );
 
 		add_filter( 'excerpt_more_p', array( $this, 'change_excerpt_more' ) );
@@ -40,6 +45,9 @@ class LSX_Videos_Frontend {
 		add_filter( 'excerpt_strip_tags', array( $this, 'change_excerpt_strip_tags' ) );
 
 		add_action( 'lsx_content_top', array( $this, 'categories_tabs' ), 15 );
+
+		add_filter( 'lsx_global_header_title', array( $this, 'lsx_videos_archives_header_title' ), 200, 1 );
+		add_filter( 'lsx_banner_container_top', array( $this, 'lsx_videos_archives_header_title' ) );
 	}
 
 	/**
@@ -74,10 +82,10 @@ class LSX_Videos_Frontend {
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-body"></div>
 					<div class="modal-header">
 						<h4 class="modal-title"></h4>
 					</div>
-					<div class="modal-body"></div>
 				</div>
 			</div>
 		</div>
@@ -147,6 +155,19 @@ class LSX_Videos_Frontend {
 			}
 		}
 		return $template;
+	}
+
+	/**
+	 * Disable LSX Banners in some Video pages.
+	 *
+	 * @package    lsx
+	 * @subpackage sensei
+	 */
+	public function lsx_videos_disable_lsx_banner( $disabled ) {
+		if ( is_singular( 'video' ) ) {
+			$disabled = true;
+		}
+		return $disabled;
 	}
 
 	/**
@@ -237,7 +258,7 @@ class LSX_Videos_Frontend {
 	 * Display categories tabs.
 	 */
 	public function categories_tabs() {
-		if ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) :
+		if ( is_post_type_archive( 'video' ) ) :
 			$args = array(
 				'taxonomy'   => 'video-category',
 				'hide_empty' => false,
@@ -276,6 +297,18 @@ class LSX_Videos_Frontend {
 				<?php
 			endif;
 		endif;
+	}
+
+	/**
+	 * Titles For video archive pages
+	 *
+	 */
+	public function lsx_videos_archives_header_title( $title ) {
+		if ( is_archive() && is_post_type_archive( 'video' ) ) {
+
+			$title = ' All Videos ';
+		}
+		return $title;
 	}
 
 }

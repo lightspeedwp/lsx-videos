@@ -28,7 +28,7 @@
 			@include customizer-videos-link-colour($small, $hover);
 		}
 
-		.lsx-videos-meta { color: $small; }
+		.lsx-videos-meta { color: $color; }
 
 		.lsx-videos-title > a:not(.btn) {
 			@include customizer-videos-link-colour($color, $hover);

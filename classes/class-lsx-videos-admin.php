@@ -29,6 +29,7 @@ class LSX_Videos_Admin {
 
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
+		add_action( 'init', array( $this, 'tag_taxonomy_setup' ) );
 		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
@@ -45,8 +46,8 @@ class LSX_Videos_Admin {
 
 		add_filter( 'cf_custom_fields_pre_save_meta_key_to_post_type', array( $this, 'save_video_to_cmb' ), 10, 5 );
 
-		add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
-		add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
+		// add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
+		// add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 	}
 
 	/**
@@ -89,6 +90,7 @@ class LSX_Videos_Admin {
 				'editor',
 				'thumbnail',
 				'excerpt',
+				'comments',
 			),
 		);
 
@@ -120,11 +122,43 @@ class LSX_Videos_Admin {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => array(
-				'slug' => 'videos-category',
+				'slug' => 'video-category',
 			),
 		);
 
 		register_taxonomy( 'video-category', array( 'video' ), $args );
+	}
+
+	/**
+	 * Register the Video Tags taxonomy.
+	 */
+	public function tag_taxonomy_setup() {
+		$labels = array(
+			'name'              => esc_html_x( 'Video Tags', 'taxonomy general name', 'lsx-videos' ),
+			'singular_name'     => esc_html_x( 'Tag', 'taxonomy singular name', 'lsx-videos' ),
+			'search_items'      => esc_html__( 'Search Tags', 'lsx-videos' ),
+			'all_items'         => esc_html__( 'All Tags', 'lsx-videos' ),
+			'parent_item'       => esc_html__( 'Parent Tag', 'lsx-videos' ),
+			'parent_item_colon' => esc_html__( 'Parent Tag:', 'lsx-videos' ),
+			'edit_item'         => esc_html__( 'Edit Tag', 'lsx-videos' ),
+			'update_item'       => esc_html__( 'Update Tag', 'lsx-videos' ),
+			'add_new_item'      => esc_html__( 'Add New Tag', 'lsx-videos' ),
+			'new_item_name'     => esc_html__( 'New Tag Name', 'lsx-videos' ),
+			'menu_name'         => esc_html__( 'Tags', 'lsx-videos' ),
+		);
+
+		$args = array(
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array(
+				'slug' => 'videos-tag',
+			),
+		);
+
+		register_taxonomy( 'video-tag', array( 'video' ), $args );
 	}
 
 	/**
@@ -346,6 +380,9 @@ class LSX_Videos_Admin {
 	public function display_settings( $tab = 'display' ) {
 		if ( 'videos' === $tab ) {
 			$this->disable_excerpt();
+			$this->disable_video_modal();
+			$this->disable_single_video_related();
+			$this->disable_single_video_post_nav();
 			$this->placeholder_field();
 		}
 	}
@@ -362,6 +399,57 @@ class LSX_Videos_Admin {
 				<td>
 					<input type="checkbox" {{#if videos_disable_excerpt}} checked="checked" {{/if}} name="videos_disable_excerpt">
 					<small><?php esc_html_e( 'Disable Excerpt.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable video modal setting.
+	 */
+	public function disable_video_modal() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="videos_disable_modal"><?php esc_html_e( 'Disable Modal', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if videos_disable_modal}} checked="checked" {{/if}} name="videos_disable_modal">
+					<small><?php esc_html_e( 'Disable Modal.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable single video related setting.
+	 */
+	public function disable_single_video_related() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="single_video_disable_related"><?php esc_html_e( 'Disable Single Video Related', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if single_video_disable_related}} checked="checked" {{/if}} name="single_video_disable_related">
+					<small><?php esc_html_e( 'Disable Single Video Related.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
+	 * Disable single video next and prev post options.
+	 */
+	public function disable_single_video_post_nav() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="single_video_disable_post_nav"><?php esc_html_e( 'Disable Single Video Post Nav', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if single_video_disable_post_nav}} checked="checked" {{/if}} name="single_video_disable_post_nav">
+					<small><?php esc_html_e( 'Disable Single Video Post Nav.', 'lsx-videos' ); ?></small>
 				</td>
 			</tr>
 		<?php

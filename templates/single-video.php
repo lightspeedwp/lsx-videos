@@ -5,7 +5,11 @@
  * @package lsx
  */
 
-get_header(); ?>
+get_header();
+
+global $lsx_videos_frontend
+
+?>
 
 <?php lsx_content_wrap_before(); ?>
 
@@ -21,13 +25,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-					if ( is_singular( 'post' ) ) {
-						get_template_part( 'partials/content', 'post' );
-					} else {
-						get_template_part( 'partials/content', 'custom' );
-					}
-				?>
+				<?php include LSX_VIDEOS_PATH . '/templates/content-single-video.php'; ?>
 
 			<?php endwhile; ?>
 
@@ -40,15 +38,23 @@ get_header(); ?>
 	<?php lsx_content_after(); ?>
 
 	<?php
-		if ( is_singular( 'post' ) ) {
-			lsx_post_nav();
-		}
+	if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['single_video_disable_related'] ) ) :
+		lsx_videos_most_recent_related( get_the_ID() );
+	endif;
 	?>
 
 	<?php
-		if ( comments_open() ) {
-			comments_template();
-		}
+	if ( is_singular( 'video' ) ) {
+		if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['single_video_disable_post_nav'] ) ) :
+			lsx_post_nav();
+		endif;
+	}
+	?>
+
+	<?php
+	if ( comments_open() ) {
+		comments_template();
+	}
 	?>
 
 </div><!-- #primary -->
@@ -57,4 +63,5 @@ get_header(); ?>
 
 <?php get_sidebar(); ?>
 
-<?php get_footer();
+<?php
+get_footer();
