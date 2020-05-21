@@ -202,7 +202,7 @@ class LSX_Videos {
 
 				if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
 					$length = $video_meta['length_formatted'];
-					$meta = $length . ' | ' . $meta;
+					$meta   = $length . ' | ' . $meta;
 				}
 
 				/* Translators: 1: time ago (video published date) */
