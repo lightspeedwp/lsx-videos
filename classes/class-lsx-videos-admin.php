@@ -478,6 +478,23 @@ class LSX_Videos_Admin {
 	}
 
 	/**
+	 * Disable excerpt setting.
+	 */
+	public function restrict_archive() {
+		?>
+			<tr class="form-field">
+				<th scope="row">
+					<label for="videos_restrict_archive"><?php esc_html_e( 'Restrict Archive', 'lsx-videos' ); ?></label>
+				</th>
+				<td>
+					<input type="checkbox" {{#if videos_restrict_archive}} checked="checked" {{/if}} name="videos_restrict_archive">
+					<small><?php esc_html_e( 'A user will need to have purchase a membershihp plan to view the archive.', 'lsx-videos' ); ?></small>
+				</td>
+			</tr>
+		<?php
+	}
+
+	/**
 	 * Change the "Insert into Post" button text when media modal is used for feature images.
 	 */
 	public function change_attachment_field_button( $html ) {
