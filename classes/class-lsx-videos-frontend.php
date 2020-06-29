@@ -150,8 +150,27 @@ class LSX_Videos_Frontend {
 	 */
 	public function archive_template_include( $template ) {
 		if ( is_main_query() && ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) ) {
+			global $post;
 			if ( empty( locate_template( array( 'archive-video.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/archive-video.php' ) ) {
-				$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
+				if ( empty( $this->options['display'] ) || empty( $this->options['display']['videos_restrict_archive'] ) ) {
+					$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
+				} else {
+					if ( function_exists( 'wc_memberships_user_can' ) ) {
+						if ( wc_memberships_user_can( get_current_user_id(), 'view', array( 'video' => $post->ID ) ) ) {
+							$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
+						} else {
+							$restrictions   = wc_memberships()->get_restrictions_instance();
+							$restriction_id = $restrictions->get_restricted_content_redirect_page_id();
+							if ( '' !== $restriction_id && false !== $restriction_id ) {
+								wp_safe_redirect( get_permalink( $restriction_id ) );
+							} else {
+								wp_safe_redirect( home_url() );
+							}
+						}
+					} else {
+						wp_safe_redirect( home_url() );
+					}
+				}
 			}
 		}
 		return $template;

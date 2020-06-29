@@ -379,6 +379,7 @@ class LSX_Videos_Admin {
 	 */
 	public function display_settings( $tab = 'display' ) {
 		if ( 'videos' === $tab ) {
+			$this->restrict_archive();
 			$this->disable_excerpt();
 			$this->disable_video_modal();
 			$this->disable_single_video_related();
