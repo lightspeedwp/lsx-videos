@@ -357,18 +357,6 @@ class LSX_Videos_Admin {
 
 				$default = false;
 			}
-
-			if ( ! array_key_exists( 'api', $tabs ) ) {
-				$tabs['api'] = array(
-					'page_title'        => '',
-					'page_description'  => '',
-					'menu_title'        => esc_html__( 'API', 'lsx-videos' ),
-					'template'          => LSX_VIDEOS_PATH . 'includes/settings/api.php',
-					'default'           => $default,
-				);
-
-				$default = false;
-			}
 		}
 
 		return $tabs;
