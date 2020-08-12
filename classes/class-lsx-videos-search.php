@@ -22,6 +22,7 @@ class LSX_Videos_Search {
 	 * @access private
 	 */
 	private function __construct() {
+		$this->options = videos_get_option();
 		add_filter( 'lsx_search_post_types', array( $this, 'enable_post_type' ), 100, 1 );
 		add_filter( 'lsx_search_post_types_plural', array( $this, 'post_type_plural' ), 100, 1 );
 		add_filter( 'lsx_search_categories', array( $this, 'enable_categories' ), 100, 1 );
@@ -96,7 +97,7 @@ class LSX_Videos_Search {
 		if ( is_tax( 'video-category' ) ) {
 			$enabled = false;
 		}
-		if ( isset( $this->options['display'][ $this->video_archive_enable_search ] ) && ( ! empty( $this->options ) ) && 'on' === $this->options['display'][ $this->video_archive_enable_search ] ) {
+		if ( ! empty( videos_get_option( 'video_archive_enable_search' ) ) ) {
 			$enabled = true;
 		}
 		return $enabled;

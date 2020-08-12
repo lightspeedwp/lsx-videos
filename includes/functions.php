@@ -71,3 +71,30 @@ function lsx_videos_categories_shortcode( $atts ) {
 	return $lsx_videos->output_categories( $atts );
 }
 add_shortcode( 'lsx_videos_categories', 'lsx_videos_categories_shortcode' );
+
+/**
+ * Wrapper function around cmb2_get_option
+ * @since  0.1.0
+ * @param  string $key     Options array key
+ * @param  mixed  $default Optional default value
+ * @return mixed           Option value
+ */
+function videos_get_option( $key = '', $default = false ) {
+	$options = array();
+
+	if ( function_exists( 'tour_operator' ) ) {
+		$options = get_option( '_lsx-to_settings', false );
+	} else {
+		$options = get_option( '_lsx_settings', false );
+
+		if ( false === $options ) {
+			$options = get_option( '_lsx_lsx-settings', false );
+		}
+	}
+	// If there are new CMB2 options available, then use those.
+	$new_options = get_option( 'lsx_videos_options', false );
+	if ( false !== $new_options ) {
+		$options = $new_options;
+	}
+	return $options;
+}

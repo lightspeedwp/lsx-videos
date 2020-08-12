@@ -13,15 +13,7 @@ class LSX_Videos_Frontend {
 	 * Construct method.
 	 */
 	public function __construct() {
-		if ( function_exists( 'tour_operator' ) ) {
-			$this->options = get_option( '_lsx-to_settings', false );
-		} else {
-			$this->options = get_option( '_lsx_settings', false );
-
-			if ( false === $this->options ) {
-				$this->options = get_option( '_lsx_lsx-settings', false );
-			}
-		}
+		$this->options = videos_get_option();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_action( 'wp_footer', array( $this, 'add_video_modal' ) );
@@ -48,6 +40,21 @@ class LSX_Videos_Frontend {
 
 		add_filter( 'lsx_global_header_title', array( $this, 'lsx_videos_archives_header_title' ), 200, 1 );
 		add_filter( 'lsx_banner_container_top', array( $this, 'lsx_videos_archives_header_title' ) );
+	}
+
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return    object lsx_team\classes    A single instance of this class.
+	 */
+	public static function get_instance() {
+		// If the single instance hasn't been set, set it now.
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
 	}
 
 	/**
@@ -152,7 +159,7 @@ class LSX_Videos_Frontend {
 		if ( is_main_query() && ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) ) {
 			global $post;
 			if ( empty( locate_template( array( 'archive-video.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/archive-video.php' ) ) {
-				if ( empty( $this->options['display'] ) || empty( $this->options['display']['videos_restrict_archive'] ) ) {
+				if ( empty( videos_get_option( 'videos_restrict_archive' ) ) ) {
 					$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
 				} else {
 					if ( function_exists( 'wc_memberships_user_can' ) ) {

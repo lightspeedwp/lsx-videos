@@ -56,7 +56,7 @@
 	$meta .= '<span class="meta-date">' . sprintf( get_the_time( 'd M Y' ) ) . '</span>';
 ?>
 
-<?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_modal'] ) ) :
+<?php if ( empty( videos_get_option( 'videos_disable_modal' ) ) ) :
 	$video_link = '#lsx-videos-modal';
 	else :
 		$video_link = get_permalink( get_the_ID() );
