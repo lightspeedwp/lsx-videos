@@ -13,7 +13,7 @@ class LSX_Videos_Frontend {
 	 * Construct method.
 	 */
 	public function __construct() {
-		$this->options = videos_get_option();
+		$this->options = videos_get_options();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'assets' ), 5 );
 		add_action( 'wp_footer', array( $this, 'add_video_modal' ) );
@@ -158,8 +158,10 @@ class LSX_Videos_Frontend {
 	public function archive_template_include( $template ) {
 		if ( is_main_query() && ( is_post_type_archive( 'video' ) || is_tax( 'video-category' ) ) ) {
 			global $post;
+
 			if ( empty( locate_template( array( 'archive-video.php' ) ) ) && file_exists( LSX_VIDEOS_PATH . 'templates/archive-video.php' ) ) {
-				if ( empty( videos_get_option( 'videos_restrict_archive' ) ) ) {
+
+				if ( empty( $this->options['display']['videos_restrict_archive'] ) ) {
 					$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
 				} else {
 					if ( function_exists( 'wc_memberships_user_can' ) ) {
@@ -231,6 +233,7 @@ class LSX_Videos_Frontend {
 		global $post;
 
 		if ( 'video' === $post->post_type ) {
+			$video_url = '';
 			$youtube_url = get_post_meta( $post->ID, 'lsx_video_youtube', true );
 			$video_id = get_post_meta( $post->ID, 'lsx_video_video', true );
 

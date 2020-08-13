@@ -19,14 +19,7 @@ class LSX_Videos {
 	 * Construct method.
 	 */
 	public function __construct() {
-		if ( function_exists( 'tour_operator' ) ) {
-			$this->options = get_option( '_lsx-to_settings', false );
-		} else {
-			$this->options = get_option( '_lsx_settings', false );
-			if ( false === $this->options ) {
-				$this->options = get_option( '_lsx_lsx-settings', false );
-			}
-		}
+		$this->options = videos_get_options();
 
 		require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php' );
 		$this->search = LSX_Videos_Search::get_instance();
@@ -171,7 +164,7 @@ class LSX_Videos {
 				}
 
 				if ( empty( $image ) ) {
-					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					} else {
 						$image = '';
@@ -338,7 +331,7 @@ class LSX_Videos {
 				}
 
 				if ( empty( $image ) ) {
-					if ( ! empty( $this->options['display'] ) && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					}
 				}
@@ -444,7 +437,7 @@ class LSX_Videos {
 					$image = '';
 				}
 				if ( empty( $image ) ) {
-					if ( ! empty( $this->options['display'] ) && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					}
 				}
@@ -567,7 +560,7 @@ class LSX_Videos {
 				if ( ! empty( $image ) ) {
 					$image = '<img class="img-responsive" src="' . $image[0] . '" alt="' . $term->name . '">';
 				} else {
-					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					} else {
 						$image = '';

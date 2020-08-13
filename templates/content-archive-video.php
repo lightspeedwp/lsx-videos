@@ -80,7 +80,7 @@
 
 		<p class="lsx-videos-meta"><?php echo wp_kses_post( $meta ); ?></p>
 
-		<?php if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['videos_disable_excerpt'] ) ) : ?>
+		<?php if ( empty( videos_get_option( 'videos_disable_excerpt' ) ) ) : ?>
 			<div class="lsx-videos-content"><?php the_excerpt(); ?></div>
 		<?php else : ?>
 			<div class="lsx-videos-content"><a href="<?php echo esc_url( $video_link ); ?>" data-toggle="modal" data-post-id="<?php the_ID(); ?>" data-video="<?php echo esc_url( $video_url ); ?>" data-title="<?php the_title(); ?>" class="moretag"><?php esc_html_e( 'View video', 'lsx-videos' ); ?></a></div>
