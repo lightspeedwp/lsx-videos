@@ -167,7 +167,7 @@ class LSX_Videos_Frontend {
 					$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
 				} else {
 					if ( function_exists( 'wc_memberships_user_can' ) ) {
-						if ( wc_memberships_user_can( get_current_user_id(), 'view', array( 'video' => $post->ID ) ) ) {
+						if ( wc_memberships_user_can( get_current_user_id(), 'view', array( 'video' => $post->ID ) ) ) { // @codingStandardsIgnoreLine
 							$template = LSX_VIDEOS_PATH . 'templates/archive-video.php';
 						} else {
 							$restrictions   = wc_memberships()->get_restrictions_instance();
