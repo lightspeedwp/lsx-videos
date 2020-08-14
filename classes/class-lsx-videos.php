@@ -19,14 +19,7 @@ class LSX_Videos {
 	 * Construct method.
 	 */
 	public function __construct() {
-		if ( function_exists( 'tour_operator' ) ) {
-			$this->options = get_option( '_lsx-to_settings', false );
-		} else {
-			$this->options = get_option( '_lsx_settings', false );
-			if ( false === $this->options ) {
-				$this->options = get_option( '_lsx_lsx-settings', false );
-			}
-		}
+		$this->options = videos_get_options();
 
 		require_once( LSX_VIDEOS_PATH . '/classes/class-lsx-videos-search.php' );
 		$this->search = LSX_Videos_Search::get_instance();
@@ -171,7 +164,7 @@ class LSX_Videos {
 				}
 
 				if ( empty( $image ) ) {
-					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					} else {
 						$image = '';
@@ -338,7 +331,7 @@ class LSX_Videos {
 				}
 
 				if ( empty( $image ) ) {
-					if ( ! empty( $this->options['display'] ) && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					}
 				}
@@ -403,87 +396,89 @@ class LSX_Videos {
 	public function output_most_recent_related( $post_id ) {
 		$output = '';
 		$post_terms    = get_the_terms( $post_id, 'video-category' );
-		$post_category = array_pop( $post_terms );
-		$args = array(
-			'post__not_in'   => array( $post_id ),
-			'post_type'      => 'video',
-			'posts_per_page' => 3,
-			'orderby'        => 'date',
-			'order'          => 'ASC',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'video-category',
-					'field'    => 'slug',
-					'terms'    => $post_category->name,
+		if ( ! empty( $post_terms ) ) {
+			$post_category = array_pop( $post_terms );
+			$args = array(
+				'post__not_in'   => array( $post_id ),
+				'post_type'      => 'video',
+				'posts_per_page' => 3,
+				'orderby'        => 'date',
+				'order'          => 'ASC',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'video-category',
+						'field'    => 'slug',
+						'terms'    => $post_category->name,
+					),
 				),
-			),
-		);
-		$videos = new \WP_Query( $args );
-		if ( $videos->have_posts() ) {
-			global $post;
-			$output .= '<div class="lsx-videos-most-recent-related"><div class="row">';
-			$output .= '<h2 class="lsx-title">' . esc_html( 'Related videos', 'lsx-videos' ) . '</h2>';
-			$output .= '<div class="row row-flex lsx-related-videos-row">';
-			while ( $videos->have_posts() ) {
-				$videos->the_post();
-				$youtube_url = get_post_meta( $post->ID, 'lsx_video_youtube', true );
-				$video_id    = get_post_meta( $post->ID, 'lsx_video_video', true );
-				$views       = (int) get_post_meta( $post->ID, '_views', true );
-				$video_meta = get_post_meta( $video_id, '_wp_attachment_metadata', true );
-				if ( ! empty( $youtube_url ) ) {
-					$video_url = $youtube_url;
-				} elseif ( ! empty( $video_id ) ) {
-					$video_url = wp_get_attachment_url( $video_id );
-				}
-				$content = '<a href="' . get_the_permalink() . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
-				if ( ! empty( get_the_post_thumbnail( $post->ID ) ) ) {
-					$image = get_the_post_thumbnail( $post->ID, 'lsx-videos-cover', array(
-						'class' => 'img-responsive',
-					) );
-				} else {
-					$image = '';
-				}
-				if ( empty( $image ) ) {
-					if ( ! empty( $this->options['display'] ) && ! empty( $this->options['display']['videos_placeholder'] ) ) {
-						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
+			);
+			$videos = new \WP_Query( $args );
+			if ( $videos->have_posts() ) {
+				global $post;
+				$output .= '<div class="lsx-videos-most-recent-related"><div class="row">';
+				$output .= '<h2 class="lsx-title">' . esc_html( 'Related videos', 'lsx-videos' ) . '</h2>';
+				$output .= '<div class="row row-flex lsx-related-videos-row">';
+				while ( $videos->have_posts() ) {
+					$videos->the_post();
+					$youtube_url = get_post_meta( $post->ID, 'lsx_video_youtube', true );
+					$video_id    = get_post_meta( $post->ID, 'lsx_video_video', true );
+					$views       = (int) get_post_meta( $post->ID, '_views', true );
+					$video_meta = get_post_meta( $video_id, '_wp_attachment_metadata', true );
+					if ( ! empty( $youtube_url ) ) {
+						$video_url = $youtube_url;
+					} elseif ( ! empty( $video_id ) ) {
+						$video_url = wp_get_attachment_url( $video_id );
 					}
-				}
-				$categories = '';
-				$terms      = get_the_terms( $post->ID, 'video-category' );
-				if ( $terms && ! is_wp_error( $terms ) ) {
-					$categories = array();
-					foreach ( $terms as $term ) {
-						$categories[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
+					$content = '<a href="' . get_the_permalink() . '" class="moretag">' . esc_html__( 'View video', 'lsx-videos' ) . '</a>';
+					if ( ! empty( get_the_post_thumbnail( $post->ID ) ) ) {
+						$image = get_the_post_thumbnail( $post->ID, 'lsx-videos-cover', array(
+							'class' => 'img-responsive',
+						) );
+					} else {
+						$image = '';
 					}
-					$categories = join( ', ', $categories );
+					if ( empty( $image ) ) {
+						if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
+							$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
+						}
+					}
+					$categories = '';
+					$terms      = get_the_terms( $post->ID, 'video-category' );
+					if ( $terms && ! is_wp_error( $terms ) ) {
+						$categories = array();
+						foreach ( $terms as $term ) {
+							$categories[] = '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a>';
+						}
+						$categories = join( ', ', $categories );
+					}
+					$video_categories = '' !== $categories ? ( '<p class="lsx-videos-categories">' . $categories . '</p>' ) : '';
+					if ( 1 !== $views ) {
+						/* Translators: 1: video views */
+						$meta = sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views );
+					} else {
+						$meta = esc_html__( '1 view', 'lsx-videos' );
+					}
+					if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
+						$length = $video_meta['length_formatted'];
+						$meta = $length . ' | ' . $meta;
+					}
+					/* Translators: 1: time ago (video published date) */
+					$meta .= ' | ' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
+					$output .= '
+						<div class="col-xs-12 col-sm-4 col-md-4 lsx-related-videos-column">
+							<article class="lsx-videos-slot">
+								' . ( ! empty( $image ) ? '<a href="' . get_the_permalink() . '"><figure class="lsx-videos-avatar">' . $image . '</figure></a>' : '' ) . '
+								<h5 class="lsx-videos-title"><a href="' . get_the_permalink() . '">' . apply_filters( 'the_title', $post->post_title ) . '</a></h5>
+								' . $video_categories . '
+								<p class="lsx-videos-meta">' . wp_kses_post( $meta ) . '</p>
+								<div class="lsx-videos-content">' . $content . '</div>
+							</article>
+						</div>';
+					wp_reset_postdata();
 				}
-				$video_categories = '' !== $categories ? ( '<p class="lsx-videos-categories">' . $categories . '</p>' ) : '';
-				if ( 1 !== $views ) {
-					/* Translators: 1: video views */
-					$meta = sprintf( esc_html__( '%1$s views', 'lsx-videos' ), $views );
-				} else {
-					$meta = esc_html__( '1 view', 'lsx-videos' );
-				}
-				if ( ! empty( $video_meta ) && ! empty( $video_meta['length_formatted'] ) ) {
-					$length = $video_meta['length_formatted'];
-					$meta = $length . ' | ' . $meta;
-				}
-				/* Translators: 1: time ago (video published date) */
-				$meta .= ' | ' . sprintf( esc_html__( '%1$s ago', 'lsx-videos' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
-				$output .= '
-					<div class="col-xs-12 col-sm-4 col-md-4 lsx-related-videos-column">
-						<article class="lsx-videos-slot">
-							' . ( ! empty( $image ) ? '<a href="' . get_the_permalink() . '"><figure class="lsx-videos-avatar">' . $image . '</figure></a>' : '' ) . '
-							<h5 class="lsx-videos-title"><a href="' . get_the_permalink() . '">' . apply_filters( 'the_title', $post->post_title ) . '</a></h5>
-							' . $video_categories . '
-							<p class="lsx-videos-meta">' . wp_kses_post( $meta ) . '</p>
-							<div class="lsx-videos-content">' . $content . '</div>
-						</article>
-					</div>';
-				wp_reset_postdata();
+				$output .= '</div></div></div>';
+				return $output;
 			}
-			$output .= '</div></div></div>';
-			return $output;
 		}
 	}
 
@@ -567,7 +562,7 @@ class LSX_Videos {
 				if ( ! empty( $image ) ) {
 					$image = '<img class="img-responsive" src="' . $image[0] . '" alt="' . $term->name . '">';
 				} else {
-					if ( $this->options['display'] && ! empty( $this->options['display']['videos_placeholder'] ) ) {
+					if ( ! empty( $this->options['display']['videos_placeholder'] ) ) {
 						$image = '<img class="img-responsive" src="' . $this->options['display']['videos_placeholder'] . '" alt="placeholder">';
 					} else {
 						$image = '';

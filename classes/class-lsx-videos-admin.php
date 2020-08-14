@@ -13,33 +13,18 @@ class LSX_Videos_Admin {
 	 * Construct method.
 	 */
 	public function __construct() {
-		if ( ! class_exists( 'CMB_Meta_Box' ) ) {
-			require_once( LSX_VIDEOS_PATH . '/vendor/Custom-Meta-Boxes/custom-meta-boxes.php' );
-		}
-
-		if ( function_exists( 'tour_operator' ) ) {
-			$this->options = get_option( '_lsx-to_settings', false );
-		} else {
-			$this->options = get_option( '_lsx_settings', false );
-
-			if ( false === $this->options ) {
-				$this->options = get_option( '_lsx_lsx-settings', false );
-			}
-		}
+		$this->load_classes();
 
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_action( 'init', array( $this, 'tag_taxonomy_setup' ) );
-		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'field_setup' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
 		if ( is_admin() ) {
 			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 		}
-
-		add_action( 'init', array( $this, 'create_settings_page' ), 100 );
-		add_filter( 'lsx_framework_settings_tabs', array( $this, 'register_tabs' ), 100, 1 );
 
 		add_filter( 'type_url_form_media', array( $this, 'change_attachment_field_button' ), 20, 1 );
 		add_filter( 'enter_title_here', array( $this, 'change_title_text' ) );
@@ -48,6 +33,17 @@ class LSX_Videos_Admin {
 
 		// add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
 		// add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
+	}
+
+	/**
+	 * Loads the admin subclasses
+	 */
+	private function load_classes() {
+		require_once LSX_VIDEOS_PATH . 'classes/admin/class-settings.php';
+		$this->settings = \lsx\videos\classes\admin\Settings::get_instance();
+
+		require_once LSX_VIDEOS_PATH . 'classes/admin/class-settings-theme.php';
+		$this->settings_theme = \lsx\videos\classes\admin\Settings_Theme::get_instance();
 	}
 
 	/**
@@ -164,113 +160,142 @@ class LSX_Videos_Admin {
 	/**
 	 * Add metabox with custom fields to the Video post type.
 	 */
-	public function field_setup( $meta_boxes ) {
+	public function field_setup() {
 		$prefix = 'lsx_video_';
 
-		$fields = array(
+		$cmb = new_cmb2_box(
 			array(
-				'name' => esc_html__( 'Featured:', 'lsx-videos' ),
-				'id'   => $prefix . 'featured',
-				'type' => 'checkbox',
-			),
-			// * Using post title
-			// array(
-			// 	'name' => esc_html__( 'Video Title:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'title',
-			// 	'type' => 'text',
-			// ),
-			// * Using post description
-			// array(
-			// 	'name' => esc_html__( 'Video Description', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'description',
-			// 	'type' => 'textarea',
-			// 	'rows' => 5,
-			// ),
-			array(
-				'name' => esc_html__( 'Video source:', 'lsx-videos' ),
-				'id'   => $prefix . 'video',
-				'type' => 'file',
-				'desc' => esc_html__( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg).', 'lsx-videos' ),
-			),
-			// * Will save those as hidden meta
-			// array(
-			// 	'name' => esc_html__( 'Video Time:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'time',
-			// 	'type' => 'text',
-			// ),
-			// array(
-			// 	'name' => esc_html__( 'Video Total Views:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'views',
-			// 	'type' => 'text',
-			// ),
-			array(
-				'name' => esc_html__( 'Youtube source:', 'lsx-videos' ),
-				'id'   => $prefix . 'youtube',
-				'type' => 'text_url',
-				'desc' => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
-			),
-			array(
-				'name' => esc_html__( 'Giphy source:', 'lsx-videos' ),
-				'id'   => $prefix . 'giphy',
-				'type' => 'text',
-				'desc' => esc_html__( 'The HTML will be stripped leaving only the URL.', 'lsx-videos' ),
-			),
+				'id'           => $prefix . '_details',
+				'title'        => esc_html__( 'Video Details', 'lsx-videos' ),
+				'object_types' => 'video',
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
 		);
 
-		$meta_boxes[] = array(
-			'title'  => esc_html__( 'Video Details', 'lsx-videos' ),
-			'pages'  => 'video',
-			'fields' => $fields,
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Featured:', 'lsx-videos' ),
+				'id'           => $prefix . 'featured',
+				'type'         => 'checkbox',
+				'value'        => 1,
+				'default'      => 0,
+				'show_in_rest' => true,
+			)
 		);
 
-		$fields = array(
+		$cmb->add_field(
 			array(
-				'name' => esc_html__( 'First Name:', 'lsx-videos' ),
-				'id'   => $prefix . 'first_name',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Last Name:', 'lsx-videos' ),
-				'id'   => $prefix . 'last_name',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Email Address:', 'lsx-videos' ),
-				'id'   => $prefix . 'email',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Phone Number:', 'lsx-videos' ),
-				'id'   => $prefix . 'phone',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Country of Residence', 'lsx-videos' ),
-				'id'   => $prefix . 'country',
-				'type' => 'text',
-			),
+				'name'    => esc_html__( 'Video source:', 'lsx-videos' ),
+				'desc'    => esc_html__( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg).', 'lsx-videos' ),
+				'id'      => $prefix . 'video',
+				'type'    => 'file',
+				'options' => array(
+					'url' => false,
+				),
+				'text'    => array(
+					'add_upload_file_text' => esc_html__( 'Add Video', 'lsx-videos' ),
+				),
+				'query_args' => array(
+					'type' => array(
+						'video/mp4',
+						'video/webm',
+						'video/ogg',
+					),
+				),
+				'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
+			)
 		);
 
-		$meta_boxes[] = array(
-			'title'  => esc_html__( 'Video Uploader Details', 'lsx-videos' ),
-			'pages'  => 'video',
-			'fields' => $fields,
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Youtube source:', 'lsx-videos' ),
+				'id'           => $prefix . 'youtube',
+				'type'         => 'text',
+				'show_in_rest' => true,
+				'desc'         => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
+			)
 		);
 
-		return $meta_boxes;
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Giphy source:', 'lsx-videos' ),
+				'id'           => $prefix . 'giphy',
+				'type'         => 'text',
+				'show_in_rest' => true,
+				'desc'         => esc_html__( 'The HTML will be stripped leaving only the URL.', 'lsx-videos' ),
+			)
+		);
+
+		$cmb2 = new_cmb2_box(
+			array(
+				'id'           => $prefix . '_uploader_details',
+				'title'        => esc_html__( 'Video Uploader Details', 'lsx-videos' ),
+				'object_types' => 'video',
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'First Name:', 'lsx-videos' ),
+				'id'           => $prefix . 'first_name',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Last Name:', 'lsx-videos' ),
+				'id'           => $prefix . 'last_name',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Email Address:', 'lsx-videos' ),
+				'id'           => $prefix . 'email',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Phone Number:', 'lsx-videos' ),
+				'id'           => $prefix . 'phone',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Country of Residence', 'lsx-videos' ),
+				'id'           => $prefix . 'country',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
 	}
 
 	/**
 	 * Enqueue JS and CSS.
 	 */
 	public function assets( $hook ) {
-		//wp_enqueue_media();
+
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
 
-		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), null, true );
-		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), null );
+		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), LSX_VIDEOS_VER, true );
+		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), LSX_VIDEOS_VER );
 	}
 
 	/**
@@ -294,193 +319,6 @@ class LSX_Videos_Admin {
 		';
 
 		return $css;
-	}
-
-	/**
-	 * Returns the array of settings to the UIX Class.
-	 */
-	public function create_settings_page() {
-		if ( is_admin() ) {
-			if ( ! class_exists( '\lsx\ui\uix' ) && ! function_exists( 'tour_operator' ) ) {
-				include_once LSX_VIDEOS_PATH . 'vendor/uix/uix.php';
-				$pages = $this->settings_page_array();
-				$uix = \lsx\ui\uix::get_instance( 'lsx' );
-				$uix->register_pages( $pages );
-			}
-
-			if ( function_exists( 'tour_operator' ) ) {
-				add_action( 'lsx_to_framework_display_tab_content', array( $this, 'display_settings' ), 11 );
-			} else {
-				add_action( 'lsx_framework_display_tab_content', array( $this, 'display_settings' ), 11 );
-			}
-		}
-	}
-
-	/**
-	 * Returns the array of settings to the UIX Class.
-	 */
-	public function settings_page_array() {
-		$tabs = apply_filters( 'lsx_framework_settings_tabs', array() );
-
-		return array(
-			'settings'  => array(
-				'page_title'  => esc_html__( 'Theme Options', 'lsx-videos' ),
-				'menu_title'  => esc_html__( 'Theme Options', 'lsx-videos' ),
-				'capability'  => 'manage_options',
-				'icon'        => 'dashicons-book-alt',
-				'parent'      => 'themes.php',
-				'save_button' => esc_html__( 'Save Changes', 'lsx-videos' ),
-				'tabs'        => $tabs,
-			),
-		);
-	}
-
-	/**
-	 * Register tabs.
-	 */
-	public function register_tabs( $tabs ) {
-		$default = true;
-
-		if ( false !== $tabs && is_array( $tabs ) && count( $tabs ) > 0 ) {
-			$default = false;
-		}
-
-		if ( ! function_exists( 'tour_operator' ) ) {
-			if ( ! array_key_exists( 'display', $tabs ) ) {
-				$tabs['display'] = array(
-					'page_title'        => '',
-					'page_description'  => '',
-					'menu_title'        => esc_html__( 'Display', 'lsx-videos' ),
-					'template'          => LSX_VIDEOS_PATH . 'includes/settings/display.php',
-					'default'           => $default,
-				);
-
-				$default = false;
-			}
-		}
-
-		return $tabs;
-	}
-
-	/**
-	 * Outputs the display tabs settings.
-	 */
-	public function display_settings( $tab = 'display' ) {
-		if ( 'videos' === $tab ) {
-			$this->restrict_archive();
-			$this->disable_excerpt();
-			$this->disable_video_modal();
-			$this->disable_single_video_related();
-			$this->disable_single_video_post_nav();
-			$this->placeholder_field();
-		}
-	}
-
-	/**
-	 * Disable excerpt setting.
-	 */
-	public function disable_excerpt() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="videos_disable_excerpt"><?php esc_html_e( 'Disable Excerpt', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input type="checkbox" {{#if videos_disable_excerpt}} checked="checked" {{/if}} name="videos_disable_excerpt">
-					<small><?php esc_html_e( 'Disable Excerpt.', 'lsx-videos' ); ?></small>
-				</td>
-			</tr>
-		<?php
-	}
-
-	/**
-	 * Disable video modal setting.
-	 */
-	public function disable_video_modal() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="videos_disable_modal"><?php esc_html_e( 'Disable Modal', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input type="checkbox" {{#if videos_disable_modal}} checked="checked" {{/if}} name="videos_disable_modal">
-					<small><?php esc_html_e( 'Disable Modal.', 'lsx-videos' ); ?></small>
-				</td>
-			</tr>
-		<?php
-	}
-
-	/**
-	 * Disable single video related setting.
-	 */
-	public function disable_single_video_related() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="single_video_disable_related"><?php esc_html_e( 'Disable Single Video Related', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input type="checkbox" {{#if single_video_disable_related}} checked="checked" {{/if}} name="single_video_disable_related">
-					<small><?php esc_html_e( 'Disable Single Video Related.', 'lsx-videos' ); ?></small>
-				</td>
-			</tr>
-		<?php
-	}
-
-	/**
-	 * Disable single video next and prev post options.
-	 */
-	public function disable_single_video_post_nav() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="single_video_disable_post_nav"><?php esc_html_e( 'Disable Single Video Post Nav', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input type="checkbox" {{#if single_video_disable_post_nav}} checked="checked" {{/if}} name="single_video_disable_post_nav">
-					<small><?php esc_html_e( 'Disable Single Video Post Nav.', 'lsx-videos' ); ?></small>
-				</td>
-			</tr>
-		<?php
-	}
-
-	/**
-	 * Outputs the flag position field
-	 */
-	public function placeholder_field() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="banner"><?php esc_html_e( 'Placeholder', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input class="input_image_id" type="hidden" {{#if videos_placeholder_id}} value="{{videos_placeholder_id}}" {{/if}} name="videos_placeholder_id">
-					<input class="input_image" type="hidden" {{#if videos_placeholder}} value="{{videos_placeholder}}" {{/if}} name="videos_placeholder">
-					<div class="thumbnail-preview">
-						{{#if videos_placeholder}}<img src="{{videos_placeholder}}" width="150">{{/if}}
-					</div>
-					<a {{#if videos_placeholder}}style="display:none;"{{/if}} class="button-secondary lsx-thumbnail-image-add" data-slug="videos_placeholder"><?php esc_html_e( 'Choose Image', 'lsx-videos' ); ?></a>
-					<a {{#unless videos_placeholder}}style="display:none;"{{/unless}} class="button-secondary lsx-thumbnail-image-delete" data-slug="videos_placeholder"><?php esc_html_e( 'Delete', 'lsx-videos' ); ?></a>
-				</td>
-			</tr>
-		<?php
-	}
-
-	/**
-	 * Disable excerpt setting.
-	 */
-	public function restrict_archive() {
-		?>
-			<tr class="form-field">
-				<th scope="row">
-					<label for="videos_restrict_archive"><?php esc_html_e( 'Restrict Archive', 'lsx-videos' ); ?></label>
-				</th>
-				<td>
-					<input type="checkbox" {{#if videos_restrict_archive}} checked="checked" {{/if}} name="videos_restrict_archive">
-					<small><?php esc_html_e( 'A user will need to have purchase a membershihp plan to view the archive.', 'lsx-videos' ); ?></small>
-				</td>
-			</tr>
-		<?php
 	}
 
 	/**

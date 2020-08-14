@@ -38,14 +38,15 @@ global $lsx_videos_frontend
 	<?php lsx_content_after(); ?>
 
 	<?php
-	if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['single_video_disable_related'] ) ) :
+
+	if ( empty( videos_get_option( 'single_video_disable_related' ) ) ) :
 		lsx_videos_most_recent_related( get_the_ID() );
 	endif;
 	?>
 
 	<?php
 	if ( is_singular( 'video' ) ) {
-		if ( empty( $lsx_videos_frontend->options['display'] ) || empty( $lsx_videos_frontend->options['display']['single_video_disable_post_nav'] ) ) :
+		if ( empty( videos_get_option( 'single_video_disable_post_nav' ) ) ) :
 			lsx_post_nav();
 		endif;
 	}
