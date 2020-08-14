@@ -40,6 +40,8 @@ class LSX_Videos_Frontend {
 
 		add_filter( 'lsx_global_header_title', array( $this, 'lsx_videos_archives_header_title' ), 200, 1 );
 		add_filter( 'lsx_banner_container_top', array( $this, 'lsx_videos_archives_header_title' ) );
+
+		add_filter( 'lsx_get_thumbnail_post_placeholder_id', array( $this, 'placeholder_image' ), 20, 2 );
 	}
 
 	/**
@@ -338,6 +340,23 @@ class LSX_Videos_Frontend {
 			$title = ' All Videos ';
 		}
 		return $title;
+	}
+
+	/**
+	 * Adds in the placeholder image.
+	 *
+	 * @param string $post_thumbnail_id
+	 * @param string $post_id
+	 * @return string
+	 */
+	public function placeholder_image( $post_thumbnail_id, $post_id ) {
+		if ( 'video' === get_post_type() ) {
+			$placeholder = videos_get_option( 'videos_placeholder_id' );
+			if ( '' !== $placeholder ) {
+				$post_thumbnail_id = $placeholder;
+			}
+		}
+		return $post_thumbnail_id;
 	}
 
 }

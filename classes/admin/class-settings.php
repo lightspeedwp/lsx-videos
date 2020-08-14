@@ -139,7 +139,7 @@ class Settings {
 			array(
 				'name'    => 'Placeholder',
 				'desc'    => __( 'Upload an image.', 'lsx-videos' ),
-				'id'      => 'videos_placeholder_id',
+				'id'      => 'videos_placeholder',
 				'type'    => 'file',
 				'options' => array(
 					'url' => false, // Hide the text input for the url.
