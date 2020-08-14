@@ -16,7 +16,7 @@ class Settings_Theme {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var      object \lsx_videos\classes\admin\Settings_Theme()
+	 * @var      object \lsx\videos\classes\admin\Settings_Theme()
 	 */
 	protected static $instance = null;
 
@@ -53,7 +53,7 @@ class Settings_Theme {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return    object \lsx_videos\classes\admin\Settings_Theme()    A single instance of this class.
+	 * @return    object \lsx\videos\classes\admin\Settings_Theme()    A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
@@ -71,7 +71,7 @@ class Settings_Theme {
 	public function disable_cmb2_styles( $enabled ) {
 		if ( is_admin() ) {
 			$current_screen = get_current_screen();
-			if ( is_object( $current_screen ) && 'videos_page_lsx_videos_options' === $current_screen->id ) {
+			if ( is_object( $current_screen ) && 'video_page_lsx_videos_options' === $current_screen->id ) {
 				$enabled = false;
 			}
 		}
