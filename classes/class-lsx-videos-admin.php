@@ -18,7 +18,7 @@ class LSX_Videos_Admin {
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_action( 'init', array( $this, 'tag_taxonomy_setup' ) );
-		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'field_setup' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
@@ -160,113 +160,142 @@ class LSX_Videos_Admin {
 	/**
 	 * Add metabox with custom fields to the Video post type.
 	 */
-	public function field_setup( $meta_boxes ) {
+	public function field_setup() {
 		$prefix = 'lsx_video_';
 
-		$fields = array(
+		$cmb = new_cmb2_box(
 			array(
-				'name' => esc_html__( 'Featured:', 'lsx-videos' ),
-				'id'   => $prefix . 'featured',
-				'type' => 'checkbox',
-			),
-			// * Using post title
-			// array(
-			// 	'name' => esc_html__( 'Video Title:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'title',
-			// 	'type' => 'text',
-			// ),
-			// * Using post description
-			// array(
-			// 	'name' => esc_html__( 'Video Description', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'description',
-			// 	'type' => 'textarea',
-			// 	'rows' => 5,
-			// ),
-			array(
-				'name' => esc_html__( 'Video source:', 'lsx-videos' ),
-				'id'   => $prefix . 'video',
-				'type' => 'file',
-				'desc' => esc_html__( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg).', 'lsx-videos' ),
-			),
-			// * Will save those as hidden meta
-			// array(
-			// 	'name' => esc_html__( 'Video Time:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'time',
-			// 	'type' => 'text',
-			// ),
-			// array(
-			// 	'name' => esc_html__( 'Video Total Views:', 'lsx-videos' ),
-			// 	'id'   => $prefix . 'views',
-			// 	'type' => 'text',
-			// ),
-			array(
-				'name' => esc_html__( 'Youtube source:', 'lsx-videos' ),
-				'id'   => $prefix . 'youtube',
-				'type' => 'text_url',
-				'desc' => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
-			),
-			array(
-				'name' => esc_html__( 'Giphy source:', 'lsx-videos' ),
-				'id'   => $prefix . 'giphy',
-				'type' => 'text',
-				'desc' => esc_html__( 'The HTML will be stripped leaving only the URL.', 'lsx-videos' ),
-			),
+				'id'           => $prefix . '_details',
+				'title'        => esc_html__( 'Video Details', 'lsx-videos' ),
+				'object_types' => 'video',
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
 		);
 
-		$meta_boxes[] = array(
-			'title'  => esc_html__( 'Video Details', 'lsx-videos' ),
-			'pages'  => 'video',
-			'fields' => $fields,
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Featured:', 'lsx-videos' ),
+				'id'           => $prefix . 'featured',
+				'type'         => 'checkbox',
+				'value'        => 1,
+				'default'      => 0,
+				'show_in_rest' => true,
+			)
 		);
 
-		$fields = array(
+		$cmb->add_field(
 			array(
-				'name' => esc_html__( 'First Name:', 'lsx-videos' ),
-				'id'   => $prefix . 'first_name',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Last Name:', 'lsx-videos' ),
-				'id'   => $prefix . 'last_name',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Email Address:', 'lsx-videos' ),
-				'id'   => $prefix . 'email',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Phone Number:', 'lsx-videos' ),
-				'id'   => $prefix . 'phone',
-				'type' => 'text',
-			),
-			array(
-				'name' => esc_html__( 'Country of Residence', 'lsx-videos' ),
-				'id'   => $prefix . 'country',
-				'type' => 'text',
-			),
+				'name'    => esc_html__( 'Video source:', 'lsx-videos' ),
+				'desc'    => esc_html__( 'Allowed formats: MP4 (.mp4), WebM (.webm) and Ogg/Ogv (.ogg).', 'lsx-videos' ),
+				'id'      => $prefix . 'video',
+				'type'    => 'file',
+				'options' => array(
+					'url' => false,
+				),
+				'text'    => array(
+					'add_upload_file_text' => esc_html__( 'Add Video', 'lsx-videos' ),
+				),
+				'query_args' => array(
+					'type' => array(
+						'video/mp4',
+						'video/webm',
+						'video/ogg',
+					),
+				),
+				'preview_size' => 'thumbnail', // Image size to use when previewing in the admin.
+			)
 		);
 
-		$meta_boxes[] = array(
-			'title'  => esc_html__( 'Video Uploader Details', 'lsx-videos' ),
-			'pages'  => 'video',
-			'fields' => $fields,
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Youtube source:', 'lsx-videos' ),
+				'id'           => $prefix . 'youtube',
+				'type'         => 'text',
+				'show_in_rest' => true,
+				'desc'         => esc_html__( 'It will replace the original video source on front-end.', 'lsx-videos' ),
+			)
 		);
 
-		return $meta_boxes;
+		$cmb->add_field(
+			array(
+				'name'         => esc_html__( 'Giphy source:', 'lsx-videos' ),
+				'id'           => $prefix . 'giphy',
+				'type'         => 'text',
+				'show_in_rest' => true,
+				'desc'         => esc_html__( 'The HTML will be stripped leaving only the URL.', 'lsx-videos' ),
+			)
+		);
+
+		$cmb2 = new_cmb2_box(
+			array(
+				'id'           => $prefix . '_uploader_details',
+				'title'        => esc_html__( 'Video Uploader Details', 'lsx-videos' ),
+				'object_types' => 'video',
+				'context'      => 'normal',
+				'priority'     => 'low',
+				'show_names'   => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'First Name:', 'lsx-videos' ),
+				'id'           => $prefix . 'first_name',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Last Name:', 'lsx-videos' ),
+				'id'           => $prefix . 'last_name',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Email Address:', 'lsx-videos' ),
+				'id'           => $prefix . 'email',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Phone Number:', 'lsx-videos' ),
+				'id'           => $prefix . 'phone',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
+
+		$cmb2->add_field(
+			array(
+				'name'         => esc_html__( 'Country of Residence', 'lsx-videos' ),
+				'id'           => $prefix . 'country',
+				'type'         => 'text',
+				'show_in_rest' => true,
+			)
+		);
 	}
 
 	/**
 	 * Enqueue JS and CSS.
 	 */
 	public function assets( $hook ) {
-		//wp_enqueue_media();
+
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
 		wp_enqueue_style( 'thickbox' );
 
-		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), null, true );
-		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), null );
+		wp_enqueue_script( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/js/lsx-videos-admin.min.js', array( 'jquery' ), LSX_VIDEOS_VER, true );
+		wp_enqueue_style( 'lsx-videos-admin', LSX_VIDEOS_URL . 'assets/css/lsx-videos-admin.css', array(), LSX_VIDEOS_VER );
 	}
 
 	/**
