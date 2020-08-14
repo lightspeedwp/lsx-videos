@@ -5,6 +5,8 @@
  * @package lsx-videos
  */
 
+namespace lsx\videos\classes\admin;
+
 class Settings {
 
 	/**

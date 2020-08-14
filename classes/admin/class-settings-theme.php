@@ -1,5 +1,7 @@
 <?php
 
+namespace lsx\videos\classes\admin;
+
 //use CMB_Tab_Field;
 
 /**

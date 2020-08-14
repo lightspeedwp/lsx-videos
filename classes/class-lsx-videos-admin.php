@@ -40,10 +40,10 @@ class LSX_Videos_Admin {
 	 */
 	private function load_classes() {
 		require_once LSX_VIDEOS_PATH . 'classes/admin/class-settings.php';
-		$this->settings = Settings::get_instance();
+		$this->settings = \lsx\videos\classes\admin\Settings::get_instance();
 
-		require_once LSX_VIDEOS_PATH . 'classes/admin/class-lsx-videos-settings-theme.php';
-		$this->settings_theme = Settings_Theme::get_instance();
+		require_once LSX_VIDEOS_PATH . 'classes/admin/class-settings-theme.php';
+		$this->settings_theme = \lsx\videos\classes\admin\Settings_Theme::get_instance();
 	}
 
 	/**

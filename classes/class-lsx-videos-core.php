@@ -5,7 +5,7 @@
  *
  * @package lsx-videos
  */
-class Core {
+class LSX_Videos_Core {
 
 	/**
 	 * Holds class instance
@@ -26,20 +26,11 @@ class Core {
 	public $cmb2_post_search_ajax = false;
 
 	/**
-	 * @var object \lsx_videos\classes\Admin();
-	 */
-	public $admin;
-
-	/**
-	 * @var object \lsx_videos\classes\Frontend();
-	 */
-	public $frontend;
-
-	/**
 	 * Contructor
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'cmb2_post_search_ajax' ) );
+		$this->load_vendors();
 	}
 
 	/**
@@ -58,6 +49,16 @@ class Core {
 
 		return self::$instance;
 
+	}
+
+	/**
+	 * Loads the plugin functions.
+	 */
+	private function load_vendors() {
+		// Configure custom fields.
+		if ( ! class_exists( 'CMB2' ) ) {
+			require_once LSX_VIDEOS_PATH . 'vendor/CMB2/init.php';
+		}
 	}
 
 	/**
@@ -82,7 +83,9 @@ class Core {
 	 * @return void
 	 */
 	public function cmb2_post_search_ajax() {
-		require_once LSX_TEAM_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php';
+		require_once LSX_VIDEOS_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php';
 		$this->cmb2_post_search_ajax = new \MAG_CMB2_Field_Post_Search_Ajax();
 	}
 }
+
+LSX_Videos_Core::get_instance();
