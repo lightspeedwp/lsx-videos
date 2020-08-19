@@ -84,7 +84,9 @@ class LSX_Videos_Core {
 	 */
 	public function cmb2_post_search_ajax() {
 		require_once LSX_VIDEOS_PATH . 'vendor/lsx-field-post-search-ajax/cmb-field-post-search-ajax.php';
-		$this->cmb2_post_search_ajax = \MAG_CMB2_Field_Post_Search_Ajax::get_instance();
+		if ( method_exists( 'MAG_CMB2_Field_Post_Search_Ajax', 'get_instance' ) ) {
+			$this->cmb2_post_search_ajax = \MAG_CMB2_Field_Post_Search_Ajax::get_instance();
+		}
 	}
 }
 
