@@ -119,7 +119,7 @@ class Settings_Theme {
 					$separator    = ' |';
 					$selected_tab = '';
 					if ( isset( $_GET['cmb_tab'] ) && '' !== $_GET['cmb_tab'] ) {
-						$selected_tab  = sanitize_text_field( $_GET['cmb_tab'] );
+						$selected_tab  = sanitize_text_field( wp_unslash( $_GET['cmb_tab'] ) );
 						$selected_tab  = 'settings_' . $selected_tab;
 					}
 					foreach ( $this->navigation as $key => $label ) {
