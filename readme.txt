@@ -2,9 +2,9 @@
 Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, virginialsdev, deon80, jaab1985, jacquesvdh, ignusvermaak, garthlsdev
 Donate link: https://donate.lsdev.biz/
 Tags: lsx, Videos, Video Player, lsx theme
-Requires at least: 4.9
-Tested up to: 5.4.1
-Requires PHP: 7.0
+Requires at least: 5.3
+Tested up to: 5.5
+Requires PHP: 7.2
 Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
