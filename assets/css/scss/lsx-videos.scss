@@ -4,41 +4,40 @@
  * @package lsx-videos
  */
 
-@import 'include-media';
-@import 'customizer-videos-body-colours';
-
+@import "include-media";
+@import "customizer-videos-body-colours";
 
 #lsx-videos-modal {
 	.modal-dialog {
-		@include media('>=phone') {
+		@include media(">=phone") {
 			max-width: 587px;
 			width: 100%;
 			height: 679px;
+			padding-left: 14px;
 		}
 
 		.modal-content {
 			border-width: 4px;
 			background: #ffffff;
-			border-color: #418AD0;
+			border-color: #418ad0;
 			.close {
-				background-color: #418AD0;
-				border-color: #418AD0;
-				box-shadow: 0 0 4px 0 #418AD0;
+				background-color: #418ad0;
+				border-color: #418ad0;
+				box-shadow: 0 0 4px 0 #418ad0;
 				position: absolute;
 				right: -14px;
 				top: -17px;
-				font-size: 28px;
 			}
 			.modal-header {
 				min-height: 73px;
-				background-color: #F2F2F2;
+				background-color: #f2f2f2;
 				.modal-title {
 					text-align: left;
 					color: #4a4a4a;
 					padding-left: 15px;
 					margin-top: 5px;
 					font-size: 24px;
-					@include media('<=phone') {
+					@include media("<=phone") {
 						text-align: center;
 						padding-left: 0px;
 						font-size: 22px;
@@ -47,13 +46,17 @@
 			}
 		}
 
-		.modal-title { text-align: center; }
+		.modal-title {
+			text-align: center;
+		}
 	}
 }
 
 .widget.lsx-videos {
 	.tagline {
-		& + .lsx-videos-shortcode { margin-top: 0; }
+		& + .lsx-videos-shortcode {
+			margin-top: 0;
+		}
 	}
 }
 
@@ -69,7 +72,7 @@
 
 	&:before,
 	&:after {
-		content: '';
+		content: "";
 		display: block;
 		height: 2px;
 		position: absolute;
@@ -78,15 +81,21 @@
 		width: 999rem;
 	}
 
-	&:before { right: 120%; }
-	&:after { left: 120%; }
+	&:before {
+		right: 120%;
+	}
+	&:after {
+		left: 120%;
+	}
 }
 
-.lsx-videos-shortcode { margin-top: -4rem; }
+.lsx-videos-shortcode {
+	margin-top: -4rem;
+}
 
 .lsx-videos-row {
 	display: flex;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 	.lsx-videos-column {
 		.lsx-videos-slot,
 		.lsx-videos-slot-single {
@@ -99,12 +108,12 @@
 				justify-content: center;
 				align-items: center;
 				&:before {
-					content: '\f04b';
+					content: "\f04b";
 					font-family: FontAwesome;
 					color: white;
 					position: absolute;
 					font-size: 17px;
-					background-color: rgba(0,0,0,0.75);
+					background-color: rgba(0, 0, 0, 0.75);
 					border-radius: 50%;
 					height: 37px;
 					width: 37px;
@@ -116,46 +125,54 @@
 				& > img {
 					width: 100%;
 
-					&.lazyload, &.lazyloading { width: auto; }
+					&.lazyload,
+					&.lazyloading {
+						width: auto;
+					}
 				}
 			}
 
 			.lsx-videos-title {
-				 margin: 2rem 0 1rem;
-				 font-size: 22px;
-				}
+				margin: 2rem 0 1rem;
+				font-size: 22px;
+			}
 
 			.lsx-videos-categories {
 				font-size: 18px;
 
-				&, #home-widgets & { margin-bottom: 1.2rem; }
+				&,
+				#home-widgets & {
+					margin-bottom: 1.2rem;
+				}
 			}
 
 			.lsx-videos-meta {
 				font-size: 10px;
 				.meta-duration {
 					&:before {
-						content: '\f017';
+						content: "\f017";
 						font-family: fontawesome;
 						margin-right: 5px;
 					}
 				}
 				.meta-views {
 					&:before {
-						content: '\f06e';
+						content: "\f06e";
 						font-family: fontawesome;
 						margin-right: 5px;
 					}
 				}
 				.meta-date {
 					&:before {
-						content: '\f073';
+						content: "\f073";
 						font-family: fontawesome;
 						margin-right: 5px;
 					}
 				}
 
-				#home-widgets & { margin-top: 0; }
+				#home-widgets & {
+					margin-top: 0;
+				}
 			}
 
 			.lsx-videos-content {
@@ -164,7 +181,9 @@
 				& p {
 					margin-bottom: 0;
 
-					& + p { margin-top: 2.4rem; }
+					& + p {
+						margin-top: 2.4rem;
+					}
 				}
 			}
 		}
@@ -172,7 +191,7 @@
 }
 
 .lsx-videos-slot {
-	background-color: #FFF;
+	background-color: #fff;
 	text-align: center;
 
 	.lsx-videos-title {
@@ -180,8 +199,12 @@
 		padding: 0 2rem;
 	}
 
-	.lsx-videos-categories { padding: 0 2rem; }
-	.lsx-videos-meta { padding: 0 2rem; }
+	.lsx-videos-categories {
+		padding: 0 2rem;
+	}
+	.lsx-videos-meta {
+		padding: 0 2rem;
+	}
 
 	.lsx-videos-content {
 		padding: 0 2rem;
@@ -195,9 +218,9 @@
 
 			&:after {
 				color: inherit;
-				content: '\f178';
+				content: "\f178";
 				display: inline-block;
-				font-family: 'FontAwesome';
+				font-family: "FontAwesome";
 				font-size: inherit;
 				margin-left: 5px;
 				text-rendering: auto;
@@ -210,20 +233,24 @@
 }
 
 .lsx-videos-slider {
-	@include media('>=tablet') {
+	@include media(">=tablet") {
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
 
-		&.slick-has-arrows { width: calc(100% - 8rem); }
+		&.slick-has-arrows {
+			width: calc(100% - 8rem);
+		}
 	}
 
-	@include media('>=1280px') {
+	@include media(">=1280px") {
 		margin-left: -15px;
 		margin-right: -15px;
 		width: calc(100% + 30px);
 
-		&.slick-has-arrows { width: calc(100% + 30px); }
+		&.slick-has-arrows {
+			width: calc(100% + 30px);
+		}
 	}
 
 	.lsx-videos-slot.slick-slide {
@@ -245,7 +272,9 @@
 			line-height: 1;
 			padding: 5px;
 
-			@include media('>=tablet') { padding: 0 7.5px; }
+			@include media(">=tablet") {
+				padding: 0 7.5px;
+			}
 
 			& > button {
 				background: transparent;
@@ -256,7 +285,9 @@
 				transition: all 300ms ease-in-out;
 				width: 4rem;
 
-				@include media('>=tablet') { height: 6px; }
+				@include media(">=tablet") {
+					height: 6px;
+				}
 			}
 		}
 	}
@@ -281,7 +312,7 @@
 
 		&:before {
 			display: block;
-			font-family: 'FontAwesome';
+			font-family: "FontAwesome";
 			font-size: 3rem;
 			line-height: 1;
 			position: absolute;
@@ -294,13 +325,15 @@
 			-moz-osx-font-smoothing: grayscale;
 		}
 
-		&.slick-disabled { cursor: not-allowed; }
+		&.slick-disabled {
+			cursor: not-allowed;
+		}
 
 		&.slick-prev {
 			left: -4rem;
 
 			&:before {
-				content: '\f104';
+				content: "\f104";
 				left: 1.1rem;
 			}
 		}
@@ -309,7 +342,7 @@
 			right: -4rem;
 
 			&:before {
-				content: '\f105';
+				content: "\f105";
 				left: 1.5rem;
 			}
 		}
@@ -325,7 +358,7 @@
 		margin-top: 9.5rem;
 		#main {
 			article.video {
-				@include media('>=desktop') {
+				@include media(">=desktop") {
 					width: 760px;
 					margin: 0 auto;
 				}
@@ -337,30 +370,30 @@
 							font-size: 30px;
 							text-align: left;
 							margin: 0.8rem 0 0rem;
-							color: #4A4A4A;
+							color: #4a4a4a;
 						}
 						.lsx-videos-meta {
 							text-align: left;
 							padding-bottom: 12px;
 							font-size: 16px;
-							color: #4E4E4E;
+							color: #4e4e4e;
 							.meta-duration {
 								&:before {
-									content: '\f017';
+									content: "\f017";
 									font-family: fontawesome;
 									margin-right: 5px;
 								}
 							}
 							.meta-views {
 								&:before {
-									content: '\f06e';
+									content: "\f06e";
 									font-family: fontawesome;
 									margin-right: 5px;
 								}
 							}
 							.meta-date {
 								&:before {
-									content: '\f073';
+									content: "\f073";
 									font-family: fontawesome;
 									margin-right: 5px;
 								}
@@ -376,7 +409,7 @@
 					margin-top: 4.25rem;
 				}
 				.lsx-related-videos-row {
-					@include media('<=tablet') {
+					@include media("<=tablet") {
 						padding: 15px;
 						.lsx-related-videos-column {
 							margin-bottom: 25px;
@@ -403,10 +436,10 @@
 					a {
 						width: 300px;
 						&:before {
-							content: '\f053';
+							content: "\f053";
 							font-family: fontawesome;
 							float: left;
-							color: #418AD0;
+							color: #418ad0;
 							font-size: 30px;
 							padding-right: 30px;
 							&:hover {
@@ -423,7 +456,7 @@
 						}
 						h3 {
 							font-size: 20px;
-							color: #4A4A4A;
+							color: #4a4a4a;
 							text-align: left;
 						}
 					}
@@ -432,10 +465,10 @@
 					a {
 						width: 300px;
 						&:before {
-							content: '\f054';
+							content: "\f054";
 							font-family: fontawesome;
 							float: right;
-							color: #418AD0;
+							color: #418ad0;
 							font-size: 30px;
 							padding-left: 30px;
 							&:hover {
@@ -452,7 +485,7 @@
 						}
 						h3 {
 							font-size: 20px;
-							color: #4A4A4A;
+							color: #4a4a4a;
 							text-align: right;
 						}
 					}
@@ -461,7 +494,7 @@
 		}
 		.comment-respond {
 			.comment-reply-title {
-				color: #2B3840;
+				color: #2b3840;
 				font-size: 19px;
 			}
 			.comment-form {
@@ -471,11 +504,11 @@
 				}
 				.form-submit {
 					.submit {
-						background-color: #418AD0;
-						box-shadow: 2px 2px 0 0 #27639D;
+						background-color: #418ad0;
+						box-shadow: 2px 2px 0 0 #27639d;
 						color: #fff;
 						&:hover {
-							background-color: #27639D;
+							background-color: #27639d;
 						}
 					}
 				}
@@ -486,7 +519,9 @@
 
 .archive.post-type-archive-video,
 .archive.tax-video-category {
-	.lsx-videos-filter + .lsx-videos-container { margin-top: 0rem; }
+	.lsx-videos-filter + .lsx-videos-container {
+		margin-top: 0rem;
+	}
 
 	.site-main {
 		margin: 0;
@@ -510,20 +545,24 @@
 		margin: 0 0 4.25rem 0;
 		padding-left: 0;
 
-		@include media('>=phone') { flex-flow: row nowrap; }
+		@include media(">=phone") {
+			flex-flow: row nowrap;
+		}
 
 		& > li {
 			margin-bottom: 0;
 			width: 100%;
 
-			@include media('>=phone') {
+			@include media(">=phone") {
 				display: flex;
 				flex: 1 1 auto;
 				max-width: 350px;
 			}
 
 			& + li {
-				@include media('>=phone') { margin-left: 5px; }
+				@include media(">=phone") {
+					margin-left: 5px;
+				}
 			}
 
 			& > a {
@@ -535,14 +574,16 @@
 				text-align: center;
 				transition: all 300ms ease;
 
-				@include media('>=phone') {
+				@include media(">=phone") {
 					align-items: center;
 					display: flex;
 					flex: 1 1 auto;
 					justify-content: center;
 				}
 
-				@include media('>=tablet') { font-size: 22px; }
+				@include media(">=tablet") {
+					font-size: 22px;
+				}
 			}
 
 			&.active > a {
@@ -550,9 +591,9 @@
 				position: relative;
 				font-weight: 600;
 
-				@include media('>=phone') {
+				@include media(">=phone") {
 					&:after {
-						content: '';
+						content: "";
 						border-style: solid;
 						border-width: 0 6px 6px 6px;
 						bottom: 0;
@@ -562,7 +603,9 @@
 						transform: translateX(-50%);
 						width: 0;
 
-						@include media('>=tablet') { border-width: 0 9px 9px 9px; }
+						@include media(">=tablet") {
+							border-width: 0 9px 9px 9px;
+						}
 					}
 				}
 			}
@@ -615,4 +658,11 @@
 	}
 }
 
-@include customizer-videos-body-colours(#F6F6F6, #DADDDF, #4A4A4A, #418AD0, #F7AE00, #919191);
+@include customizer-videos-body-colours(
+	#f6f6f6,
+	#dadddf,
+	#4a4a4a,
+	#418ad0,
+	#f7ae00,
+	#919191
+);
