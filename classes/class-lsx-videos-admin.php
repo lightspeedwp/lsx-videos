@@ -13,18 +13,29 @@ class LSX_Videos_Admin {
 	 * Construct method.
 	 */
 	public function __construct() {
-		$this->load_classes();
+		if ( function_exists( 'tour_operator' ) ) {
+			$this->options = get_option( '_lsx-to_settings', false );
+		} else {
+			$this->options = get_option( '_lsx_settings', false );
 
+			if ( false === $this->options ) {
+				$this->options = get_option( '_lsx_lsx-settings', false );
+			}
+		}
+		add_action( 'admin_init', array( $this, 'load_cmb_vendor' ), 9 );
 		add_action( 'init', array( $this, 'post_type_setup' ) );
 		add_action( 'init', array( $this, 'taxonomy_setup' ) );
 		add_action( 'init', array( $this, 'tag_taxonomy_setup' ) );
-		add_action( 'cmb2_admin_init', array( $this, 'field_setup' ) );
+		add_filter( 'cmb_meta_boxes', array( $this, 'field_setup' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 
 		if ( is_admin() ) {
 			add_filter( 'lsx_customizer_colour_selectors_body', array( $this, 'customizer_body_colours_handler' ), 15, 2 );
 		}
+
+		add_action( 'init', array( $this, 'create_settings_page' ), 100 );
+		add_filter( 'lsx_framework_settings_tabs', array( $this, 'register_tabs' ), 100, 1 );
 
 		add_filter( 'type_url_form_media', array( $this, 'change_attachment_field_button' ), 20, 1 );
 		add_filter( 'enter_title_here', array( $this, 'change_title_text' ) );
@@ -33,6 +44,12 @@ class LSX_Videos_Admin {
 
 		// add_filter( 'manage_video_posts_columns', array( $this, 'columns_head' ), 10 );
 		// add_action( 'manage_video_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
+	}
+
+	function load_cmb_vendor() {
+		if ( 'video' === get_post_type() && ! class_exists( 'CMB_Meta_Box' ) ) {
+			require_once( LSX_VIDEOS_PATH . '/vendor/Custom-Meta-Boxes/custom-meta-boxes.php' );
+		}
 	}
 
 	/**
