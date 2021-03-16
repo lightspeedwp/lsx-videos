@@ -3,7 +3,7 @@ Contributors: feedmymedia, lightspeedwp, eleshar, krugazul, jacquesvdh, ignusver
 Donate link: https://lsdev.biz/lsx/donate/
 Tags: lsx, videos, video player, related videos, 
 Requires at least: 5.0
-Tested up to: 5.5.3
+Tested up to: 5.7
 Requires PHP: 7.0
 Stable tag: 1.2.1
 License: GPLv3
