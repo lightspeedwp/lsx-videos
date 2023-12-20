@@ -200,9 +200,17 @@ class LSX_Videos_SCPO_Engine {
 		if (empty($objects))
 			return false;
 
+		if ( is_array( $wp_query->query['post_type'] ) ) {
+			if ( isset( $wp_query->query['post_type'][0] ) ) {
+				$post_type = $wp_query->query['post_type'][0];
+			} else {
+				$post_type = implode( '', $wp_query->query['post_type'] );
+			}
+		}
+
 		if (is_admin()) {
-			if (isset($wp_query->query['post_type']) && !isset($_GET['orderby'])) {
-				if (array_key_exists($wp_query->query['post_type'], $objects)) {
+			if (isset($post_type) && !isset($_GET['orderby'])) {
+				if ( array_key_exists($post_type, $objects) ) {
 					$wp_query->set('orderby', 'menu_order');
 					$wp_query->set('order', 'ASC');
 				}
@@ -210,9 +218,9 @@ class LSX_Videos_SCPO_Engine {
 		} else {
 			$active = false;
 
-			if (isset($wp_query->query['post_type'])) {
-				if (!is_array($wp_query->query['post_type'])) {
-					if (array_key_exists($wp_query->query['post_type'], $objects)) {
+			if (isset($post_type)) {
+				if (!is_array($post_type)) {
+					if (array_key_exists($post_type, $objects)) {
 						$active = true;
 					}
 				}
